@@ -19,8 +19,22 @@ Clean and simple MVC Conventions and easy to understand and use.
 ```
 * Supports Multiple Layout 
 ```
-You may want to have tow separate layouts depending on user right e.g default layout and admin layout 
+You may want to have tow layouts depending on user right e.g default layout and admin layout 
 ```
 
 ### Download berkaPhp framework
 You can simply clone from this github or download it in zip format and unzip afterward
+
+### Installing and requirements
+* [Web Sever](http://www.dropwizard.io/1.0.2/docs/) - exemple : Wamp, xamp...
+* [Database MySQL](https://maven.apache.org/) - With Your table created
+* [Copy of berkaPhp](https://rometools.github.io/rome/) - framework
+
+####Web server requirements
+* Php version 5.6.0 or greater
+
+####Web server extensions that are required to be enabled
+* mod_rewrite extension shoud be enabled
+* mbstring PHP extension
+* intl PHP extension
+* curl PHP extension
