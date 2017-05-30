@@ -2,7 +2,8 @@
 berkaPhp is a PHP MVC framework that helps you quickly write a web application and gives full controller over your application.
 
 ## Getting Started
-xxx
+These instructions will help you to get a undersnding of berkaPhp how it works and know how to download berkaPhp framework ,instatll and  configure it.
+
 ### Why you may give berkaPhp a try 
 * Rapid development 
 ```
