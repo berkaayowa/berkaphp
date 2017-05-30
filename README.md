@@ -30,10 +30,10 @@ You can simply clone from this github or download it in zip format and unzip aft
 * [Database MySQL](https://maven.apache.org/) - With Your table created
 * [Copy of berkaPhp](https://rometools.github.io/rome/) - framework
 
-####Web server requirements
+#### Web server requirements
 * Php version 5.6.0 or greater
 
-####Web server extensions that are required to be enabled
+#### Web server extensions that are required to be enabled
 * mod_rewrite extension shoud be enabled
 * mbstring PHP extension
 * intl PHP extension
