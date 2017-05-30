@@ -1,2 +1,1 @@
-# berkaphp
-berkaPhp MVC Framework
+# berkaPhp MVC Framework
