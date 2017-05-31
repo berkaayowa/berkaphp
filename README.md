@@ -41,3 +41,7 @@ You can simply clone from this github or download it in zip format and unzip aft
 
 #### Permissions
 berkaPhp uses the Views, Controllers and models directory to store files  so you should make sure that the above directories have a write and ready access . 
+
+## Configuration
+
+
