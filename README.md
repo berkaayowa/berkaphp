@@ -44,7 +44,7 @@ berkaPhp uses the Views, Controllers and models directory to store files  so you
 
 ## Configuration
 * SERVER The database server’s hostname (or IP address).
-* Bd_USERNAME the username for the database.
+* DB_USERNAME the username for the database.
 * DB_PW	the password for the database.
 * DB the name of the database for this connection to use
 * HOME default controller
@@ -56,3 +56,16 @@ Update the setting file with your local database details #### Path: berkaPhp/con
 ![Write your database settings](/documentation/assets/config.png)
 
 ## Development using berkaPhp
+
+### Model
+Model represents table and are used in berkaPhp applications for data access,usually to save , retrive, update and delete data in / from a table.
+
+Here is a simple example of a model file name and class definition.
+```
+File name: UsersTable.php 
+```
+```
+Class definition
+```
+![Write your database settings](/documentation/assets/model.png)
+
