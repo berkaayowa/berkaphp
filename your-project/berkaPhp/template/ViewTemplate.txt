@@ -1,0 +1,8 @@
+<?php $data = $template_data['{name}'][0]; ?>
+
+<h2 style="margin-top: 0;text-transform: capitalize;">Viewing {name}</h2>
+<form >
+	{elements}
+	<input type="hidden" name="{primary_key}" value="<?=$data['{primary_key}']?>">
+	<a href="/{controller_name}" class="btn btn-primary">Go Back</a>
+</form>

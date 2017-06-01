@@ -1,0 +1,16 @@
+<?php
+namespace models;
+require_once('AutoLoader.php');
+use autoload\AppClassLoader;
+AppClassLoader::loadBaseModel();
+
+use berkaPhp\database\table\AppTable;
+
+class {model_name}Table extends AppTable
+{
+	function __construct() {
+		parent::__construct('{table_name}');
+		$this->primary_key = '{primary_key}';
+	}
+}
+?>
