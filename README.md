@@ -44,4 +44,6 @@ berkaPhp uses the Views, Controllers and models directory to store files  so you
 
 ## Configuration
 
+![Write your database settings](/documentation/assets/settings.png)
 
+...and this is after adding `?ts=4`:
