@@ -46,6 +46,6 @@ berkaPhp uses the Views, Controllers and models directory to store files  so you
 ```
 Update the setting file with your local database details #### Path: berkaPhp/config/settings.php 
 ```
-![Write your database settings](/documentation/assets/conig.png)
+![Write your database settings](/documentation/assets/config.png)
 
 
