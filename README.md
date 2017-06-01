@@ -43,9 +43,16 @@ You can simply clone from this github or download it in zip format and unzip aft
 berkaPhp uses the Views, Controllers and models directory to store files  so you should make sure that the above directories have a write and ready access . 
 
 ## Configuration
+* SERVER The database server’s hostname (or IP address).
+* Bd_USERNAME the username for the database.
+* DB_PW	the password for the database.
+* DB the name of the database for this connection to use
+* HOME default controller
+* DEFAULT_PREFIX default layout 
+
 ```
 Update the setting file with your local database details #### Path: berkaPhp/config/settings.php 
 ```
 ![Write your database settings](/documentation/assets/config.png)
 
-
+## Development using berkaPhp
