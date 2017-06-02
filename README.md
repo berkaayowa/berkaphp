@@ -57,8 +57,22 @@ Update the setting file with your local database details #### Path: berkaPhp/con
 
 ## Development using berkaPhp
 
+berkaPhp applications follow the Model-View-Controller design pattern.
+
+![Write your database settings](/documentation/assets/mvc.png)
+
+### Controller 
+Used to handle user requests and retrieve data, by calling Models
+
 ### Model
-Model represents table and are used in berkaPhp applications for data access,usually to save , retrive, update and delete data in / from a table.
+Model represents table and are used in berkaPhp applications for data access,usually to save , retrieve, update and delete data in / from a table.
+
+### Views
+Used to render pages
+
+## Full MVC request cycle in a berkaPhp application
+
+![Write your database settings](/documentation/assets/mvc_cycle_in_berkaphp.png)
 
 Here is a simple example of a model file name and class definition.
 ```
