@@ -5,5 +5,5 @@
     <label style='text-transform: capitalize;'>user password</label><br>
     <input type='text' class='form-control' name='user_password' placeholder='user password'><br>
 
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-primary">login</button>
 </form>

@@ -22,7 +22,7 @@
 			//$this->appView->render();
 		}
 
-		function run() {
+		function file() {
 			if($this->is_set($this->get_post())) {
 				if($this->get_post()['table'] != '---' && isset($this->get_post()['table'])) {
 					$table = $this->get_post()['table'];

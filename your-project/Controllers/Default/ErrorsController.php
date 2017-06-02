@@ -9,18 +9,13 @@
 	class ErrorsController extends AppController
 	{
 		private $flash;
-		private $paginate;
 
 		function __construct() {
 			parent::__construct();
 		}
 
 		function index($params) {
-            $code = $params['options']['code'];
-			$result = $this->model->fetch_all();
-			$this->appView->set('error', $result);
 			$this->appView->render();
-			//$this->appView->render_ajax();
 		}
 
         function unauthorized() {
@@ -28,7 +23,6 @@
         }
 
         function no_found() {
-
             $this->appView->render();
         }
 

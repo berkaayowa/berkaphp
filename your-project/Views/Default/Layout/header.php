@@ -20,11 +20,4 @@
     <link href='https://fonts.googleapis.com/css?family=Work+Sans:600,500,400,300' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <div id="loading">
-    </div>
-    <div class="wrapper">
-    <div class="nav-trigger visible-xs visible-sm" role="button" title="sweet hamburger">
-      <div class="hamburger">
-        <div class="icon"></div>
-      </div>
-    </div>
+

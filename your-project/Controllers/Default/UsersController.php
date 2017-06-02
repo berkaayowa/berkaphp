@@ -22,7 +22,6 @@
 			$result = $this->model->fetch_all();
 			$this->appView->set('users', $result);
 			$this->appView->render();
-			//$this->appView->render_ajax();
 		}
 
 		function add() {
@@ -50,7 +49,6 @@
 
 			$result = $this->model->fetch_by(['user_id'=>$id]);
 			$this->appView->set('user',$result);
-			//$this->appView->render();
 			$this->appView->render();
 		}
 
@@ -65,11 +63,6 @@
 			$this->index();
 		}
 
-		function view($params) {
-			$id = $params['params'][0];
-			$this->appView->render();
-		}
-
         function login() {
             if($this->is_set($this->get_post())) {
                 $user = $this->model->fetch_where([
@@ -79,7 +72,6 @@
 
                 if (sizeof($user) == 1) {
                     $this->session->add('user', $user);
-                    //$this->set_user_right($user[0]['user_role']);
                     \berkaPhp\helpers\RedirectHelper::redirect('/home');
                 } else {
                     $this->appView->set('flash','Invalid login details, try again');
@@ -94,10 +86,6 @@
             $this->session->remove('user');
             \berkaPhp\helpers\RedirectHelper::redirect('/home');
         }
-
-		function api() {
-			return $this->json_format($this->model->fetch_all());
-		}
 
 		function search() {
 			$tag = $this->get_POST_key('search');

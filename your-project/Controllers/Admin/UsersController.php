@@ -8,9 +8,11 @@
 
 	class UsersController extends AppController
 	{
+		private $flash;
 
 		function __construct() {
 			parent::__construct();
+			$this->flash = $this->load_component('Flash');
 		}
 
 		function index() {
@@ -23,9 +25,9 @@
 		function add() {
 			if($this->is_set($this->get_post())) {
 				if ($this->model->add($this->get_post())) {
-					//$this->flash->success(' Saved user');
+					$this->flash->success(' Saved user');
 				} else {
-					//$this->flash->error(' Could not Saved user !');
+					$this->flash->error(' Could not Saved user !');
 				}
 			}
 
@@ -37,24 +39,23 @@
 
 			if($this->is_set($this->get_post())) {
 				if ($this->model->update($this->get_post())) {
-					//$this->flash->success(' Edited user');
+					$this->flash->success(' Edited user');
 				} else {
-					//$this->flash->error(' Could not Edit user !');
+					$this->flash->error(' Could not Edit user !');
 				}
 			}
 
 			$result = $this->model->fetch_by(['user_id'=>$id]);
 			$this->appView->set('user',$result);
-			//$this->appView->render();
 			$this->appView->render();
 		}
 
 		function delete($params) {
 			$id = $params['params'][0];
 			if($this->model->delete($id)) {
-				//$this->flash->success(' Deleted user');
+				$this->flash->success(' Deleted user');
 			} else {
-				//$this->flash->error(' Could not Delete user !');
+				$this->flash->error(' Could not Delete user !');
 			}
 
 			$this->index();
@@ -76,14 +77,12 @@
 
                 if (sizeof($user) == 1) {
                     $this->session->add('user', $user);
-                    \berkaPhp\helpers\RedirectHelper::redirect('/jobs/index');
-                   // $this->console($user);
+                    \berkaPhp\helpers\RedirectHelper::redirect('/');
                 } else {
                     $this->appView->set('flash','Invalid login details, try again');
                 }
             }
 
-           // $this->console(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS));
             $this->appView->render();
 
         }
@@ -92,10 +91,6 @@
             $this->session->remove('user');
             \berkaPhp\helpers\RedirectHelper::redirect('/');
         }
-
-		function api() {
-			return $this->json_format($this->model->fetch_all());
-		}
 
 		function search() {
 			$tag = $this->get_POST_key('search');

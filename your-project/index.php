@@ -3,5 +3,4 @@
 	use autoload\AppClassLoader;
 	AppClassLoader::loadIndexRequires();
 	use berkaPhp\config;
-
 ?>
