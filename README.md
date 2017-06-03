@@ -64,8 +64,12 @@ berkaPhp applications follow the Model-View-Controller design pattern.
 ### Controllers 
 Used to handle user requests and retrieve data, by calling Models
 
+![controller](/documentation/assets/controller.png)
+
 ### Models
 Model represents table and are used in berkaPhp applications for data access,usually to save , retrieve, update and delete data in / from a table.
+
+![Write your database settings](/documentation/assets/model.png)
 
 ### Views
 Used to render pages
@@ -79,12 +83,5 @@ Used to render pages
 
 ![mvc cycle in berkphp application](/documentation/assets/mvc_cycle_in_berkaphp.png)
 
-Here is a simple example of a model file name and class definition.
-```
-File name: UsersTable.php 
-```
-```
-Class definition
-```
-![Write your database settings](/documentation/assets/model.png)
+
 
