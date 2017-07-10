@@ -11,7 +11,7 @@
 		private $flash;
 
 		function __construct() {
-			parent::__construct();
+			parent::__construct(false);
 			$this->flash = $this->load_component('Flash');
 		}
 
