@@ -12,22 +12,20 @@
 		protected $session;
 		protected $cookie;
 
-		function __construct($model_passed = '')
+		function __construct($has_model = true)
 		{
 			$this->session = new \berkaPhp\helpers\SessionHelper();
 			$this->cookie = new \berkaPhp\helpers\CookieHelper();
 			$model = null;
 			$current_model = $this->get_current_model(get_class($this));
-			if (empty($model_passed)) {
+
+			if ($has_model) {
 
 				AppClassLoader::loadModelRequired($current_model);
 				$model = "\\models\\".$current_model."Table";
-			} else {
-				AppClassLoader::loadModelRequired($model_passed);
-				$model = "\\models\\".$model_passed."Table";
+				$this->model = new $model();
 			}
 
-			$this->model = new $model();
 			$this->variable = array();
 			$this->appView = new \berkaPhp\template\AppView();
 		}

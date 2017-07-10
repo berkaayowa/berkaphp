@@ -13,7 +13,8 @@
 		private $model_;
 
 		function __construct() {
-			parent::__construct('Users');
+			
+			parent::__construct(false);
 			$this->flash = $this->load_component('Flash');
 			$this->genarator = $this->load_component('Generator');
 		}
