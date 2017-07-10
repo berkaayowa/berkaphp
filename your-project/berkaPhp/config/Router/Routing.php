@@ -12,15 +12,16 @@ class Routing
 
 	public static function to($object) {
 
-       // die(\berkaPhp\helpers\SessionHelper::routing());
         foreach (glob("Controllers/".$object['prefix']."/*.php") as $filename)
         {
             require_once($filename);
         }
 
 		if($object != null) {
+
 			$controller = !empty($object['controller']) ? $object['controller'] : HOME;
 			$controller_calss = "\\controller\\".ucfirst($controller)."Controller";
+
 			if(isset($object['action']) || !empty($object['action'])) {
 				$action =$object['action'];
 			} else {
@@ -30,12 +31,15 @@ class Routing
 			$controller_path = 'Controllers/'.$object['prefix'].'/'.ucfirst($controller).'Controller.php';
            // die($controller_path);
 			if (file_exists($controller_path)) {
+
 				if(strtolower($controller) == 'generators') {
 					$controller_to_call = new $controller_calss();
 				} else {
 					$controller_to_call = new $controller_calss();
 				}
+
 				if (method_exists($controller_to_call, $action)) {
+
 					if(isset($object['params'])) {
 						$controller_to_call->$action($object);
 					} else {
@@ -53,6 +57,7 @@ class Routing
 					} else {
                         \berkaPhp\helpers\RedirectHelper::redirect('/errors/no_found/action');
 					}
+					
 				}
 			} else {
                 \berkaPhp\helpers\RedirectHelper::redirect('/errors/no_found/page');
