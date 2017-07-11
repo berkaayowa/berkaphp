@@ -4,10 +4,6 @@
     define('DEBUG', false, true);
 
     //Database settings
-    define('SERVER', '127.0.0.1', true);
-    define('DB', 'miworkm', true);
-    define('DB_USERNAME', 'root', true);
-    define('DB_PW', $_SERVER['SERVER_NAME']=='www.yourlivesite.com' ? '1234' : '', true);
 
     //default controller
     define('HOME', 'pages' , true);
@@ -74,17 +70,6 @@
     function prefixes() {
         return ['Default', 'Admin'];
     }
-
-    function settings(){
-		$localDatabase = array(
-			'server' => SERVER,
-			'username' => DB_USERNAME,
-            'password' => DB_PW,
-            'dbname' => DB
-		);
-
-		return $localDatabase ;
-	}
 
 ?>
 

@@ -29,9 +29,6 @@
             $this->appView->render();
         }
 
-        function csv() {
-            \berkaPhp\helpers\FileStream::array_to_csv('');
-        }
 	}
 
 ?>

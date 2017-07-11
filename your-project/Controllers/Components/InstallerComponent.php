@@ -19,7 +19,7 @@ class InstallerComponent
             foreach( $setting as $setting => $value) {
                 $template = str_replace('{'.$setting.'}', $value, $template);
             }
-            return \berkaPhp\helpers\FileStream::write_file("berkaPhp/config/try.php",  $template);
+            return \berkaPhp\helpers\FileStream::write_file("berkaPhp/config/Settings.php",  $template);
         }
         return false;
     }
