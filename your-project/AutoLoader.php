@@ -16,17 +16,12 @@ class AppClassLoader
 
 	public static function loadBaseControllerRequires() {
 		require_once('berkaPhp/template/AppView.php');
-		require_once('berkaPhp/Helpers/SessionHelper.php');
-		require_once('berkaPhp/Helpers/CookieHelper.php');
-        require_once('berkaPhp/Helpers/RedirectHelper.php');
-        require_once('berkaPhp/Helpers/HtmlHelper.php');
-        require_once('berkaPhp/Helpers/ElementHelper.php');
-
-        require_once('berkaPhp/Helpers/HtmlTableHelper.php');
-        require_once('berkaPhp/Helpers/StringHelper.php');
-        require_once('berkaPhp/Helpers/AuthHelper.php');
         require_once('berkaPhp/config/Settings.php');
-        require_once('berkaPhp/Helpers/FileStreamHelper.php');
+
+        foreach (glob("berkaPhp/Helpers/*.php") as $filename)
+        {
+            require_once($filename);
+        }
 
 	}
 
