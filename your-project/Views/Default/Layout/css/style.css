@@ -1,0 +1,19 @@
+.bs-callout-warning {
+    border-left-color: #aa6708;
+}
+
+.bs-callout {
+    padding: 15px;
+    /*margin: 20px 0;*/
+    border: 1px solid #bdbfc1;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+.bs-callout-warning > h4 {
+     font-weight: bold;
+ }
+
+.bs-callout-warning > p {
+    margin-bottom: 20px;
+}

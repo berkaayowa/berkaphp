@@ -26,6 +26,7 @@ class AppClassLoader
         require_once('berkaPhp/Helpers/StringHelper.php');
         require_once('berkaPhp/Helpers/AuthHelper.php');
         require_once('berkaPhp/config/Settings.php');
+        require_once('berkaPhp/Helpers/FileStreamHelper.php');
 
 	}
 
