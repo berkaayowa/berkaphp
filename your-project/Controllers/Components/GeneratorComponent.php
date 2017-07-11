@@ -53,6 +53,20 @@ class GeneratorComponent extends AppComponent
 		$this->view();
 	}
 
+    public static function db_settings($setting) {
+        $template = file_get_contents('berkaPhp/template/SettingTemplate.txt');
+        if(sizeof($setting) > 0) {
+//            $template = str_replace('{serverAddress}', $setting['serverAddress'], $template);
+//            $template = str_replace('{databaseName}', $setting['databaseName'], $template);
+//            $template = str_replace('{databaseName}', $setting['databaseName'], $template);
+            foreach( $setting as $setting => $value) {
+                $template = str_replace('{'.$setting.'}', $value, $template);
+            }
+
+            echo $template;
+        }
+    }
+
 	private function add() {
 		$this->primary_key = $this->db->get_primary_key(strtolower($this->class_name));
 		$add_view_path = str_replace('{controller}', $this->class_name, $this->view_path);

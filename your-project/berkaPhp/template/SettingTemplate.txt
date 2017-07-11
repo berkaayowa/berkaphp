@@ -1,9 +1,13 @@
 <?php
 	namespace berkaPhp\config;
-	
+
     define('DEBUG', false, true);
 
     //Database settings
+    define('SERVER', '{serverAddress}', true);
+    define('DB', '{databaseName}', true);
+    define('DB_USERNAME', '{databaseUser}', true);
+    define('DB_PW', $_SERVER['SERVER_NAME']=='www.yourlivesite.com' ? '' : '{databasePassword}', true);
 
     //default controller
     define('HOME', 'pages' , true);
@@ -70,6 +74,17 @@
     function prefixes() {
         return ['Default', 'Admin'];
     }
+
+    function settings(){
+		$localDatabase = array(
+			'server' => SERVER,
+			'username' => DB_USERNAME,
+            'password' => DB_PW,
+            'dbname' => DB
+		);
+
+		return $localDatabase ;
+	}
 
 ?>
 
