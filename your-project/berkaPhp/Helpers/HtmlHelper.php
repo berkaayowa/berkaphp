@@ -204,7 +204,7 @@ class Html {
         return '/'.self::get_current_prefix().$link;
     }
 
-    private static function get_current_prefix() {
+    public static function get_current_prefix() {
         return strtolower(PREFIX);
     }
 

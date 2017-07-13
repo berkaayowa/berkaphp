@@ -26,7 +26,12 @@
                 $this->generator->db_settings($this->get_post());
             }
 
-            $this->appView->render();
+            $this->appView->set("message",['success'=>""]);
+            $this->appView->set("message",['error'=>""]);
+
+            $this->appView->set("flash", ['sshshsh' => ['sshshsh','shshshs','jsjjss', 'sshshsh','shshshs','jsjjss'],'shshshs','jsjjss', 'sshshsh','shshshs','jsjjss']);
+
+        $this->appView->render();
         }
 
 	}

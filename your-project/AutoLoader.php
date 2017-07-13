@@ -52,6 +52,10 @@ class AppClassLoader
 
 	public static function loadBaseComponent() {
 		require_once('berkaPhp/Controllers/Components/AppComponent.php');
+        foreach (glob("berkaPhp/Helpers/*.php") as $filename)
+        {
+            require_once($filename);
+        }
 	}
 
 	public static function loadRoute() {

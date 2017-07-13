@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/Views/Default/Layout/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/Views/Default/Layout/css/font-awesome.min.css">
 
-    <link href="/Views/Default/Layout/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/berkaPhp/template/Utility/Style/style.css" rel="stylesheet" type="text/css" media="all" />
     <style type="text/css">
     	
     </style>

@@ -19,11 +19,10 @@ class GeneratorComponent extends AppComponent
 		$this->set_author('berkaPhp');
 		$this->set_description('');
 
-		$this->controller_path = "Controllers/{name}Controller.php";
+		$this->controller_path = "Controllers/".\berkaPhp\helpers\Html::get_current_prefix()."/{name}Controller.php";
 		$this->model_path = "Models/{name}Table.php";
-		$this->view_path = "Views/{controller}/{view}.php";
+		$this->view_path = "Views/".\berkaPhp\helpers\Html::get_current_prefix()."/{controller}/{view}.php";
 
-		//$this->primary_key = $this->db->get_primary_key(strtolower($this->class_name));
 	}
 
 	function set_class_name($class_name) {
@@ -56,9 +55,7 @@ class GeneratorComponent extends AppComponent
     public static function db_settings($setting) {
         $template = file_get_contents('berkaPhp/template/SettingTemplate.txt');
         if(sizeof($setting) > 0) {
-//            $template = str_replace('{serverAddress}', $setting['serverAddress'], $template);
-//            $template = str_replace('{databaseName}', $setting['databaseName'], $template);
-//            $template = str_replace('{databaseName}', $setting['databaseName'], $template);
+
             foreach( $setting as $setting => $value) {
                 $template = str_replace('{'.$setting.'}', $value, $template);
             }
