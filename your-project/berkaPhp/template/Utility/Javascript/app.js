@@ -8,7 +8,8 @@ $app = {
     initBerkaPhp:function(){},
 	initFlash:function(){},
     initError:function(){},
-    initAjax:function(){}
+    initAjax:function(){},
+    initForm:function(){}
 };
 
 /*
@@ -20,6 +21,8 @@ $app = {
 $app.initBerkaPhp = function(){
     $app.initError();
     $app.initAjax();
+    $app.initForm();
+    $app.initFlash();
 };
 
 /*
@@ -49,8 +52,9 @@ $app.initFlash = function(){
     $flash = $('.flash');
 
     if($flash.text().trim() != "") {
-        $flash.removeClass("hide").delay(3000).fadeOut(150);
+        $flash.removeClass("hide").delay(6000).fadeOut(150);
     }
+
 };
 
 /*
@@ -81,10 +85,28 @@ $app.initAjax = function(){
             });
         });
     });
+
 };
 
-$app.initError = function(){
-    $error = $('table.xdebug-error');
+$app.initForm = function(){
+
+    $('[data-form]').each(function() {
+
+        $(this).on('submit', function(e) {
+
+            $(this).find('[data-required]').each(function() {
+                if ($(this).val().trim() == "") {
+                    $(this).addClass("data-required");
+                    e.preventDefault();
+                } else {
+                    $(this).removeClass("data-required");
+                }
+            });
+
+        });
+
+    });
+
 };
 
 

@@ -9,11 +9,11 @@
 
 	class InstallerController extends AppController
 	{
-        private $generator;
+        private $installer;
 
 		function __construct() {
 			parent::__construct(false);
-            $this->generator = $this->load_component('Installer');
+            $this->installer = $this->load_component('Installer');
 		}
 
 		function index() {
@@ -23,15 +23,18 @@
         function database() {
 
             if($this->is_set($this->get_post())) {
-                $this->generator->db_settings($this->get_post());
+
+                if($this->installer->db_settings($this->get_post())) {
+                    $this->appView->set("message",['success'=>"Database settings has been updated  "]);
+                } else {
+                    $this->appView->set("message",['error'=>"Could not save settings , try again"]);
+                }
+
             }
 
-            $this->appView->set("message",['success'=>""]);
-            $this->appView->set("message",['error'=>""]);
+            //$this->appView->set("flash", ['sshshsh' => ['sshshsh','shshshs','jsjjss', 'sshshsh','shshshs','jsjjss'],'shshshs','jsjjss', 'sshshsh','shshshs','jsjjss']);
 
-            $this->appView->set("flash", ['sshshsh' => ['sshshsh','shshshs','jsjjss', 'sshshsh','shshshs','jsjjss'],'shshshs','jsjjss', 'sshshsh','shshshs','jsjjss']);
-
-        $this->appView->render();
+            $this->appView->render();
         }
 
 	}

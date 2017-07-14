@@ -1,12 +1,12 @@
 <?php
 	namespace berkaPhp\config;
 
-    define('DEBUG', true, true);
+    define('DEBUG', false, true);
 
     //Database settings
-    define('SERVER', '127.0.0.1', true);
-    define('DB', 'miwork', true);
-    define('DB_USERNAME', 'root', true);
+    define('SERVER', '', true);
+    define('DB', '', true);
+    define('DB_USERNAME', '', true);
     define('DB_PW', $_SERVER['SERVER_NAME']=='www.yourlivesite.com' ? '' : '', true);
 
     //default controller

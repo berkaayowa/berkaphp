@@ -3,7 +3,7 @@
         <?= berkaPhp\helpers\Element::load("Requirement")?>
         <?= berkaPhp\helpers\Element::load("LeftMenu")?>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <form method="post" action="<?= berkaPhp\helpers\Html::action('/installer/database')?>">
+            <form data-form method="post" action="<?= berkaPhp\helpers\Html::action('/installer/database')?>">
                 <div class="form-group ">
                     <label class="control-label requiredField" for="server_addres">
                         Server Address or IP
@@ -11,7 +11,7 @@
                         *
                        </span>
                     </label>
-                    <input class="form-control" id="serverAddress" name="serverAddress" type="text"/>
+                    <input data-required class="form-control" id="serverAddress" name="serverAddress" type="text"/>
                 </div>
                 <div class="form-group ">
                     <label class="control-label requiredField" for="databaseName">
@@ -20,7 +20,7 @@
                         *
                        </span>
                     </label>
-                    <input class="form-control" id="databaseName" name="databaseName" type="text"/>
+                    <input data-required class="form-control" id="databaseName" name="databaseName" type="text"/>
                 </div>
                 <div class="form-group ">
                     <label class="control-label requiredField" for="databaseUser">
@@ -29,7 +29,7 @@
                     *
                    </span>
                     </label>
-                    <input class="form-control" id="databaseUser" name="databaseUser" type="text"/>
+                    <input data-required class="form-control" id="databaseUser" name="databaseUser" type="text"/>
                 </div>
                 <div class="form-group ">
                     <label class="control-label requiredField" for="databasePassword">
@@ -38,7 +38,7 @@
                     *
                    </span>
                     </label>
-                    <input class="form-control" id="databasePassword" name="databasePassword" type="text"/>
+                    <input data-required class="form-control" id="databasePassword" name="databasePassword" type="text"/>
                 </div>
                 <div class="form-group">
                     <div>

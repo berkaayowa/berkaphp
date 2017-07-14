@@ -96,6 +96,22 @@ class AppView
         * @access public
         * @param  [$query] array f parameters
         */
+
+        $message_box = "";
+        $message = "";
+
+        if(isset($this->data['message']['success'])) {
+
+            $message_box = "alert-success";
+            $message = $this->data['message']['success'];
+
+        } elseif(isset($this->data['message']['error'])) {
+
+            $message_box = "alert-danger";
+            $message = $this->data['message']['error'];
+
+        }
+
         ?>
 
         <?php if (DEBUG) : ?>
@@ -115,9 +131,11 @@ class AppView
         </div>
         <?php endif ?>
 
-        <div class="alert alert-success flash hide">
-            <strong>Success! </strong>fjfjfj
-        </div>
+        <?php if(isset($this->data['message'])) :?>
+            <div class="alert <?= $message_box ?> flash hide">
+                <strong><?= $message ?></strong>
+            </div>
+        <?php endif ?>
 
         <?php
 

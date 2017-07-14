@@ -4,7 +4,7 @@
 <script src="/berkaPhp/template/Utility/Javascript/app.js"></script>
 
 <script>
-    $app.initFlash();
+    $app.initBerkaPhp();
 </script>
 
 </body>
