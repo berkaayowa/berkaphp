@@ -13,13 +13,26 @@
 
 		function __construct() {
 			parent::__construct();
-			$this->flash = $this->load_component('Flash');
-			$this->paginate = $this->load_component('Paginate');
+			$this->flash = "";//$this->load_component('Flash');
+			$this->paginate = "";//$this->load_component('Paginate');
 		}
 
 		function index() {
 
-			$result = $this->model->fetch_all();
+			$result = $this->model->fetch_like([
+                'fields'=>[
+                    'title'=>'Web'
+                ],
+                'options'=>[
+                    'order by'=>[
+                        'id','asc'
+                    ],
+                    'limit'=>[
+                        1,2
+                    ]
+                ]
+            ]);
+
 			$this->appView->set('users', $result);
 			$this->appView->render();
 		}

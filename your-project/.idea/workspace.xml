@@ -24,46 +24,89 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ErrorsController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Controllers/Default/ErrorsController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="37" selection-start="1075" selection-end="1075" vertical-scroll-proportion="-20.791666" vertical-offset="191" max-vertical-offset="1050">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="modelnotfound.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Views/Default/Errors/modelnotfound.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="31" selection-start="665" selection-end="665" vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="390">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Settings.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/berkaPhp/config/Settings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="24" selection-start="59" selection-end="59" vertical-scroll-proportion="-1.875" vertical-offset="0" max-vertical-offset="1620">
+            <state line="4" column="0" selection-start="68" selection-end="68" vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="1620">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppController.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AppController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/berkaPhp/Controllers/AppController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="121" column="35" selection-start="3371" selection-end="3371" vertical-scroll-proportion="0.6477901" vertical-offset="1346" max-vertical-offset="2070">
+            <state line="121" column="35" selection-start="3371" selection-end="3371" vertical-scroll-proportion="-19.541666" vertical-offset="1346" max-vertical-offset="2070">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="templatenotfound.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Views/Default/Errors/templatenotfound.php">
+      <file leaf-file-name="QueryBuilder.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/berkaPhp/database/QueryBuilder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="6" selection-start="997" selection-end="997" vertical-scroll-proportion="-13.75" vertical-offset="0" max-vertical-offset="420">
+            <state line="54" column="82" selection-start="1357" selection-end="1357" vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="645">
+              <folding>
+                <element signature="e#207#737#0" expanded="false" />
+                <element signature="e#740#1276#0" expanded="false" />
+                <element signature="e#1279#1868#0" expanded="false" />
+                <element signature="e#1871#2226#0" expanded="false" />
+                <element signature="e#2229#2799#0" expanded="false" />
+                <element signature="e#2802#3494#0" expanded="false" />
+                <element signature="e#3497#4339#0" expanded="false" />
+                <element signature="e#4485#5365#0" expanded="false" />
+                <element signature="e#5371#6419#0" expanded="false" />
+                <marker date="1500142406961" expanded="true" signature="324:351" placeholder="SELECT * FRO..." />
+                <marker date="1500142406961" expanded="true" signature="863:890" placeholder="SELECT * FRO..." />
+                <marker date="1500142406961" expanded="true" signature="1974:2007" placeholder="SELECT * FRO..." />
+                <marker date="1500142406961" expanded="true" signature="2352:2379" placeholder="SELECT * FRO..." />
+                <marker date="1500142406961" expanded="true" signature="2935:2962" placeholder="INSERT INTO ..." />
+                <marker date="1500142406961" expanded="true" signature="4417:4474" placeholder="DELETE FROM ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HttpHelper.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/berkaPhp/Helpers/HttpHelper.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="13" selection-start="256" selection-end="256" vertical-scroll-proportion="-5.7916665" vertical-offset="86" max-vertical-offset="810">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HtmlHelper.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/berkaPhp/Helpers/HtmlHelper.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="5" selection-start="6" selection-end="33" vertical-scroll-proportion="-0.625" vertical-offset="0" max-vertical-offset="3375">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsersController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controllers/Default/UsersController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="0" selection-start="926" selection-end="926" vertical-scroll-proportion="-16.25" vertical-offset="165" max-vertical-offset="1740">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppTable.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/berkaPhp/models/AppTable.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="39" selection-start="1057" selection-end="1057" vertical-scroll-proportion="0.39364642" vertical-offset="360" max-vertical-offset="2490">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsersTable.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Models/UsersTable.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="30" selection-start="279" selection-end="279" vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="435">
               <folding />
             </state>
           </provider>
@@ -73,15 +116,6 @@
         <entry file="file://$PROJECT_DIR$/Controllers/Default/PagesController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state line="20" column="2" selection-start="380" selection-end="380" vertical-scroll-proportion="-11.875" vertical-offset="0" max-vertical-offset="375">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/berkaPhp/template/Utility/Style/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="20" selection-start="623" selection-end="623" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
               <folding />
             </state>
           </provider>
@@ -141,6 +175,10 @@
         <option value="$PROJECT_DIR$/Controllers/Default/PagesController.php" />
         <option value="$PROJECT_DIR$/Controllers/Default/ErrorsController.php" />
         <option value="$PROJECT_DIR$/berkaPhp/config/Settings.php" />
+        <option value="$PROJECT_DIR$/Models/UsersTable.php" />
+        <option value="$PROJECT_DIR$/berkaPhp/database/QueryBuilder.php" />
+        <option value="$PROJECT_DIR$/berkaPhp/Helpers/HttpHelper.php" />
+        <option value="$PROJECT_DIR$/Controllers/Default/UsersController.php" />
       </list>
     </option>
   </component>
@@ -210,52 +248,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="your-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="your-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="your-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="your-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="berkaPhp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="your-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="your-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="berkaPhp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -309,10 +301,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="24" width="1545" height="876" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17475729" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17475729" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293011" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -351,22 +343,7 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/berkaPhp/Helpers/HtmlTableHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/berkaPhp/Helpers/SessionHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/berkaPhp/Helpers/StringHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/Default/UsersController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
@@ -393,11 +370,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/berkaPhp/Helpers/HtmlHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Controllers/Components/GeneratorComponent.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
@@ -414,16 +386,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Views/Default/Layout/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/berkaPhp/models/AppTable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/berkaPhp/database/QueryBuilder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
@@ -612,13 +574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/Default/PagesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="2" selection-start="380" selection-end="380" vertical-scroll-proportion="-11.875" vertical-offset="0" max-vertical-offset="375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Controllers/Default/ErrorsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="47" column="37" selection-start="1075" selection-end="1075" vertical-scroll-proportion="-20.791666" vertical-offset="191" max-vertical-offset="1050">
@@ -626,16 +581,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/berkaPhp/config/Settings.php">
+    <entry file="file://$PROJECT_DIR$/berkaPhp/Controllers/AppController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="24" selection-start="59" selection-end="59" vertical-scroll-proportion="-1.875" vertical-offset="0" max-vertical-offset="1620">
+        <state line="121" column="35" selection-start="3371" selection-end="3371" vertical-scroll-proportion="-19.541666" vertical-offset="1346" max-vertical-offset="2070">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/berkaPhp/Controllers/AppController.php">
+    <entry file="file://$PROJECT_DIR$/berkaPhp/config/Settings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="35" selection-start="3371" selection-end="3371" vertical-scroll-proportion="0.6477901" vertical-offset="1346" max-vertical-offset="2070">
+        <state line="4" column="0" selection-start="68" selection-end="68" vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="1620">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/UsersTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="30" selection-start="279" selection-end="279" vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/berkaPhp/database/QueryBuilder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="82" selection-start="1357" selection-end="1357" vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="645">
+          <folding>
+            <element signature="e#207#737#0" expanded="false" />
+            <element signature="e#740#1276#0" expanded="false" />
+            <element signature="e#1279#1868#0" expanded="false" />
+            <element signature="e#1871#2226#0" expanded="false" />
+            <element signature="e#2229#2799#0" expanded="false" />
+            <element signature="e#2802#3494#0" expanded="false" />
+            <element signature="e#3497#4339#0" expanded="false" />
+            <element signature="e#4485#5365#0" expanded="false" />
+            <element signature="e#5371#6419#0" expanded="false" />
+            <marker date="1500142406961" expanded="true" signature="324:351" placeholder="SELECT * FRO..." />
+            <marker date="1500142406961" expanded="true" signature="863:890" placeholder="SELECT * FRO..." />
+            <marker date="1500142406961" expanded="true" signature="1974:2007" placeholder="SELECT * FRO..." />
+            <marker date="1500142406961" expanded="true" signature="2352:2379" placeholder="SELECT * FRO..." />
+            <marker date="1500142406961" expanded="true" signature="2935:2962" placeholder="INSERT INTO ..." />
+            <marker date="1500142406961" expanded="true" signature="4417:4474" placeholder="DELETE FROM ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/berkaPhp/Helpers/HtmlHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="5" selection-start="6" selection-end="33" vertical-scroll-proportion="-0.625" vertical-offset="0" max-vertical-offset="3375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/berkaPhp/Helpers/HttpHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="13" selection-start="256" selection-end="256" vertical-scroll-proportion="-5.7916665" vertical-offset="86" max-vertical-offset="810">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/Default/PagesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="2" selection-start="380" selection-end="380" vertical-scroll-proportion="-11.875" vertical-offset="0" max-vertical-offset="375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/Default/UsersController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="0" selection-start="926" selection-end="926" vertical-scroll-proportion="-16.25" vertical-offset="165" max-vertical-offset="1740">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/berkaPhp/models/AppTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="39" selection-start="1057" selection-end="1057" vertical-scroll-proportion="0.39364642" vertical-offset="360" max-vertical-offset="2490">
           <folding />
         </state>
       </provider>

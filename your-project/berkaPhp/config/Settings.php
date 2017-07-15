@@ -1,7 +1,7 @@
 <?php
 	namespace berkaPhp\config;
 
-    define('DEBUG', false, true);
+    define('DEBUG', true, true);
 
     //Database settings
     define('SERVER', '127.0.0.1', true);
