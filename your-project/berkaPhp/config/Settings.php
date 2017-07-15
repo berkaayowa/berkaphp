@@ -5,9 +5,9 @@
 
     //Database settings
     define('SERVER', '127.0.0.1', true);
-    define('DB', 'miworkj', true);
+    define('DB', 'softclick', true);
     define('DB_USERNAME', 'root', true);
-    define('DB_PW', $_SERVER['SERVER_NAME']=='www.yourlivesite.com' ? '' : '', true);
+    define('DB_PW', $_SERVER['SERVER_NAME']=='www.yourlivesite.com' ? '' : 'Brk1991@', true);
 
     //default controller
     define('HOME', 'pages' , true);

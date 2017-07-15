@@ -36,3 +36,8 @@ pre {
 .border-bottom {
     border-bottom: 1px solid #f2dede!important;
 }
+
+.error-title {
+    display: inline-block;
+    margin-top: 6px;
+}

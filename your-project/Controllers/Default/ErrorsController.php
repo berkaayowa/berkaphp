@@ -45,7 +45,19 @@
         function actionnotfound($params) {
 
             $details = $params['options'];
+            $this->console($details);
             $this->appView->set("details", $details);
+            $this->appView->render();
+        }
+
+        function modelnotfound($params) {
+
+            $details = $params['options'];
+            $this->appView->set("details", $details);
+            $this->appView->render();
+        }
+
+        function dbnotconnected() {
             $this->appView->render();
         }
 

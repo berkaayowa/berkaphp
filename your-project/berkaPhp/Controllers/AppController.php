@@ -21,9 +21,16 @@
 
 			if ($has_model) {
 
-				AppClassLoader::loadModelRequired($current_model);
-				$model = "\\models\\".$current_model."Table";
-				$this->model = new $model();
+                $path = 'Models/'.$current_model.'Table.php';
+
+                if($this->check_model_exist($path, $current_model)) {
+
+                    AppClassLoader::loadModelRequired($current_model);
+                    $model = "\\models\\".$current_model."Table";
+                    $this->model = new $model();
+
+                }
+
 			}
 
 			$this->variable = array();
@@ -109,17 +116,18 @@
 
 		protected function set_user_right($user_role){
 
-//            $roles = null;
-//			if (strtolower($user_role) == 'admin') {
-//                $roles = ['Admin'=>['Customer', 'Admin']];
-//			} else if(strtolower($user_role) == 'developer') {
-//                $roles = ['Developer'=>['Customer', 'Admin', 'Developer']];
-//			} else if(strtolower($user_role) == 'customer') {
-//                $roles = ['Customer'=>['Customer']];
-//            }
-//
-//            $this->session->add('user_role',$roles );
+
 		}
+
+        private function check_model_exist($path, $name='') {
+
+            if(\berkaPhp\helpers\FileStream::file_exist($path)) {
+                return true;
+            } else {
+                \berkaPhp\helpers\RedirectHelper::redirect('/errors/modelnotfound/?path='.$path.'&name='.$name);
+            }
+
+        }
 	}
 
 ?>

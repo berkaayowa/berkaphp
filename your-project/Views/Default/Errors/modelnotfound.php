@@ -1,21 +1,19 @@
-
 <Br>
 <div class="col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
     <div class="panel-group">
         <div class="panel panel-danger">
             <div class="panel-heading">
                 <h2 class="error-title"><span class="label label-danger">File Error</span></h2>
-                <strong> A template of an action could not be found</strong>
+                <strong> Model file could not be found</strong>
             </div>
             <div class="panel-body">
+                <?php if(!empty($details['name'])): ?>
                 <div class="alert alert-default border-bottom" role="alert">
-                    <strong>Controller Name : </strong> <?=$details['controller']?>
+                    <strong>Model Name : </strong> <?=$details['name']?>
                 </div>
-                <div class="alert alert-default border-bottom" role="alert">
-                    <strong>Action Name : </strong> <?=$details['view']?>
-                </div>
+                <?php endif; ?>
                 <div class="alert alert-danger" role="alert">
-                    <strong>Action Template Path : </strong> <?=$details['path']?>
+                    <strong>Model Path : </strong> <?=$details['path']?>
                 </div>
             </div>
         </div>
