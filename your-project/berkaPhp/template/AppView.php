@@ -66,10 +66,24 @@ class AppView
         * @access public
         * @param  [$query] array f parameters
         */
-		ob_start();
-		require($_SERVER['DOCUMENT_ROOT'].'/Views/'.PREFIX.'/'.$called_controller.'/'.$view_to_render.'.php');
-		$content = ob_get_contents();
-		ob_end_clean();
+        $content = "";
+
+        $view_path = $_SERVER['DOCUMENT_ROOT'] . '/Views/' . PREFIX . '/' . $called_controller . '/' . $view_to_render . '.php';
+
+        if(\berkaPhp\helpers\FileStream::file_exist($view_path)) {
+
+            ob_start();
+            require($view_path);
+            $content = ob_get_contents();
+            ob_end_clean();
+
+        } else {
+
+            \berkaPhp\helpers\RedirectHelper::redirect(
+                '/errors/templatenotfound/?path='.$view_path.'&controller='.$called_controller.'&view='.$view_to_render,
+                false, false);
+
+        }
 
         /* fetches all data from database
         * @access public

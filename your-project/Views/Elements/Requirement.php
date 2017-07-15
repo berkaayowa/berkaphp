@@ -2,7 +2,7 @@
     <h1>BerkaPhp Configuration</h1>
     <h3>Database configuration</h3>
     <p>
-        Before you begin, make sure that you check the requirements
+        Before you begin, make sure that you check the requirements <a href="/installer/requirement"> here </a>
     </p>
     <br/><br/>
 </div>

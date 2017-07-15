@@ -26,6 +26,29 @@
             $this->appView->render();
         }
 
+        function templatenotfound($params) {
+
+            $details = $params['options'];
+            $this->appView->set("details", $details);
+            $this->appView->render();
+
+        }
+
+        function controllernotfound($params) {
+
+            $details = $params['options'];
+            $this->appView->set("details", $details);
+            $this->appView->render();
+
+        }
+
+        function actionnotfound($params) {
+
+            $details = $params['options'];
+            $this->appView->set("details", $details);
+            $this->appView->render();
+        }
+
 	}
 
 ?>

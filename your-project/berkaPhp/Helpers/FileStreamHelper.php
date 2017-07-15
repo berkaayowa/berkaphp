@@ -44,4 +44,8 @@ class FileStream {
         }
 
     }
+
+    public static function file_exist($path) {
+        return file_exists($path);
+    }
 }

@@ -27,3 +27,12 @@ pre {
 .data-required {
     border: 1px solid red;
 }
+
+[data-error-message] {
+    color: red;
+    display: none;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #f2dede!important;
+}

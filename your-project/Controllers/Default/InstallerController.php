@@ -32,8 +32,10 @@
 
             }
 
-            //$this->appView->set("flash", ['sshshsh' => ['sshshsh','shshshs','jsjjss', 'sshshsh','shshshs','jsjjss'],'shshshs','jsjjss', 'sshshsh','shshshs','jsjjss']);
+            $this->appView->render();
+        }
 
+        function requirement() {
             $this->appView->render();
         }
 

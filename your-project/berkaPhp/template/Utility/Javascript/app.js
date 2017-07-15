@@ -93,16 +93,17 @@ $app.initForm = function(){
     $('[data-form]').each(function() {
 
         $(this).on('submit', function(e) {
-
+            $dataErrorMessage = $(this).find('[data-error-message]');
             $(this).find('[data-required]').each(function() {
                 if ($(this).val().trim() == "") {
                     $(this).addClass("data-required");
                     e.preventDefault();
+                    $dataErrorMessage.fadeIn(100);
                 } else {
                     $(this).removeClass("data-required");
+                    $dataErrorMessage.fadeOut(100);
                 }
             });
-
         });
 
     });

@@ -4,9 +4,9 @@
     define('DEBUG', false, true);
 
     //Database settings
-    define('SERVER', '', true);
-    define('DB', '', true);
-    define('DB_USERNAME', '', true);
+    define('SERVER', '127.0.0.1', true);
+    define('DB', 'miworkj', true);
+    define('DB_USERNAME', 'root', true);
     define('DB_PW', $_SERVER['SERVER_NAME']=='www.yourlivesite.com' ? '' : '', true);
 
     //default controller
@@ -85,6 +85,18 @@
 
 		return $localDatabase ;
 	}
+
+	mysqli_report(MYSQLI_REPORT_STRICT);
+    $is_connected = null;
+
+    try {
+        new \mysqli(SERVER,DB_USERNAME, DB_PW, DB );
+        $is_connected = true;
+    } catch (\mysqli_sql_exception $e) {
+        $is_connected = false;
+    }
+
+    define('IS_DB_CONNECTED', $is_connected, true);
 
 ?>
 
