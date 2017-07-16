@@ -1,15 +1,28 @@
 <?php
 namespace models;
-require_once('AutoLoader.php');
-use autoload\AppClassLoader;
-AppClassLoader::loadBaseModel();
+
+/* Using the base AppTable to extend it and  inherit table functionality
+*  Default action in this controller
+*  @author berkaPhp
+*/
 
 use berkaPhp\database\table\AppTable;
 
 class {model_name}Table extends AppTable
 {
 	function __construct() {
+
+        /* Initializing the parent table
+        *  @param current table name
+        *  @author berkaPhp
+        */
+
 		parent::__construct('{table_name}');
+
+		/* Initializing the primary key for this  table
+        *  @author berkaPhp
+        */
+
 		$this->primary_key = '{primary_key}';
 	}
 }

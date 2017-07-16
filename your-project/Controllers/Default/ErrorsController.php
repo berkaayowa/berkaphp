@@ -1,14 +1,9 @@
 <?php
 	namespace controller;
-	require_once('AutoLoader.php');
-	use autoload\AppClassLoader;
-	AppClassLoader::loadControllerRequires();
 	use berkaPhp\Controller\AppController;
-	use berkaPhp\template\AppView;
 
 	class ErrorsController extends AppController
 	{
-		private $flash;
 
 		function __construct() {
 			parent::__construct(false);
@@ -23,6 +18,45 @@
         }
 
         function no_found() {
+            $this->appView->render();
+        }
+
+        function templatenotfound($params) {
+
+            $details = $params['options'];
+            $this->appView->set("details", $details);
+            $this->appView->render();
+
+        }
+
+        function controllernotfound($params) {
+
+            $details = $params['options'];
+            $this->appView->set("details", $details);
+            $this->appView->render();
+
+        }
+
+        function actionnotfound($params) {
+
+            $details = $params['options'];
+           // $this->console($details);
+            $this->appView->set("details", $details);
+            $this->appView->render();
+        }
+
+        function modelnotfound($params) {
+
+            $details = $params['options'];
+            $this->appView->set("details", $details);
+            $this->appView->render();
+        }
+
+        function dbnotconnected() {
+            $this->appView->render();
+        }
+
+        function componentnotfound($params) {
             $this->appView->render();
         }
 

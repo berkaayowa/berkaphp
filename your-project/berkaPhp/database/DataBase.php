@@ -5,6 +5,11 @@
 	{
 		private $db_connection;
 		function __construct($db_details) {
+
+            if(!IS_DB_CONNECTED){
+                \berkaPhp\helpers\RedirectHelper::redirect('/errors/dbnotconnected');
+            }
+
 			$this->db_connection = new \mysqli(
 				$db_details['server'],
 				$db_details['username'],
@@ -15,7 +20,7 @@
 			if ($this->db_connection->connect_error) {
 				die("Connection failed: " . $this->$db_connection->connect_error);
 			} else {
-				//echo "stri";
+
 			}
 
 			$this->db_connection->set_charset('utf8');
@@ -70,7 +75,7 @@
 			return $this->db_connection;
 		}
 
-		function get_primary_key($table) {
+		function getPrimaryKey($table) {
 			$result = $this->db_connection->query("SHOW INDEX FROM {$table} WHERE Key_name = 'PRIMARY'");
 			if ($result->num_rows > 0) {
 				$row= $result->fetch_assoc();
@@ -79,9 +84,9 @@
 			return $row['Column_name'];
 		}
 
-		function get_table_fields($table_name) {
+		function getTableFields($table_name) {
 			$fileds = $this->db_connection->query('DESCRIBE '.$table_name);
-			$table_fields;
+			$table_fields='';
 
 			foreach ($fileds as $field => $value) {
 				$table_fields[$value['Field']] = $value['Type'];
@@ -90,9 +95,9 @@
 			return $table_fields;
 		}
 
-		function get_tables() {
+		function getTables() {
 			 $result = $this->db_connection->query("SHOW TABLES");
-			 $tableList;
+			 $tableList = '';
 			 if ($result->num_rows > 0) {
 			 	while($ccurrent_row = mysqli_fetch_array($result))
 				{
@@ -102,5 +107,6 @@
 			 }
 			 return null;
 		}
+
 	}
 ?>

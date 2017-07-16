@@ -4,7 +4,6 @@
 
 .bs-callout {
     padding: 15px;
-    /*margin: 20px 0;*/
     border: 1px solid #bdbfc1;
     border-left-width: 5px;
     border-radius: 3px;
@@ -16,4 +15,10 @@
 
 .bs-callout-warning > p {
     margin-bottom: 20px;
+}
+
+.message {
+    position: fixed;
+    bottom: 0;
+    right: 0;
 }

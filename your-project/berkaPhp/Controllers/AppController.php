@@ -1,8 +1,5 @@
 <?php
 	namespace berkaPhp\Controller;
-	require_once('AutoLoader.php');
-	use \autoload\AppClassLoader;
-	AppClassLoader::loadBaseControllerRequires();
 
 	class AppController
 	{
@@ -17,13 +14,19 @@
 			$this->session = new \berkaPhp\helpers\SessionHelper();
 			$this->cookie = new \berkaPhp\helpers\CookieHelper();
 			$model = null;
-			$current_model = $this->get_current_model(get_class($this));
+			$current_model = $this->getCurrentModel(get_class($this));
 
 			if ($has_model) {
 
-				AppClassLoader::loadModelRequired($current_model);
-				$model = "\\models\\".$current_model."Table";
-				$this->model = new $model();
+                $path = 'Models/'.$current_model.'Table.php';
+
+                if($this->checkModelExist($path, $current_model)) {
+
+                    $model = "\\models\\".$current_model."Table";
+                    $this->model = new $model();
+
+                }
+
 			}
 
 			$this->variable = array();
@@ -39,8 +42,8 @@
 		* @return [array] array of customers
 		* @author berkaPhp
 		*/
-		protected function load_model($model_name) {
-			AppClassLoader::loadModelRequired($model_name);
+		protected function loadModel($model_name) {
+			//AppClassLoader::loadModelRequired($model_name);
 			$model = "models\\".$model_name."Table";
 			return  new $model();
 		}
@@ -50,7 +53,7 @@
 		* @return [array] array of customers
 		* @author berkaPhp
 		*/
-		private function get_current_model($current_model) {
+		private function getCurrentModel($current_model) {
 			$current_model = str_replace('Controller','',$current_model);
 			$current_model = str_replace('controller','',$current_model);
 			$current_model = str_replace('\\','',$current_model);
@@ -62,10 +65,18 @@
 		* @return [array] array of customers
 		* @author berkaPhp
 		*/
-		protected function load_component($componet_name) {
-			require_once('Controllers/Components/'.$componet_name.'Component.php');
-			$component = "\\controller\\component\\".$componet_name."Component";
-			return  new $component();
+		protected function loadComponent($component_name) {
+
+            $path = 'Controllers/Components/'.$component_name.'Component.php';
+
+            if(\berkaPhp\helpers\FileStream::fileExist($path)) {
+                //require_once($path);
+                $component = "\\controller\\component\\".$component_name."Component";
+                return  new $component();
+            } else {
+                \berkaPhp\helpers\RedirectHelper::redirect('/errors/componentnotfound/?path='.$path.'&name='.$component_name);
+            }
+
 		}
 		/* fetches all data from database
 		* @access public
@@ -85,7 +96,7 @@
 		* @return [array] array of customers
 		* @author berkaPhp
 		*/
-		protected function get_post() {
+		protected function getPost() {
 			return $_POST;
 		}
 		/* fetches all data from database
@@ -94,7 +105,7 @@
 		* @return [array] array of customers
 		* @author berkaPhp
 		*/
-		protected function get_POST_key($key, $defaul = '') {
+		protected function getPostKey($key, $defaul = '') {
 			return isset($_POST[$key]) ? $_POST[$key] : $defaul;
 		}
 		/* fetches all data from database
@@ -103,23 +114,19 @@
 		* @return [array] array of customers
 		* @author berkaPhp
 		*/
-		protected function json_format($vlues) {
-			print(json_encode($vlues));
+		protected function jsonFormat($values) {
+			return json_encode($values);
 		}
 
-		protected function set_user_right($user_role){
+        private function checkModelExist($path, $name='') {
 
-//            $roles = null;
-//			if (strtolower($user_role) == 'admin') {
-//                $roles = ['Admin'=>['Customer', 'Admin']];
-//			} else if(strtolower($user_role) == 'developer') {
-//                $roles = ['Developer'=>['Customer', 'Admin', 'Developer']];
-//			} else if(strtolower($user_role) == 'customer') {
-//                $roles = ['Customer'=>['Customer']];
-//            }
-//
-//            $this->session->add('user_role',$roles );
-		}
+            if(\berkaPhp\helpers\FileStream::fileExist($path)) {
+                return true;
+            } else {
+                \berkaPhp\helpers\RedirectHelper::redirect('/errors/modelnotfound/?path='.$path.'&name='.$name);
+            }
+
+        }
 	}
 
 ?>

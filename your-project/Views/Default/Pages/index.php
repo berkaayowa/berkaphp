@@ -9,5 +9,6 @@
                 Click <a href="/installer/database">here </a>to the database configuration
             </p>
 		</div>		
-	</div>	
+	</div>
+
 </div>

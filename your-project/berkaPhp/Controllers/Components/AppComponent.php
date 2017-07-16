@@ -1,13 +1,10 @@
 <?php
 	namespace berkaPhp\controller\component;
-	require_once('AutoLoader.php');
-	use autoload\AppClassLoader;
-	AppClassLoader::loadDatabase();
 
 	interface Component {
-		function set_name($value);
-		function set_author($value);
-		function set_description($value);
+		function setName($value);
+		function setAuthor($value);
+		function setDescription($value);
 	}
 
 	class AppComponent implements Component
@@ -22,27 +19,27 @@
 			);
 		}
 
-		public function get_name() {
+		public function getName() {
 			return $this->name;
 		}
 
-		public function get_author() {
+		public function getAuthor() {
 			return $this->author;
 		}
 
-		public function get_description() {
+		public function getDescription() {
 			return $this->description;
 		}
 
-		public function set_name($value) {
+		public function setName($value) {
 			$this->name = $value;
 		}
 
-		public function set_author($value) {
+		public function setAuthor($value) {
 			$this->author = $value;
 		}
 
-		public function set_description($value) {
+		public function setDescription($value) {
 			$this->description = $value;
 		}
 

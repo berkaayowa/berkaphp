@@ -1,6 +1,5 @@
 <?php
 namespace berkaPhp\config\router;
-require_once('berkaPhp/Helpers/SessionHelper.php');
 
 class Routing
 {
@@ -11,11 +10,6 @@ class Routing
 	}
 
 	public static function to($object) {
-
-        foreach (glob("Controllers/".$object['prefix']."/*.php") as $filename)
-        {
-            require_once($filename);
-        }
 
 		if($object != null) {
 
@@ -48,20 +42,18 @@ class Routing
 
 				} else {
 
-					if (method_exists($controller_to_call,'index')) {
-						if (!isset($action) || empty($action)) {
-							$controller_to_call->index();
-						} else {
-                            \berkaPhp\helpers\RedirectHelper::redirect('/errors/no_found/index');
-						}
-					} else {
-                        \berkaPhp\helpers\RedirectHelper::redirect('/errors/no_found/action');
-					}
+                    \berkaPhp\helpers\RedirectHelper::redirect(
+                        '/errors/actionnotfound/?path='.$controller_path.'&controller='.$controller.'&action='.$action
+                    );
 					
 				}
 			} else {
-                \berkaPhp\helpers\RedirectHelper::redirect('/errors/no_found/page');
+
+                \berkaPhp\helpers\RedirectHelper::redirect(
+                    '/errors/controllernotfound/?path='.$controller_path.'&name='.$controller
+                );
 			}
+
 		} else {
 			die('Error:: Null Route object passed for Routing');
 		}

@@ -29,20 +29,7 @@ class QueryBuilder {
 			}
 		}
 
-		if (isset($prams)) {
-			$length = sizeof($prams);
-			$count = 0;
-
-			foreach ($prams as $pram => $value) {
-				$count++;
-				if($count < $length) {
-					$query.= ' '.$pram." ".$value." ";
-				} elseif ($count == $length) {
-					$query.= $pram." ".$value."";
-				}
-			}
-		}
-		return $query;
+		return self::insert_params($query, $prams);
 	}
 
 	public static function select_where($table_name, $primary_key, $contains, $prams = array(), $keys = array()) {
@@ -62,26 +49,13 @@ class QueryBuilder {
 			}
 		}
 
-		if (isset($prams)) {
-			$length = sizeof($prams);
-			$count = 0;
-
-			$query.= ' WHERE ';
-			foreach ($prams as $pram => $value) {
-				$count++;
-				if($count < $length) {
-					$query.= ' '.$pram."='".$value."' AND ";
-				} elseif ($count == $length) {
-					$query.= ' '.$pram."='".$value."' ";
-				}
-			}
-		}
-
-		return $query;
+		return self::insert_params($query, $prams);
 	}
 
 	public static function select_by($table_name,$tags, $primary_key, $contains) {
+
 		$base_query = self::select($table_name,$primary_key, $contains);
+
 		$query= $base_query." WHERE ";
 			if (empty($tags) || !isset($tags)) {
 				die('empty tag');
@@ -100,7 +74,7 @@ class QueryBuilder {
 					}
 				}
 			}
-			//var_dump($query);exit();
+
 		return $query;
 	}
 
@@ -121,6 +95,7 @@ class QueryBuilder {
 	}
 
 	public static function select_like($table_name, $primary_key, $contains, $prams = array(), $keys = array()) {
+
 		$query = "SELECT * FROM {$table_name}";
 
 		if(!isset($contains)) {
@@ -137,20 +112,8 @@ class QueryBuilder {
 			}
 		}
 
-		if (isset($prams)) {
-			$query.= " WHERE ";
-			$length = sizeof($prams);
-			$count = 0;
+        $query = self::insert_params($query, $prams, 'LIKE');
 
-			foreach ($prams as $pram => $value) {
-				if($count < $length) {
-					$query.= $pram." LIKE '%{$value}%' ";
-				} else {
-					$query.= " OR ".$pram." LIKE '%{$value}%' ";
-				}
-				$count++;
-			}
-		}
 		return $query;
 	}
 
@@ -189,7 +152,7 @@ class QueryBuilder {
 	public static function update($table_name, $data_table,$primary_key) {
 		$count = 0;
 		$length = sizeof($data_table);
-		$primary_key_value;
+		$primary_key_value='';
 
 		$query = "UPDATE  {$table_name} SET ";
 
@@ -233,6 +196,77 @@ class QueryBuilder {
 	public static function delete($table_name,$value,$primary_key) {
 		return "DELETE FROM {$table_name} WHERE {$primary_key} = {$value}";
 	}
+
+    private static function insert_params($query = '', $params, $operation = '') {
+
+        if(!empty($operation)) {
+            $query = self::extract_param_fields($query, $params, $operation);
+        } else {
+            $query = self::extract_param_fields($query, $params);
+        }
+
+        if (isset($params['options'])) {
+            $length = sizeof($params['options']);
+
+            if($length > 0){
+
+                foreach ($params['options'] as $option => $value) {
+
+                    if(strtolower($option) == 'limit') {
+                        $query.= ' '.strtoupper($option)." ".$value[0].",".$value[1];
+                    } else if(strtolower($option) == 'order by') {
+                        $query.= ' '.strtoupper($option)." ".$value[0]." ".strtoupper($value[1]);
+                    }
+
+                }
+
+            }
+
+        }
+
+        return $query;
+    }
+
+    public static function extract_param_fields($query = '', $params, $operation='') {
+
+        if (isset($params['fields'])) {
+
+            $length = sizeof($params['fields']);
+            $count = 0;
+
+            if($length > 0){
+
+                $query.=" WHERE ";
+                foreach ($params['fields'] as $param => $value) {
+
+                    $count++;
+                    if($count < $length) {
+
+                        if($operation == 'LIKE') {
+                            $query.= " OR ".$param." LIKE '%{$value}%' ";
+                        } else {
+                            $query.= ' '.$param."='".$value."' AND ";
+                        }
+
+                    } elseif ($count == $length) {
+
+                        if($operation == 'LIKE') {
+                            $query.= $param." LIKE '%{$value}%' ";
+
+                        } else {
+                            $query.= $param."='".$value."'";
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        return $query;
+    }
 }
 
 ?>

@@ -12,13 +12,13 @@ namespace berkaPhp\helpers;
 
        }
 
-       public static function is_user_logged(){
+       public static function isUserLogged(){
            return isset(\berkaPhp\helpers\SessionHelper::_get('user')[0]) ? true : false;
        }
 
-       public static function is_user_admin() {
+       public static function isUserAdmin() {
            $role = null;
-           if(self::is_user_logged()) {
+           if(self::isUserLogged()) {
                $role = isset(\berkaPhp\helpers\SessionHelper::_get('user')[0]) ? \berkaPhp\helpers\SessionHelper::_get('user')[0]['role_name'] : "";
                return (strtolower($role) == 'admin') ? true : false;
            } else {
@@ -26,8 +26,8 @@ namespace berkaPhp\helpers;
            }
        }
 
-       public static function get_active_user($key = '', $force_to_log = true) {
-           if(self::is_user_logged()) {
+       public static function getActiveUser($key = '', $force_to_log = true) {
+           if(self::isUserLogged()) {
                if(!empty($key)) {
                    return isset(\berkaPhp\helpers\SessionHelper::_get('user')[0][$key]) ? \berkaPhp\helpers\SessionHelper::_get('user')[0][$key] : "";
                }

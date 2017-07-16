@@ -1,35 +1,15 @@
 <?php
 	namespace berkaPhp\config;
-	require_once('AutoLoader.php');
-	use autoload\AppClassLoader;
-	AppClassLoader::loadRouteRequired();
-    AppClassLoader::loadBaseControllerRequires();
-
 	use berkaPhp\config\router\Routing;
 
 	$app = new \berkaPhp\config\router\AppRouter($_SERVER);
 
 	$app->route('/', function($route){
 
-       $session = new \berkaPhp\helpers\SessionHelper();
-        if($route['prefix'] == 'Admin') {
-            if ($session->get('user') != null) {
-                if($session->get('user')[0]['role_name'] != 'Admin') {
-                    $route['controller'] = 'errors';
-                    $route['action'] = 'unauthorized';
-                }
-
-            } else {
-                $route['prefix'] = 'customer';
-                $route['controller'] = 'users';
-                $route['action'] = 'login';
-            }
-
-        }
-
         define('PREFIX', $route['prefix'] , true);
 
 		Routing::to($route);
+
 	});
 
 

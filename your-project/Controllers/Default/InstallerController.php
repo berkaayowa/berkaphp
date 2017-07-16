@@ -1,19 +1,14 @@
 <?php
 	namespace controller;
-	require_once('AutoLoader.php');
-	use autoload\AppClassLoader;
-	AppClassLoader::loadControllerRequires();
-    AppClassLoader::loadBaseControllerRequires();
 	use berkaPhp\Controller\AppController;
-	use berkaPhp\template\AppView;
 
 	class InstallerController extends AppController
 	{
-        private $generator;
+        private $installer;
 
 		function __construct() {
 			parent::__construct(false);
-            $this->generator = $this->load_component('Installer');
+            $this->installer = $this->loadComponent('Installer');
 		}
 
 		function index() {
@@ -22,10 +17,20 @@
 
         function database() {
 
-            if($this->is_set($this->get_post())) {
-                $this->generator->db_settings($this->get_post());
+            if($this->is_set($this->getPost())) {
+
+                if($this->installer->db_settings($this->getPost())) {
+                    $this->appView->set("message",['success'=>"Database settings has been updated "]);
+                } else {
+                    $this->appView->set("message",['error'=>"Could not save settings , try again"]);
+                }
+
             }
 
+            $this->appView->render();
+        }
+
+        function requirement() {
             $this->appView->render();
         }
 
