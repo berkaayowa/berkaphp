@@ -30,7 +30,7 @@ class Table {
 	* @author berkaPhp Ayowa
 	*/
 
-    public function set_heading($headings) {
+    public function setHeading($headings) {
 
         if(sizeof($headings) > 0) {
             $_heading = '';
@@ -44,7 +44,7 @@ class Table {
 
     }
 
-    public function set_body($values, $options = null) {
+    public function setBody($values, $options = null) {
 
         if(sizeof($values) > 0) {
 
@@ -62,7 +62,7 @@ class Table {
                         if(isset($options[$_key])) {
                             foreach($options[$_key] as $option => $_val) {
                                 if($option == 'limit') {
-                                    $val = \berkaPhp\helpers\Str::limit_char($val, $_val, '...');
+                                    $val = \berkaPhp\helpers\Str::limitChar($val, $_val, '...');
                                     $_col.= str_replace('{@}',$val,$this->table_column);
                                 }
                             }
@@ -132,7 +132,7 @@ class Table {
 
             foreach($options as $option => $value) {
                 if($option == 'href') {
-                    $value='/'. self::get_current_prefix().$value;
+                    $value='/'. self::getCurrentPrefix().$value;
                 }
                 $link.= ' '.$option. '=' . $value;
             }
@@ -144,10 +144,10 @@ class Table {
     }
 
     public static function action($link) {
-        return '/'.self::get_current_prefix().$link;
+        return '/'.self::getCurrentPrefix().$link;
     }
 
-    private static function get_current_prefix() {
+    private static function getCurrentPrefix() {
         return strtolower(PREFIX);
     }
 

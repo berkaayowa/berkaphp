@@ -1,6 +1,5 @@
 <?php
 namespace berkaPhp\config\router;
-require_once('berkaPhp/Helpers/SessionHelper.php');
 
 class Routing
 {
@@ -11,11 +10,6 @@ class Routing
 	}
 
 	public static function to($object) {
-
-        foreach (glob("Controllers/".$object['prefix']."/*.php") as $filename)
-        {
-            require_once($filename);
-        }
 
 		if($object != null) {
 

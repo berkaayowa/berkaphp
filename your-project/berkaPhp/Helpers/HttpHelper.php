@@ -9,7 +9,7 @@ namespace berkaPhp\helpers;
 
 class Http {
 
-    function get_ip_address() {
+    function getIpAddress() {
 
         $ip_keys = array(
             'HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR',
@@ -24,7 +24,7 @@ class Http {
                     // trim for safety measures
                     $ip = trim($ip);
                     // attempt to validate IP
-                    if (self::validate_ip($ip)) {
+                    if (self::validateIp($ip)) {
                         return $ip;
                     }
                 }
@@ -37,11 +37,11 @@ class Http {
      * Ensures an ip address is both a valid IP and does not fall within
      * a private network range.
      */
-    private static function  validate_ip($ip)
+    private static function  validateIp($ip)
     {
-        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false) {
+        /*if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false) {
             return false;
-        }
+        }*/
         return true;
     }
 }

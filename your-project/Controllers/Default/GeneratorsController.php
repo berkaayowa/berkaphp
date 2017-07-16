@@ -1,22 +1,17 @@
 <?php
 	namespace controller;
-	require_once('AutoLoader.php');
-	use \autoload\AppClassLoader;
-	AppClassLoader::loadControllerRequires();
 	use berkaPhp\Controller\AppController;
 	use berkaPhp\template\AppView;
 
 	class GeneratorsController extends AppController
 	{
-		private $flash;
+
 		private $genarator;
-		private $model_;
 
 		function __construct() {
 			
 			parent::__construct(false);
-			$this->flash = $this->load_component('Flash');
-			$this->genarator = $this->load_component('Generator');
+            $this->genarator = $this->loadComponent("Generator");
 		}
 
 		function index() {
@@ -25,56 +20,63 @@
 
 		function file() {
 
-			if($this->is_set($this->get_post())) {
-				if($this->get_post()['table'] != '---' && isset($this->get_post()['table'])) {
+			if($this->is_set($this->getPost())) {
+				if($this->getPost()['table'] != '---' && isset($this->getPost()['table'])) {
 
-					$table = $this->get_post()['table'];
-					$this->genarator->set_class_name(ucfirst($table));
+					$table = $this->getPost()['table'];
+					$this->genarator->setClassName(ucfirst($table));
 
-					if (isset($this->get_post()['all'])) {
+					if (isset($this->getPost()['all'])) {
 
-						if ($this->genarator->generate_model()) {
-							$this->flash->success(' Model Created');
-						}
-						if ($this->genarator->generate_controller()) {
-							$this->flash->success(' Controller Created');
+
+						if ($this->genarator->generateModel()) {
+
 						}
 
-						$this->genarator->generate_views();
-						$this->flash->success('Elements Created');
+						if ($this->genarator->generateController()) {
+
+						}
+
+						if ($this->genarator->generateViews()) {
+
+                        }
+
+                        $this->appView->set("message",['success'=>"Elements Created "]);
 
 					} else {
 
-						if (isset($this->get_post()['model'])) {
+						if (isset($this->getPost()['model'])) {
 
-							if ($this->genarator->generate_model()) {
-								$this->flash->success(' Model Created');
+							if ($this->genarator->generateModel()) {
+                                $this->appView->set("message",['success'=>"Model Created "]);
 							}
 
-						} elseif (isset($this->get_post()['views'])) {
+						} elseif (isset($this->getPost()['views'])) {
 
-							$this->genarator->generate_views();
-							$this->flash->success(' Views Created');
+                            if ($this->genarator->generateViews()) {
+                                $this->appView->set("message",['success'=>"Views Created "]);
+                            }
 
-						} elseif (isset($this->get_post()['controller'])) {
+						} elseif (isset($this->getPost()['controller'])) {
 
-							if ($this->genarator->generate_controller()) {
-								$this->flash->success(' Controller Created');
+							if ($this->genarator->generateController()) {
+                                $this->appView->set("message",['success'=>"Controller Created "]);
 							}
 
 						}
 					}
 
 				} else {
-					$this->flash->error(' Select a table !');
+
+                    $this->appView->set("message",['error'=>" Select a table "]);
 				}
 			}
-			$this->appView->set('tables',$this->genarator->get_tables());
+			$this->appView->set('tables',$this->genarator->getTables());
 			$this->appView->render();
 		}
 
 		function get() {
-			die($this->genarator->get_primary_key());
+			die($this->genarator->getPrimaryKey());
 		}
 
 	}

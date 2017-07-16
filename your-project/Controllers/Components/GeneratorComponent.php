@@ -1,9 +1,6 @@
 <?php
 namespace controller\component;
-require_once('AutoLoader.php');
-use autoload\AppClassLoader;
 use berkaPhp\controller\component\AppComponent;
-AppClassLoader::loadBaseComponent();
 
 class GeneratorComponent extends AppComponent
 {
@@ -15,44 +12,44 @@ class GeneratorComponent extends AppComponent
 	function __construct()
 	{
 		parent::__construct();
-		$this->set_name('Generator');
-		$this->set_author('berkaPhp');
-		$this->set_description('');
+		$this->setName('Generator');
+		$this->setAuthor('berkaPhp');
+		$this->setDescription('');
 
-		$this->controller_path = "Controllers/".\berkaPhp\helpers\Html::get_current_prefix()."/{name}Controller.php";
+		$this->controller_path = "Controllers/".\berkaPhp\helpers\Html::getCurrentPrefix(false)."/{name}Controller.php";
 		$this->model_path = "Models/{name}Table.php";
-		$this->view_path = "Views/".\berkaPhp\helpers\Html::get_current_prefix()."/{controller}/{view}.php";
+		$this->view_path = "Views/".\berkaPhp\helpers\Html::getCurrentPrefix(false)."/{controller}/{view}.php";
 
 	}
 
-	function set_class_name($class_name) {
+	function setClassName($class_name) {
 		$this->class_name = $class_name;
 	}
 
-	function generate_controller() {
+	function generateController() {
 		$controller_with_path = str_replace('{name}', $this->class_name, $this->controller_path);
-		if($this->writing_file($controller_with_path,$this->get_controller_class())) {
+		if($this->writingFile($controller_with_path,$this->getControllerClass())) {
 			return true;
 		}
 		return false;
 	}
 
-	function generate_model() {
+	function generateModel() {
 		$model_with_path = str_replace('{name}', $this->class_name, $this->model_path);
-		if($this->writing_file($model_with_path,$this->get_model_class())) {
+		if($this->writingFile($model_with_path,$this->getModelClass())) {
 			return true;
 		}
 		return false;
 	}
 
-	function generate_views() {
+	function generateViews() {
 		$this->index();
 		$this->add();
 		$this->edit();
 		$this->view();
 	}
 
-    public static function db_settings($setting) {
+    public static function dbSettings($setting) {
         $template = file_get_contents('berkaPhp/template/SettingTemplate.txt');
         if(sizeof($setting) > 0) {
 
@@ -65,41 +62,41 @@ class GeneratorComponent extends AppComponent
     }
 
 	private function add() {
-		$this->primary_key = $this->db->get_primary_key(strtolower($this->class_name));
+		$this->primary_key = $this->db->getPrimaryKey(strtolower($this->class_name));
 		$add_view_path = str_replace('{controller}', $this->class_name, $this->view_path);
 		$add_view_path = str_replace('{view}', 'add', $add_view_path);
 
 		$add_template = file_get_contents('berkaPhp/template/AddTemplate.txt');
 
-		$fields = $this->db->get_table_fields(strtolower($this->class_name));
+		$fields = $this->db->getTableFields(strtolower($this->class_name));
 		$inputs = '';
 
 		foreach ($fields as $field => $type) {
-			$inputs.="<label style='text-transform: capitalize;'>{$this->remove_underscore($field)}</label><br>\n	";
-			$inputs.="<input type='text' class='form-control' name='".$field."' placeholder='".$this->remove_underscore($field)."'><br>\n	";
+			$inputs.="<label style='text-transform: capitalize;'>{$this->removeUnderscore($field)}</label><br>\n	";
+			$inputs.="<input type='text' class='form-control' name='".$field."' placeholder='".$this->removeUnderscore($field)."'><br>\n	";
 		}
 
 		$add_template = str_replace('{name}', $this->_($this->class_name), $add_template);
 		$add_template = str_replace('{elements}', $inputs, $add_template);
 		$add_template = str_replace('{controller_name}', strtolower($this->class_name), $add_template);
 
-		$this->writing_file($add_view_path,$add_template);
+		$this->writingFile($add_view_path,$add_template);
 
 	}
 
 	private function edit() {
-		$this->primary_key = $this->db->get_primary_key(strtolower($this->class_name));
+		$this->primary_key = $this->db->getPrimaryKey(strtolower($this->class_name));
 		$edit_view_path = str_replace('{controller}', $this->class_name, $this->view_path);
 		$edit_view_path = str_replace('{view}', 'edit', $edit_view_path);
 
 		$edit_template = file_get_contents('berkaPhp/template/EditTemplate.txt');
 
-		$fields = $this->db->get_table_fields(strtolower($this->class_name));
+		$fields = $this->db->getTableFields(strtolower($this->class_name));
 		$inputs = '';
 
 		foreach ($fields as $field => $type) {
 			if($field != $this->primary_key){
-				$inputs.="<label style='text-transform: capitalize;'>{$this->remove_underscore($field)}</label><br>\n	";
+				$inputs.="<label style='text-transform: capitalize;'>{$this->removeUnderscore($field)}</label><br>\n	";
 				$inputs.='<input type="text" class="form-control" name="'.$field.'" value="<?=$data["'.$field.'"]?>"><br>'."\n	";
 			}
 		}
@@ -109,22 +106,22 @@ class GeneratorComponent extends AppComponent
 		$edit_template = str_replace('{controller_name}', strtolower($this->class_name), $edit_template);
 		$edit_template = str_replace('{primary_key}',$this->primary_key, $edit_template);
 
-		$this->writing_file($edit_view_path,$edit_template);
+		$this->writingFile($edit_view_path,$edit_template);
 	}
 
 	private function view() {
-		$this->primary_key = $this->db->get_primary_key(strtolower($this->class_name));
+		$this->primary_key = $this->db->getPrimaryKey(strtolower($this->class_name));
 		$edit_view_path = str_replace('{controller}', $this->class_name, $this->view_path);
 		$edit_view_path = str_replace('{view}', 'view', $edit_view_path);
 
 		$edit_template = file_get_contents('berkaPhp/template/ViewTemplate.txt');
 
-		$fields = $this->db->get_table_fields(strtolower($this->class_name));
+		$fields = $this->db->getTableFields(strtolower($this->class_name));
 		$inputs = '';
 
 		foreach ($fields as $field => $type) {
 			if($field != $this->primary_key){
-				$inputs.="<label style='text-transform: capitalize;'>{$this->remove_underscore($field)}</label><br>\n	";
+				$inputs.="<label style='text-transform: capitalize;'>{$this->removeUnderscore($field)}</label><br>\n	";
 				$inputs.='<input type="text" readonly class="form-control" name="'.$field.'" value="<?=$data["'.$field.'"]?>"><br>'."\n	";
 			}
 		}
@@ -134,23 +131,23 @@ class GeneratorComponent extends AppComponent
 		$edit_template = str_replace('{controller_name}', strtolower($this->class_name), $edit_template);
 		$edit_template = str_replace('{primary_key}',$this->primary_key, $edit_template);
 
-		$this->writing_file($edit_view_path,$edit_template);
+		$this->writingFile($edit_view_path,$edit_template);
 	}
 
 	private function index() {
-		$this->primary_key = $this->db->get_primary_key(strtolower($this->class_name));
+		$this->primary_key = $this->db->getPrimaryKey(strtolower($this->class_name));
 		$index_view_path = str_replace('{controller}', $this->class_name, $this->view_path);
 		$index_view_path = str_replace('{view}', 'index', $index_view_path);
 
 		$index_template = file_get_contents('berkaPhp/template/IndexTemplate.txt');
 
-		$fields = $this->db->get_table_fields(strtolower($this->class_name));
+		$fields = $this->db->getTableFields(strtolower($this->class_name));
 
 		$columns='';
 		$elements ='';
 
 		foreach ($fields as $field => $type) {
-			$columns.="<th style='text-transform: capitalize;'>{$this->remove_underscore($field)}</th>\n				";
+			$columns.="<th style='text-transform: capitalize;'>{$this->removeUnderscore($field)}</th>\n				";
 			$elements.='<td data-limit-char="20"><?=$data["'.$field.'"]?></td>'."\n".'					';
 		}
 
@@ -161,11 +158,11 @@ class GeneratorComponent extends AppComponent
 		$index_template = str_replace('{controller_name}', strtolower($this->class_name), $index_template);
 		$index_template = str_replace('{primary_key}', $this->primary_key, $index_template);
 
-		$this->writing_file($index_view_path,$index_template);
+		$this->writingFile($index_view_path,$index_template);
 	}
 
-	private function get_model_class() {
-		$this->primary_key = $this->db->get_primary_key(strtolower($this->class_name));
+	private function getModelClass() {
+		$this->primary_key = $this->db->getPrimaryKey(strtolower($this->class_name));
 		$class_model = file_get_contents('berkaPhp/template/ModelTemplate.txt');
 		$class_model = str_replace('{primary_key}',$this->primary_key, $class_model);
 		$class_model = str_replace('{table_name}',strtolower($this->class_name), $class_model);
@@ -174,8 +171,8 @@ class GeneratorComponent extends AppComponent
 		return $class_model;
 	}
 
-	private function get_controller_class() {
-		$this->primary_key = $this->db->get_primary_key(strtolower($this->class_name));
+	private function getControllerClass() {
+		$this->primary_key = $this->db->getPrimaryKey(strtolower($this->class_name));
 		$class_controller = file_get_contents('berkaPhp/template/ComtrollerTemplate.txt');
 		$class_controller = str_replace('{name}',$this->_($this->class_name), $class_controller);
 		$class_controller = str_replace('{names}',strtolower($this->class_name), $class_controller);
@@ -199,7 +196,7 @@ class GeneratorComponent extends AppComponent
 		}
 	}
 
-	private function writing_file($path, $data) {
+	private function writingFile($path, $data) {
 		if(!file_exists(dirname($path))) {
 			mkdir(dirname($path), 0777, true);
 		}
@@ -210,15 +207,15 @@ class GeneratorComponent extends AppComponent
 		fwrite($handle, $data);
 	}
 
-	private function remove_underscore($value) {
+	private function removeUnderscore($value) {
 		if ($wrord = str_replace('_', ' ', $value)) {
 			return $wrord;
 		}
 		return $value;
 	}
 
-	function get_tables() {
-		return $this->db->get_tables();
+	function getTables() {
+		return $this->db->getTables();
 	}
 
 }

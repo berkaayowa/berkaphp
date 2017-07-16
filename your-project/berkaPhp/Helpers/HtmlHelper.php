@@ -143,7 +143,7 @@ class Html {
                 if(strtolower($option) == 'href') {
                    $link['is_link'] = true;
                     if($prefix == false) {
-                        $link['href'] = '/'.self::get_current_prefix().$value;
+                        $link['href'] = '/'.self::getCurrentPrefix().$value;
                     } else {
                         $link['href'] = $value;
                     }
@@ -189,7 +189,7 @@ class Html {
 
             foreach($options as $option => $value) {
                 if($option == 'href') {
-                    $value='/'. self::get_current_prefix().$value;
+                    $value='/'. self::getCurrentPrefix().$value;
                 }
                 $link.= ' '.$option. '=' . $value;
             }
@@ -201,11 +201,11 @@ class Html {
     }
 
     public static function action($link) {
-        return '/'.self::get_current_prefix().$link;
+        return '/'.self::getCurrentPrefix().$link;
     }
 
-    public static function get_current_prefix() {
-        return strtolower(PREFIX);
+    public static function getCurrentPrefix($tolower = true) {
+        return $tolower ? strtolower(PREFIX) : PREFIX;
     }
 
 }

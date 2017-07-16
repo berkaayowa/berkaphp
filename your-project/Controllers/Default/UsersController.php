@@ -1,8 +1,5 @@
 <?php
 	namespace controller;
-	require_once('AutoLoader.php');
-	use autoload\AppClassLoader;
-	AppClassLoader::loadControllerRequires();
 	use berkaPhp\Controller\AppController;
 	use berkaPhp\template\AppView;
 
@@ -19,7 +16,7 @@
 
 		function index() {
 
-			$result = $this->model->fetch_like([
+			$result = $this->model->fetchLike([
                 'fields'=>[
                     'title'=>'Web'
                 ],
@@ -33,13 +30,15 @@
                 ]
             ]);
 
+            echo "vvvv";
+
 			$this->appView->set('users', $result);
 			$this->appView->render();
 		}
 
 		function add() {
-			if($this->is_set($this->get_post())) {
-				if ($this->model->add($this->get_post())) {
+			if($this->is_set($this->getPost())) {
+				if ($this->model->add($this->getPost())) {
 					$this->flash->success(' Saved user');
 				} else {
 					$this->flash->error(' Could not Saved user !');
@@ -52,8 +51,8 @@
 		function edit($params) {
 			$id = $params['params'][0];
 
-			if($this->is_set($this->get_post())) {
-				if ($this->model->update($this->get_post())) {
+			if($this->is_set($this->getPost())) {
+				if ($this->model->update($this->getPost())) {
 					$this->flash->success(' Edited user');
 				} else {
 					$this->flash->error(' Could not Edit user !');
@@ -77,10 +76,10 @@
 		}
 
         function login() {
-            if($this->is_set($this->get_post())) {
+            if($this->is_set($this->getPost())) {
                 $user = $this->model->fetch_where([
-                    'user_email'=>$this->get_post()['user_email'],
-                    'user_password'=>$this->get_post()['user_password']
+                    'user_email'=>$this->getPost()['user_email'],
+                    'user_password'=>$this->getPost()['user_password']
                 ]);
 
                 if (sizeof($user) == 1) {
@@ -101,7 +100,7 @@
         }
 
 		function search() {
-			$tag = $this->get_POST_key('search');
+			$tag = $this->getPostKey('search');
 			$result = $this->model->fetch_like($tag);
 			$this->appView->set('users',$result);
 			$this->appView->run_render('index');

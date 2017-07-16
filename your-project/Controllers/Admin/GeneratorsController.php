@@ -15,8 +15,8 @@
 		function __construct() {
 
 			parent::__construct(false);
-			$this->flash = $this->load_component('Flash');
-			$this->genarator = $this->load_component('Generator');
+			$this->flash = $this->loadComponent('Flash');
+			$this->genarator = $this->loadComponent('Generator');
 			
 		}
 
@@ -25,11 +25,11 @@
 		}
 
 		function run() {
-			if($this->is_set($this->get_post())) {
-				if($this->get_post()['table'] != '---' && isset($this->get_post()['table'])) {
-					$table = $this->get_post()['table'];
+			if($this->is_set($this->getPost())) {
+				if($this->getPost()['table'] != '---' && isset($this->getPost()['table'])) {
+					$table = $this->getPost()['table'];
 					$this->genarator->set_class_name(ucfirst($table));
-					if (isset($this->get_post()['all'])) {
+					if (isset($this->getPost()['all'])) {
 						if ($this->genarator->generate_model()) {
 							$this->flash->success(' Model Created');
 						}
@@ -39,20 +39,20 @@
 						$this->genarator->generate_views();
 						$this->flash->success('Elements Created');
 					} else {
-						if (isset($this->get_post()['mode'])) {
+						if (isset($this->getPost()['mode'])) {
 							if ($this->genarator->generate_model()) {
 								$this->flash->success(' Model Created');
 							}
-						} elseif (isset($this->get_post()['views'])) {
+						} elseif (isset($this->getPost()['views'])) {
 							$this->genarator->generate_views();
 							$this->flash->success(' Views Created');
-						} elseif (isset($this->get_post()['controller'])) {
+						} elseif (isset($this->getPost()['controller'])) {
 							if ($this->genarator->generate_controller()) {
 								$this->flash->success(' Controller Created');
 							}
 						}
 					}
-				} elseif (isset($this->get_post()['all_table'])) {
+				} elseif (isset($this->getPost()['all_table'])) {
 					$tables = $this->genarator->get_tables();
 					$count = 0;
 					foreach ($tables as $table => $name) {

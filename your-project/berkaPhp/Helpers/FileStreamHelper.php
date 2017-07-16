@@ -9,7 +9,7 @@ namespace berkaPhp\helpers;
 
 class FileStream {
 
-    public  static function write_file($path, $data) {
+    public  static function writeFile($path, $data) {
         
         if(!file_exists(dirname($path))) {
             mkdir(dirname($path), 0777, true);
@@ -21,7 +21,7 @@ class FileStream {
         return (fwrite($handle, $data) != false) ? true : false;
     }
 
-    public static function  array_to_csv($data, $column_headers = '', $is_array_numeric = false) {
+    public static function  arrayToCsv($data, $column_headers = '', $is_array_numeric = false) {
         $data = [1,2,3];
         if(sizeof($data) > 0 ) {
             header('Content-Type: text/csv; charset=utf-8');
@@ -45,7 +45,7 @@ class FileStream {
 
     }
 
-    public static function file_exist($path) {
+    public static function fileExist($path) {
         return file_exists($path);
     }
 }

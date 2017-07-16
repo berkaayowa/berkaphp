@@ -1,84 +1,99 @@
 <?php
 	namespace controller;
-	require_once('AutoLoader.php');
-	use autoload\AppClassLoader;
-	AppClassLoader::loadControllerRequires();
 	use berkaPhp\Controller\AppController;
-	use berkaPhp\template\AppView;
 
 	class {controller_name}Controller extends AppController
 	{
-		private $flash;
-		private $paginate;
 
 		function __construct() {
 			parent::__construct();
-			$this->flash = $this->load_component('Flash');
-			$this->paginate = $this->load_component('Paginate');
 		}
+
+        /* Display all {names} from database
+        *  Default action in this controller
+        *  @author berkaPhp
+        */
 
 		function index() {
-			$result = $this->model->fetch_all();
+
+			$result = $this->model->fetchAll();
 			$this->appView->set('{names}', $result);
 			$this->appView->render();
+
 		}
 
+        /* Add {name} into database
+        *  Getting data from Post
+        *  @author berkaPhp
+        */
+
 		function add() {
-			if($this->is_set($this->get_post())) {
-				if ($this->model->add($this->get_post())) {
-					$this->flash->success(' Saved {name}');
+
+			if($this->is_set($this->getPost())) {
+				if ($this->model->add($this->getPost())) {
+					$this->appView->set('message', ['success'=>'Saved {name}']);
 				} else {
-					$this->flash->error(' Could not Saved {name} !');
+					$this->appView->set('message', ['error'=>' Could not Saved {name} !']);
 				}
 			}
 
 			$this->appView->render();
 		}
 
+        /* Edit {name} and update the table
+        *  Getting data from Post
+        *  Id from params array
+        *  @author berkaPhp
+        */
+
 		function edit($params) {
+
 			$id = $params['params'][0];
 
-			if($this->is_set($this->get_post())) {
-				if ($this->model->update($this->get_post())) {
-					$this->flash->success(' Edited {name}');
+			if($this->is_set($this->getPost())) {
+				if ($this->model->update($this->getPost())) {
+					$this->appView->set('message', ['success'=>'Edited {name}']);
 				} else {
-					$this->flash->error(' Could not Edit {name} !');
+					$this->appView->set('message', ['error'=>' Could not Edit {name} !']);
 				}
 			}
 
-			$result = $this->model->fetch_by(['{primary_key}'=>$id]);
+			$result = $this->model->fetchBy(['fields'=>['{primary_key}'=>$id]]);
 			$this->appView->set('{name}',$result);
 			$this->appView->render();
 		}
 
+        /* Delete {name} from the table
+        *  Getting {name} Id from params array
+        *  @author berkaPhp
+        */
+
 		function delete($params) {
+
 			$id = $params['params'][0];
+
 			if($this->model->delete($id)) {
-				$this->flash->success(' Deleted {name}');
+				$this->appView->set('message', ['success'=>'Deleted {name}']);
 			} else {
-				$this->flash->error(' Could not Delete {name} !');
+				$this->appView->set('message', ['error'=>' Could not Delete {name} !']);
 			}
 
 			$this->index();
+
 		}
+
+        /* Viewing {name} from the table
+        *  Getting {name} Id from params array
+        *  @author berkaPhp
+        */
 
 		function view($params) {
+
 			$id = $params['params'][0];
 
-			$result = $this->model->fetch_by(['{primary_key}'=>$id]);
+			$result = $this->model->fetchBy(['fields'=>['{primary_key}'=>$id]]);
 			$this->appView->set('{name}',$result);
 			$this->appView->render();
-		}
-
-		function api() {
-			return $this->json_format($this->model->fetch_all());
-		}
-
-		function search() {
-			$tag = $this->get_POST_key('search');
-			$result = $this->model->fetch_like($tag);
-			$this->appView->set('{names}',$result);
-			$this->appView->run_render('index');
 		}
 
 	}

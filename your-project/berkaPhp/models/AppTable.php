@@ -1,14 +1,10 @@
 <?php
 	namespace berkaPhp\database\table;
-	require_once('AutoLoader.php');
-	use autoload\AppClassLoader;
-	AppClassLoader::loadDatabase();
-
 	use berkaPhp\database\QueryBuilder;
 
 	interface Table {
-		public function fetch_all();
-		public function fetch_by($tags);
+		public function fetchAll();
+		public function fetchBy($tags);
 		public function update($data);
 	}
 
@@ -39,14 +35,14 @@
 		* @return [array] array of data fetched from DB
 		* @author berkaPhp
 		*/
-		public function fetch_all($params = []) {
+		public function fetchAll($params = []) {
 			$this->query = QueryBuilder::select($this->table_name, $this->primary_key, $this->contains, $params, $this->keys);
 			//var_dump($this->query);exit();
 			$this->result = $this->db->fetch($this->query);
 			return $this->result;
 		}
 
-		public function fetch_where($params = []) {
+		public function fetchWhere($params = []) {
 			$this->query = QueryBuilder::select_where($this->table_name, $this->primary_key, $this->contains, $params, $this->keys);
 			//var_dump($this->query);exit();
 			$this->result = $this->db->fetch($this->query);
@@ -60,7 +56,7 @@
 		* @return [array] array of data fetched from DB
 		* @author berkaPhp
 		*/
-		public function fetch_by($tags) {
+		public function fetchBy($tags) {
 			$this->query = QueryBuilder::select_by($this->table_name, $tags, $this->primary_key, $this->contains);
 			return $this->db->fetch($this->query);
 		}
@@ -72,7 +68,7 @@
 		* @return [array] array of data fetched from DB
 		* @author berkaPhp
 		*/
-		public function fetch_like($params) {
+		public function fetchLike($params) {
 			$this->query = QueryBuilder::select_like($this->table_name, $this->primary_key, $this->contains, $params, $this->keys);
 			return $this->db->fetch($this->query);
 		}
@@ -84,7 +80,7 @@
 		* @author berkaPhp
 		*/
 		public function add($data) {
-			$data_table = $this->filter_data($data);
+			$data_table = $this->filterData($data);
 			$this->query = QueryBuilder::add($this->table_name, $data_table);
 			//var_dump($this->query);exit();
 			return $this->db->update($this->query);
@@ -98,7 +94,7 @@
 		* @author berkaPhp
 		*/
 		public function update($data) {
-			$data_table = $this->filter_data($data);
+			$data_table = $this->filterData($data);
 			$this->query = QueryBuilder::update($this->table_name, $data_table, $this->primary_key);
 			return $this->db->update($this->query);
 		}
@@ -120,7 +116,7 @@
 		* @author berkaPhp
 		*/
 		public function fields() {
-			return $this->db->get_table_fields($this->table_name);
+			return $this->db->getTableFields($this->table_name);
 		}
 
 		/* filter data to be sent to database
@@ -131,7 +127,7 @@
 		* @return [array] array of validated data
 		* @author berkaPhp
 		*/
-		private function filter_data($data) {
+		private function filterData($data) {
 			$table = $this->fields();
 			$validated_data = null;
 			foreach ($table as $field => $type) {
@@ -153,7 +149,7 @@
 		* @return integer number of rows
 		* @author berkaPhp
 		*/
-		public function num_of_rows() {
+		public function numOfRows() {
 			$this->result->num_rows;
 		}
 

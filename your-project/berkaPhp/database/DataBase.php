@@ -75,7 +75,7 @@
 			return $this->db_connection;
 		}
 
-		function get_primary_key($table) {
+		function getPrimaryKey($table) {
 			$result = $this->db_connection->query("SHOW INDEX FROM {$table} WHERE Key_name = 'PRIMARY'");
 			if ($result->num_rows > 0) {
 				$row= $result->fetch_assoc();
@@ -84,7 +84,7 @@
 			return $row['Column_name'];
 		}
 
-		function get_table_fields($table_name) {
+		function getTableFields($table_name) {
 			$fileds = $this->db_connection->query('DESCRIBE '.$table_name);
 			$table_fields='';
 
@@ -95,7 +95,7 @@
 			return $table_fields;
 		}
 
-		function get_tables() {
+		function getTables() {
 			 $result = $this->db_connection->query("SHOW TABLES");
 			 $tableList = '';
 			 if ($result->num_rows > 0) {
@@ -108,8 +108,5 @@
 			 return null;
 		}
 
-        function is_db_connected() {
-            //return (is_resource($this->db_connection)) ? true : false;
-        }
 	}
 ?>

@@ -1,9 +1,5 @@
 <?php
 namespace berkaPhp\template;
-
-require_once('AutoLoader.php');
-use \autoload\AppClassLoader;
-AppClassLoader::loadBaseControllerRequires();
 use \berkaPhp\helpers;
 
 class AppView
@@ -70,7 +66,7 @@ class AppView
 
         $view_path = $_SERVER['DOCUMENT_ROOT'] . '/Views/' . PREFIX . '/' . $called_controller . '/' . $view_to_render . '.php';
 
-        if(\berkaPhp\helpers\FileStream::file_exist($view_path)) {
+        if(\berkaPhp\helpers\FileStream::fileExist($view_path)) {
 
             ob_start();
             require($view_path);

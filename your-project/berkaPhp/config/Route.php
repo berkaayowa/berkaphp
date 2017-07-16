@@ -1,10 +1,5 @@
 <?php
 	namespace berkaPhp\config;
-	require_once('AutoLoader.php');
-	use autoload\AppClassLoader;
-	AppClassLoader::loadRouteRequired();
-    AppClassLoader::loadBaseControllerRequires();
-
 	use berkaPhp\config\router\Routing;
 
 	$app = new \berkaPhp\config\router\AppRouter($_SERVER);

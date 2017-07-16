@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <?= berkaPhp\helpers\Element::load("Requirement")?>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
             <form method="POST" action="/generators/file/" style="margin-bottom: 40px;margin-top: 40px;">
                     <h2>Auto genating Files</h2>
                     <br/>
