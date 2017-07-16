@@ -1,6 +1,7 @@
 {
 	"name": "berka/berkaphp",
-	"description": "A MVC PHP framework designed to help you build dynamic website / Web applications - fast!",
+	"minimum-stability": "dev",
+	"description": "A MVC PHP framework designed to help you build dynamic website / Web applications",
 	"homepage": "https://github.com/berkaayowa/berkaphp/",
 	"license": "berkaphp V.0.1",
 	"require": {
