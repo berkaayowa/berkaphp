@@ -4,10 +4,10 @@
     define('DEBUG', true, true);
 
     //Database settings
-    define('SERVER', '127.0.0.1', true);
-    define('DB', 'softclick', true);
-    define('DB_USERNAME', 'root', true);
-    define('DB_PW', $_SERVER['SERVER_NAME']=='www.yourlivesite.com' ? '' : 'Brk1991@', true);
+    define('SERVER', '', true);
+    define('DB', '', true);
+    define('DB_USERNAME', '', true);
+    define('DB_PW', $_SERVER['SERVER_NAME']=='www.yourlivesite.com' ? '' : '', true);
 
     //default controller
     define('HOME', 'pages' , true);
@@ -72,7 +72,7 @@
 <?php
 
     function prefixes() {
-        return ['Default', 'Admin'];
+        return ['Default'];
     }
 
     function settings(){

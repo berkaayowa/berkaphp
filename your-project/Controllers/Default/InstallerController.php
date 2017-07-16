@@ -1,7 +1,6 @@
 <?php
 	namespace controller;
 	use berkaPhp\Controller\AppController;
-	use berkaPhp\template\AppView;
 
 	class InstallerController extends AppController
 	{

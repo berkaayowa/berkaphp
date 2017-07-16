@@ -24,22 +24,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ErrorsController.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ErrorsController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Controllers/Default/ErrorsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="48" selection-start="115" selection-end="115" vertical-scroll-proportion="12.5" vertical-offset="360" max-vertical-offset="1050">
+            <state line="4" column="48" selection-start="115" selection-end="115" vertical-scroll-proportion="0.13071896" vertical-offset="0" max-vertical-offset="1050">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FlashComponent.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Controllers/Components/FlashComponent.php">
+      <file leaf-file-name="Route.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/berkaPhp/config/Route.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="87" selection-end="87" vertical-scroll-proportion="-1.0416666" vertical-offset="35" max-vertical-offset="480">
-              <folding>
-                <marker date="1500239022763" expanded="false" signature="368:497" placeholder="..." />
-              </folding>
+            <state line="8" column="27" selection-start="194" selection-end="194" vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="1365">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -56,31 +54,37 @@
       <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="38" selection-start="127" selection-end="127" vertical-scroll-proportion="-1.875" vertical-offset="0" max-vertical-offset="180">
+            <state line="6" column="0" selection-start="161" selection-end="161" vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="180">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GeneratorComponent.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Controllers/Components/GeneratorComponent.php">
+      <file leaf-file-name="InstallerController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controllers/Default/InstallerController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="25" selection-start="249" selection-end="249" vertical-scroll-proportion="-6.25" vertical-offset="0" max-vertical-offset="3420">
+            <state line="2" column="42" selection-start="68" selection-end="68" vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="660">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PagesController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controllers/Default/PagesController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="26" selection-start="202" selection-end="202" vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="330">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GeneratorsController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controllers/Default/GeneratorsController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="74" column="0" selection-start="1806" selection-end="1806" vertical-scroll-proportion="-12.208333" vertical-offset="817" max-vertical-offset="1335">
               <folding>
-                <marker date="1500238959874" expanded="false" signature="2153:2180" placeholder="..." />
-                <marker date="1500238959874" expanded="false" signature="3211:3238" placeholder="..." />
-                <marker date="1500238959874" expanded="false" signature="4364:4391" placeholder="..." />
-                <marker date="1500238959874" expanded="false" signature="5510:5537" placeholder="..." />
+                <element signature="e#30#68#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HtmlHelper.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/berkaPhp/Helpers/HtmlHelper.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="207" column="0" selection-start="5439" selection-end="5439" vertical-scroll-proportion="0.5533769" vertical-offset="2851" max-vertical-offset="3375">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -95,7 +99,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Views/Default/Layout/header.php" />
         <option value="$PROJECT_DIR$/Views/Default/Layout/footer.php" />
         <option value="$PROJECT_DIR$/berkaPhp/template/Utility/Javascript/app.js" />
         <option value="$PROJECT_DIR$/Views/Elements/Requirement.php" />
@@ -105,7 +108,6 @@
         <option value="$PROJECT_DIR$/Views/Default/Errors/viewnotfound.php" />
         <option value="$PROJECT_DIR$/Views/Elements/ErrorHead.php" />
         <option value="$PROJECT_DIR$/Views/Default/Layout/body.php" />
-        <option value="$PROJECT_DIR$/berkaPhp/template/SettingTemplate.txt" />
         <option value="$PROJECT_DIR$/Views/Default/Layout/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/Views/Default/Installer/database.php" />
         <option value="$PROJECT_DIR$/Views/Default/Pages/index.php" />
@@ -117,7 +119,6 @@
         <option value="$PROJECT_DIR$/Views/Default/Errors/modelnotfound.php" />
         <option value="$PROJECT_DIR$/berkaPhp/database/QueryBuilder.php" />
         <option value="$PROJECT_DIR$/Views/Default/Generators/file.php" />
-        <option value="$PROJECT_DIR$/berkaPhp/config/Settings.php" />
         <option value="$PROJECT_DIR$/berkaPhp/database/DataBase.php" />
         <option value="$PROJECT_DIR$/berkaPhp/Helpers/AuthHelper.php" />
         <option value="$PROJECT_DIR$/berkaPhp/Helpers/FileStreamHelper.php" />
@@ -127,13 +128,11 @@
         <option value="$PROJECT_DIR$/Controllers/default/ContactController.php" />
         <option value="$PROJECT_DIR$/berkaPhp/Helpers/HtmlHelper.php" />
         <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/berkaPhp/config/Route.php" />
         <option value="$PROJECT_DIR$/berkaPhp/config/Router/Routing.php" />
         <option value="$PROJECT_DIR$/berkaPhp/Controllers/Components/AppComponent.php" />
         <option value="$PROJECT_DIR$/berkaPhp/models/AppTable.php" />
         <option value="$PROJECT_DIR$/berkaPhp/template/AppView.php" />
         <option value="$PROJECT_DIR$/Controllers/Default/GeneratorsController.php" />
-        <option value="$PROJECT_DIR$/Controllers/Default/InstallerController.php" />
         <option value="$PROJECT_DIR$/Controllers/Default/UsersController.php" />
         <option value="$PROJECT_DIR$/Controllers/Components/GeneratorComponent.php" />
         <option value="$PROJECT_DIR$/Controllers/Components/InstallerComponent.php" />
@@ -146,6 +145,11 @@
         <option value="$PROJECT_DIR$/Models/UsersTable.php" />
         <option value="$PROJECT_DIR$/berkaPhp/template/ModelTemplate.txt" />
         <option value="$PROJECT_DIR$/berkaPhp/template/ComtrollerTemplate.txt" />
+        <option value="$PROJECT_DIR$/berkaPhp/template/SettingTemplate.txt" />
+        <option value="$PROJECT_DIR$/berkaPhp/config/Settings.php" />
+        <option value="$PROJECT_DIR$/berkaPhp/config/Route.php" />
+        <option value="$PROJECT_DIR$/Controllers/Default/InstallerController.php" />
+        <option value="$PROJECT_DIR$/Views/Default/Errors/index.php" />
       </list>
     </option>
   </component>
@@ -330,11 +334,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Default/Errors/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/berkaPhp/template/Utility/Style/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="20" selection-start="623" selection-end="623" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720" />
@@ -375,13 +374,6 @@
         <state line="3" column="79" selection-start="185" selection-end="185" vertical-scroll-proportion="-1.875" vertical-offset="0" max-vertical-offset="705" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/berkaPhp/template/SettingTemplate.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/berkaPhp/template/ViewTemplate.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
@@ -413,20 +405,6 @@
             <element signature="e#4485#5365#0" expanded="false" />
             <element signature="e#5371#6419#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/Default/InstallerController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="102" selection-end="102" vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="660">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/Default/UsersController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="102" selection-end="102" vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="1725">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -486,13 +464,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/berkaPhp/config/Route.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="751" selection-end="751" vertical-scroll-proportion="-5.9166665" vertical-offset="248" max-vertical-offset="1590">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/berkaPhp/Helpers/SessionHelper.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="0" selection-start="99" selection-end="99" vertical-scroll-proportion="-5.5833335" vertical-offset="1" max-vertical-offset="1755">
@@ -510,13 +481,6 @@
     <entry file="file://$PROJECT_DIR$/berkaPhp/Helpers/FileStreamHelper.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="0" selection-start="1416" selection-end="1416" vertical-scroll-proportion="-11.791667" vertical-offset="437" max-vertical-offset="840">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/berkaPhp/config/Settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="0" selection-start="860" selection-end="860" vertical-scroll-proportion="-5.5833335" vertical-offset="1141" max-vertical-offset="1620">
           <folding />
         </state>
       </provider>
@@ -549,54 +513,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/Default/GeneratorsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="0" selection-start="1806" selection-end="1806" vertical-scroll-proportion="0.68457943" vertical-offset="817" max-vertical-offset="1335">
-          <folding>
-            <element signature="e#30#68#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/berkaPhp/config/Router/Routing.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="0" selection-start="976" selection-end="976" vertical-scroll-proportion="-7.4583335" vertical-offset="406" max-vertical-offset="1005">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/Components/GeneratorComponent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="25" selection-start="249" selection-end="249" vertical-scroll-proportion="-6.25" vertical-offset="0" max-vertical-offset="3420">
-          <folding>
-            <marker date="1500238959874" expanded="false" signature="2153:2180" placeholder="..." />
-            <marker date="1500238959874" expanded="false" signature="3211:3238" placeholder="..." />
-            <marker date="1500238959874" expanded="false" signature="4364:4391" placeholder="..." />
-            <marker date="1500238959874" expanded="false" signature="5510:5537" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="38" selection-start="127" selection-end="127" vertical-scroll-proportion="-1.875" vertical-offset="0" max-vertical-offset="180">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/Default/ErrorsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="48" selection-start="115" selection-end="115" vertical-scroll-proportion="12.5" vertical-offset="360" max-vertical-offset="1050">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/Components/FlashComponent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="87" selection-end="87" vertical-scroll-proportion="-1.0416666" vertical-offset="35" max-vertical-offset="480">
-          <folding>
-            <marker date="1500239022763" expanded="false" signature="368:497" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -614,26 +534,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/berkaPhp/template/ComtrollerTemplate.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="11" selection-start="2006" selection-end="2006" vertical-scroll-proportion="2.2727273" vertical-offset="315" max-vertical-offset="1590">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/berkaPhp/template/ModelTemplate.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="36" selection-start="345" selection-end="345" vertical-scroll-proportion="0.37772927" vertical-offset="52" max-vertical-offset="510">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/UsersTable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="40" selection-start="301" selection-end="301" vertical-scroll-proportion="0.48387095" vertical-offset="0" max-vertical-offset="525">
           <folding />
         </state>
       </provider>
@@ -652,16 +555,103 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/Default/PagesController.php">
+    <entry file="file://$PROJECT_DIR$/berkaPhp/Helpers/HtmlHelper.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="26" selection-start="202" selection-end="202" vertical-scroll-proportion="0.38018432" vertical-offset="0" max-vertical-offset="434">
+        <state line="207" column="0" selection-start="5439" selection-end="5439" vertical-scroll-proportion="1.3376906" vertical-offset="2491" max-vertical-offset="3375">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/berkaPhp/Helpers/HtmlHelper.php">
+    <entry file="file://$PROJECT_DIR$/Controllers/Components/GeneratorComponent.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="207" column="0" selection-start="5439" selection-end="5439" vertical-scroll-proportion="0.5533769" vertical-offset="2851" max-vertical-offset="3375">
+        <state line="11" column="26" selection-start="273" selection-end="273" vertical-scroll-proportion="0.26143792" vertical-offset="45" max-vertical-offset="3420">
+          <folding>
+            <marker date="1500238959874" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1500238959874" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1500238959874" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1500238959874" expanded="false" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="161" selection-end="161" vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="180">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/berkaPhp/config/Settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="24" selection-start="301" selection-end="301" vertical-scroll-proportion="0.35947713" vertical-offset="0" max-vertical-offset="1620">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/berkaPhp/template/SettingTemplate.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="24" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0931677" vertical-offset="0" max-vertical-offset="1620">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/berkaPhp/config/Route.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="27" selection-start="194" selection-end="194" vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="1365">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/Default/GeneratorsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="0" selection-start="1806" selection-end="1806" vertical-scroll-proportion="-12.208333" vertical-offset="817" max-vertical-offset="1335">
+          <folding>
+            <element signature="e#30#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/Default/InstallerController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="42" selection-start="68" selection-end="68" vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="660">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/Default/PagesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="26" selection-start="202" selection-end="202" vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="330">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/berkaPhp/template/ComtrollerTemplate.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="11" selection-start="2006" selection-end="2006" vertical-scroll-proportion="1.6270397" vertical-offset="592" max-vertical-offset="1590">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Default/Errors/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="434">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Elements/LeftMenu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="458">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/Default/ErrorsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="48" selection-start="115" selection-end="115" vertical-scroll-proportion="0.13071896" vertical-offset="0" max-vertical-offset="1050">
           <folding />
         </state>
       </provider>

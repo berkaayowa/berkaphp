@@ -1,7 +1,7 @@
 <?php
 	namespace berkaPhp\config;
 
-    define('DEBUG', false, true);
+    define('DEBUG', true, true);
 
     //Database settings
     define('SERVER', '{serverAddress}', true);
@@ -72,7 +72,7 @@
 <?php
 
     function prefixes() {
-        return ['Default', 'Admin'];
+        return ['Default'];
     }
 
     function settings(){
