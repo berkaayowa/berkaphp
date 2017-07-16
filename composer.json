@@ -9,7 +9,7 @@
 	"repositories": [
 		{
 			"type": "vcs",
-			"url": "https://github.com/berkaayowa/berkaphp/tree/master/your-project"
+			"url": "https://github.com/berkaayowa/berkaphp"
 		}
 	],
 	"autoload": {
