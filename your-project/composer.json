@@ -1,0 +1,18 @@
+{
+	"name": "berka/berkaphp",
+	"description": "A MVC PHP framework designed to help you build dynamic website / Web applications - fast!",
+	"homepage": "https://github.com/berkaayowa/berkaphp/",
+	"license": "berkaphp V.0.1",
+	"require": {
+		"php": ">=5.3.6"
+	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/berkaayowa/berkaphp/tree/master/your-project"
+		}
+	],
+	"autoload": {
+		"files": ["AutoLoader.php"]
+	}
+}
