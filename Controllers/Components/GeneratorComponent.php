@@ -27,19 +27,17 @@ class GeneratorComponent extends AppComponent
 	}
 
 	function generateController() {
+
 		$controller_with_path = str_replace('{name}', $this->class_name, $this->controller_path);
-		if($this->writingFile($controller_with_path,$this->getControllerClass())) {
-			return true;
-		}
-		return false;
+		return $this->writingFile($controller_with_path,$this->getControllerClass());
+
 	}
 
 	function generateModel() {
+
 		$model_with_path = str_replace('{name}', $this->class_name, $this->model_path);
-		if($this->writingFile($model_with_path,$this->getModelClass())) {
-			return true;
-		}
-		return false;
+		return $this->writingFile($model_with_path,$this->getModelClass());
+
 	}
 
 	function generateViews() {
@@ -57,7 +55,6 @@ class GeneratorComponent extends AppComponent
                 $template = str_replace('{'.$setting.'}', $value, $template);
             }
 
-            echo $template;
         }
     }
 
@@ -80,7 +77,7 @@ class GeneratorComponent extends AppComponent
 		$add_template = str_replace('{elements}', $inputs, $add_template);
 		$add_template = str_replace('{controller_name}', strtolower($this->class_name), $add_template);
 
-		$this->writingFile($add_view_path,$add_template);
+		return $this->writingFile($add_view_path,$add_template);
 
 	}
 
@@ -106,7 +103,7 @@ class GeneratorComponent extends AppComponent
 		$edit_template = str_replace('{controller_name}', strtolower($this->class_name), $edit_template);
 		$edit_template = str_replace('{primary_key}',$this->primary_key, $edit_template);
 
-		$this->writingFile($edit_view_path,$edit_template);
+		return $this->writingFile($edit_view_path,$edit_template);
 	}
 
 	private function view() {
@@ -131,7 +128,7 @@ class GeneratorComponent extends AppComponent
 		$edit_template = str_replace('{controller_name}', strtolower($this->class_name), $edit_template);
 		$edit_template = str_replace('{primary_key}',$this->primary_key, $edit_template);
 
-		$this->writingFile($edit_view_path,$edit_template);
+		return $this->writingFile($edit_view_path,$edit_template);
 	}
 
 	private function index() {
@@ -158,7 +155,7 @@ class GeneratorComponent extends AppComponent
 		$index_template = str_replace('{controller_name}', strtolower($this->class_name), $index_template);
 		$index_template = str_replace('{primary_key}', $this->primary_key, $index_template);
 
-		$this->writingFile($index_view_path,$index_template);
+		return $this->writingFile($index_view_path,$index_template);
 	}
 
 	private function getModelClass() {
@@ -203,8 +200,8 @@ class GeneratorComponent extends AppComponent
 
 		$file = $path;
 		$handle = fopen($file, 'w') or die('Cannot open file:  '.$file);
-		$data = $data;
-		fwrite($handle, $data);
+		//$data = $data;
+		return (fwrite($handle, $data) != false ) ? true : false;
 	}
 
 	private function removeUnderscore($value) {

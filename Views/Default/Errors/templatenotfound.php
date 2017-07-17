@@ -4,7 +4,7 @@
     <div class="panel-group">
         <div class="panel panel-danger">
             <div class="panel-heading">
-                <h2 class="error-title"><span class="label label-danger">File Error</span></h2>
+                <h2 class="error-title"><span class="label label-danger">Tempalte File Error</span></h2>
                 <strong> A template of an action could not be found</strong>
             </div>
             <div class="panel-body">

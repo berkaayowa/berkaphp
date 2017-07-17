@@ -19,7 +19,7 @@
 
             if($this->is_set($this->getPost())) {
 
-                if($this->installer->db_settings($this->getPost())) {
+                if($this->installer->dbSettings($this->getPost())) {
                     $this->appView->set("message",['success'=>"Database settings has been updated "]);
                 } else {
                     $this->appView->set("message",['error'=>"Could not save settings , try again"]);

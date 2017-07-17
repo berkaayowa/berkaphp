@@ -14,6 +14,7 @@
 
     //default prefix
     define('DEFAULT_PREFIX', 'Default' , true);
+    define('LOGIN_URL', '' , true);
 
     define('SITE_URL', 'www.yourlivesite.com' , true);
     define('LOGO_URL', '/Views/Default/Assets/logo.png' , true);

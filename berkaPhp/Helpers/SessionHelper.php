@@ -9,27 +9,14 @@ class SessionHelper
 		# code...
 	}
 
-
     /*
 	* Creates an input field
 	* @param  label of the input and an array of attributes
 	* @return input field
 	* @author berkaPhp Ayowa
 	*/
-	public function start() {
-		session_start();
-	}
-
-    /*
-	* Creates an input field
-	* @param  label of the input and an array of attributes
-	* @return input field
-	* @author berkaPhp Ayowa
-	*/
-	public function add($key, $value) {
-		if (!isset($_SESSION)) {
-			session_start();
-		}
+	public static function add($key, $value) {
+        self::startSession();
 		$_SESSION[$key] = $value;
 		return ($_SESSION[$key] == $value) ? true : false;
 	}
@@ -40,20 +27,13 @@ class SessionHelper
 	* @return input field
 	* @author berkaPhp Ayowa
 	*/
-	public function remove($key) {
-		if (!isset($_SESSION)) {
-			session_start();
-		}
-
-		$value_to_remove = $_SESSION[$key];
-		return (array_shift($_SESSION[$key]) == $value_to_remove) ? true : false;	 
+	public static function remove($key) {
+        self::startSession();
+		unset($_SESSION[$key]);
 	}
 
     public static  function update($key, $value) {
-        if (!isset($_SESSION)) {
-            session_start();
-        }
-
+        self::startSession();
         $_SESSION[$key] = $value;
 
     }
@@ -64,10 +44,8 @@ class SessionHelper
 	* @return input field
 	* @author berkaPhp Ayowa
 	*/
-	public function get($key) {
-		if (!isset($_SESSION)) {
-			session_start();
-		}
+	public static function get($key) {
+        self::startSession();
 		if (isset($_SESSION[$key])) {
 			return $_SESSION[$key];	 
 		}
@@ -76,13 +54,16 @@ class SessionHelper
 	}
 
     public static function _get($key) {
-        if (!isset($_SESSION)) {
-            session_start();
-        }
+        self::startSession();
         if (isset($_SESSION[$key])) {
             return $_SESSION[$key];
         }
         return null;
+    }
+
+    public static function exist($key) {
+        self::startSession();
+        return isset($_SESSION[$key]);
     }
 
     /*
@@ -91,7 +72,7 @@ class SessionHelper
 	* @return input field
 	* @author berkaPhp Ayowa
 	*/
-	public function kill() {
+	public static function kill() {
 		session_destroy();
 	}
 
@@ -107,6 +88,12 @@ class SessionHelper
            return self::_get('prefix');
         }
 
+    }
+
+    public static function startSession() {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
     }
 }
 ?>
