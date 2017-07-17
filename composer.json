@@ -12,8 +12,5 @@
 			"type": "vcs",
 			"url": "https://github.com/berkaayowa/berkaphp"
 		}
-	],
-	"autoload": {
-		"files": ["AutoLoader.php"]
-	}
+	]
 }
