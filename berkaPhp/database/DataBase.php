@@ -33,6 +33,7 @@
 	 * @author berkaPhp
 	 */
 		public function fetch($query) {
+
 			$data = array();
 			$result = $this->db_connection->query($query);
 			if ($result->num_rows > 0) {
@@ -40,9 +41,49 @@
 						$data[] = $row;
 				}
 			}
-			//var_dump(json_encode($data));exit();
+
 			return $data;
 		}
+
+        public function fetchWithPrepare($option) {
+
+            $data = null;
+
+            if ($stmt = $this->db_connection->prepare($option['query'])) {
+
+                $fields = isset($option['fields']) ? $option['fields'] : array();
+                $num_of_fields = sizeof($fields);
+                $types = str_repeat("s", $num_of_fields);
+
+                $bind = array();
+
+                if($num_of_fields > 0) {
+
+                    foreach($fields as $key => $value ) {
+                        $bind[$key] = &$fields[$key];
+                    }
+
+                    array_unshift($bind, $types);
+                    call_user_func_array(array($stmt, 'bind_param'), $bind);
+
+                }
+
+                /* execute query */
+                if($stmt->execute()) {
+                    $result = $stmt->get_result();
+                    if ($result->num_rows > 0) {
+                        while($row= $result->fetch_assoc()) {
+                            $data[] = $row;
+                        }
+                    }
+                }
+
+                $stmt->close();
+
+                return $data;
+            }
+
+        }
 
 	/**
 	 * updates , adds data to the database
@@ -59,6 +100,40 @@
 			}
 			return true;
 		}
+
+        public function updateWithPrepare($option) {
+
+            if ($stmt = $this->db_connection->prepare($option['query'])) {
+
+                $fields = isset($option['fields']) ? $option['fields'] : array();
+                $num_of_fields = sizeof($fields);
+                $types = str_repeat("s", $num_of_fields);
+
+                $bind = array();
+
+                if($num_of_fields > 0) {
+
+                    foreach($fields as $key => $value ) {
+                        $bind[$key] = &$fields[$key];
+                    }
+
+                    array_unshift($bind, $types);
+                    call_user_func_array(array($stmt, 'bind_param'), $bind);
+
+                }
+
+                /* execute query */
+                $stmt->execute();
+                $feedback = ($stmt->affected_rows > 0) ? true : false;
+                $stmt->close();
+
+                return $feedback;
+
+            }
+
+            return null;
+
+        }
 	/**
 	 * gets a query and returns number of rows
 	 * @access public
