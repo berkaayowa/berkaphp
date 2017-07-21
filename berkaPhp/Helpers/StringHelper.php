@@ -13,6 +13,11 @@ class Str {
        return !empty($value) ? substr($value, 0, $number).$x : '';
    }
 
+   public static function dbEscapeString($value) {
+       //mysql_real_escape_string($value)
+       return $value;
+   }
+
 }
 
 ?>

@@ -21,11 +21,10 @@
 
 		function __construct($value)
 		{
-			$this->db = new \berkaPhp\database\MySqlDatabase(
-				\berkaPhp\config\settings()
-			);
+			$this->db = new \berkaPhp\database\MySqlDatabase(\berkaPhp\config\settings());
 			$this->contains = null;
 			$this->table_name = $value;
+
 
 		}
 
@@ -35,17 +34,19 @@
 		* @return [array] array of data fetched from DB
 		* @author berkaPhp
 		*/
-		public function fetchAll($params = []) {
-			$this->query = QueryBuilder::select($this->table_name, $this->primary_key, $this->contains, $params, $this->keys);
-			//var_dump($this->query);exit();
-			$this->result = $this->db->fetch($this->query);
+		public function fetchAll($params = [], $join = array()) {
+
+			$this->query = QueryBuilder::select($this->table_name, $this->primary_key, $this->contains, $params, $this->keys, $join);
+			$this->result = $this->db->fetchWithPrepare($this->query);
+
 			return $this->result;
 		}
 
-		public function fetchWhere($params = []) {
-			$this->query = QueryBuilder::select_where($this->table_name, $this->primary_key, $this->contains, $params, $this->keys);
-			//var_dump($this->query);exit();
-			$this->result = $this->db->fetch($this->query);
+		public function fetchWhere($params = [], $join = array()) {
+
+			$this->query = QueryBuilder::select_where($this->table_name, $this->primary_key, $this->contains, $params, $this->keys, $join);
+			$this->result = $this->db->fetchWithPrepare($this->query);
+
 			return $this->result;
 		}
 
@@ -56,9 +57,11 @@
 		* @return [array] array of data fetched from DB
 		* @author berkaPhp
 		*/
-		public function fetchBy($tags) {
-			$this->query = QueryBuilder::select_by($this->table_name, $tags, $this->primary_key, $this->contains);
-			return $this->db->fetch($this->query);
+		public function fetchBy($params, $join = array()) {
+
+			$this->query = QueryBuilder::select_by($this->table_name, $this->primary_key, $this->contains, $params, $this->keys, $join);
+
+			return $this->db->fetchWithPrepare($this->query);
 		}
 
 		/* fetches all data from database
@@ -68,9 +71,11 @@
 		* @return [array] array of data fetched from DB
 		* @author berkaPhp
 		*/
-		public function fetchLike($params) {
-			$this->query = QueryBuilder::select_like($this->table_name, $this->primary_key, $this->contains, $params, $this->keys);
-			return $this->db->fetch($this->query);
+		public function fetchLike($params, $join = array()) {
+
+			$this->query = QueryBuilder::select_like($this->table_name, $this->primary_key, $this->contains, $params, $this->keys, $join);
+
+			return $this->db->fetchWithPrepare($this->query);
 		}
 
 		/* Add data into database
@@ -80,10 +85,11 @@
 		* @author berkaPhp
 		*/
 		public function add($data) {
+
 			$data_table = $this->filterData($data);
 			$this->query = QueryBuilder::add($this->table_name, $data_table);
-			//var_dump($this->query);exit();
-			return $this->db->update($this->query);
+
+			return $this->db->updateWithPrepare($this->query);
 		}
 
 		/* Update data in database
@@ -93,10 +99,12 @@
 		* @return [array] true or false
 		* @author berkaPhp
 		*/
-		public function update($data) {
+		public function update($data, $params = array()) {
+
 			$data_table = $this->filterData($data);
-			$this->query = QueryBuilder::update($this->table_name, $data_table, $this->primary_key);
-			return $this->db->update($this->query);
+			$this->query = QueryBuilder::update($this->table_name, $data_table, $this->primary_key, $params);
+
+			return $this->db->updateWithPrepare($this->query);
 		}
 
 		/* delete data from database
@@ -106,7 +114,9 @@
 		* @author berkaPhp
 		*/
 		public function delete($value) {
+
 			$this->query = QueryBuilder::delete($this->table_name, $value, $this->primary_key);
+
 			return $this->db->update($this->query);
 		}
 
@@ -128,6 +138,7 @@
 		* @author berkaPhp
 		*/
 		private function filterData($data) {
+
 			$table = $this->fields();
 			$validated_data = null;
 			foreach ($table as $field => $type) {
@@ -142,7 +153,9 @@
 			if ($validated_data == null) {
 				die('Error empty filter data does not match table fields');
 			}
+
 			return $validated_data;
+
 		}
 
 		/* get number of rows from the table
@@ -152,6 +165,15 @@
 		public function numOfRows() {
 			$this->result->num_rows;
 		}
+
+        public function _fetchBy($params, $join = array()) {
+            $this->query = QueryBuilder::select_by($this->table_name, $this->primary_key, $this->contains, $params, $this->keys, $join);
+            return $this->db->fetchWithPrepare($this->query);
+        }
+
+        public function countRows() {
+            $this->result->num_rows;
+        }
 
 	}
 ?>
