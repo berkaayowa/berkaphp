@@ -142,7 +142,7 @@ class QueryBuilder {
         array_push($table['fields'], $primary_key_value);
         $table['query'] = $query;
 
-		return $query;
+		return $table;
 	}
 
 	public static function delete($table_name,$value,$primary_key) {
@@ -242,9 +242,13 @@ class QueryBuilder {
 
             $object['query'] = $query;
 
+            return $object;
+
+        } else {
+            return $query;
         }
 
-        return $object;
+
     }
 
     private static function _join_table($table_name, $type = '', $query = '', $contains = array(), $keys = array()) {

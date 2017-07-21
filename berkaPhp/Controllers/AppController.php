@@ -127,6 +127,10 @@
             }
 
         }
+
+        protected function dbInstance($query) {
+            return \berkaPhp\database\table\GlobalModel::runQuery($query);
+        }
 	}
 
 ?>

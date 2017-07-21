@@ -21,11 +21,10 @@
 
 		function __construct($value)
 		{
-			$this->db = new \berkaPhp\database\MySqlDatabase(
-				\berkaPhp\config\settings()
-			);
+			$this->db = new \berkaPhp\database\MySqlDatabase(\berkaPhp\config\settings());
 			$this->contains = null;
 			$this->table_name = $value;
+
 
 		}
 
@@ -105,7 +104,7 @@
 			$data_table = $this->filterData($data);
 			$this->query = QueryBuilder::update($this->table_name, $data_table, $this->primary_key, $params);
 
-			return $this->db->update($this->query);
+			return $this->db->updateWithPrepare($this->query);
 		}
 
 		/* delete data from database
@@ -170,6 +169,10 @@
         public function _fetchBy($params, $join = array()) {
             $this->query = QueryBuilder::select_by($this->table_name, $this->primary_key, $this->contains, $params, $this->keys, $join);
             return $this->db->fetchWithPrepare($this->query);
+        }
+
+        public function countRows() {
+            $this->result->num_rows;
         }
 
 	}

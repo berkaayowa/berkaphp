@@ -49,7 +49,9 @@
 
             $data = null;
 
-            if ($stmt = $this->db_connection->prepare($option['query'])) {
+            $query = isset($option['query']) ? $option['query'] : $option;
+
+            if ($stmt = $this->db_connection->prepare($query)) {
 
                 $fields = isset($option['fields']) ? $option['fields'] : array();
                 $num_of_fields = sizeof($fields);
@@ -182,6 +184,10 @@
 			 }
 			 return null;
 		}
+
+        public function runQuery($query) {
+            return $this->db_connection->query($query);
+        }
 
 	}
 ?>
