@@ -4,18 +4,18 @@ use \berkaPhp\helpers;
 
 class AppView
 {
-	private $data;
-	public $variables;
+    private $data;
+    public $variables;
     private $flash;
     private $ajax_view;
     private $meta_tags;
 
-	function __construct($variables='') {
-		$this->variables = $variables;
-		$this->data = null;
+    function __construct($variables='') {
+        $this->variables = $variables;
+        $this->data = null;
         $this->ajax_view = false;
         $this->data['title'] = '';
-	}
+    }
 
     /* fetches all data from database
     * @access public
@@ -24,23 +24,23 @@ class AppView
     * @author berkaPhp
     */
 
-	public function render() {
+    public function render() {
 
         $debug = 'display_debug';
-		$trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
-		$view_to_render =  $trace[count($trace) - 1]['function'];
-		$called_controller =  $trace[count($trace) - 1]['class'];
+        $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
+        $view_to_render =  $trace[count($trace) - 1]['function'];
+        $called_controller =  $trace[count($trace) - 1]['class'];
 
         /* fetches all data from database
         * @access public
         * @param  [$query] array f parameters
         */
-		$called_controller = str_replace('Controller','',$called_controller);
-		$called_controller = str_replace('controller','',$called_controller);
-		$called_controller = str_replace('\\','',$called_controller);
-		$called_controller = trim($called_controller);
+        $called_controller = str_replace('Controller','',$called_controller);
+        $called_controller = str_replace('controller','',$called_controller);
+        $called_controller = str_replace('\\','',$called_controller);
+        $called_controller = trim($called_controller);
 
-		$template_data = $this->data;
+        $template_data = $this->data;
 
         /* fetches all data from database
         * @access public
@@ -85,7 +85,7 @@ class AppView
         * @access public
         * @param  [$query] array f parameters
         */
-		ob_start();
+        ob_start();
         require($_SERVER['DOCUMENT_ROOT'].'/Views/'.PREFIX.'/Layout/body.php');
         $template = ob_get_contents();
         ob_end_clean();
@@ -94,7 +94,7 @@ class AppView
         * @access public
         * @param  [$query] array f parameters
         */
-		$file = preg_match('/{.*[a-z0-9A-Z]}/', $template, $match) ;
+        $file = preg_match('/{.*[a-z0-9A-Z]}/', $template, $match) ;
 
         if ($file) {
             $match = $match[0];
@@ -154,9 +154,9 @@ class AppView
         * @param  [$query] array f parameters
         */
         require($_SERVER['DOCUMENT_ROOT'].'/Views/'.PREFIX.'/Layout/footer.php');
-	}
+    }
 
-    public function render_ajax($option = array()) {
+    public function renderAjax($option = array()) {
 
         $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
         $view_to_render =  $trace[count($trace) - 1]['function'];
@@ -186,13 +186,51 @@ class AppView
 
     }
 
+    public function renderGetContent($path = '') {
+
+        $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
+        $view_to_render =  $trace[count($trace) - 1]['function'];
+        $called_controller =  $trace[count($trace) - 1]['class'];
+
+        /* fetches all data from database
+        * @access public
+        * @param  [$query] array f parameters
+        */
+        $called_controller = str_replace('Controller','',$called_controller);
+        $called_controller = str_replace('controller','',$called_controller);
+        $called_controller = str_replace('\\','',$called_controller);
+        $called_controller = trim($called_controller);
+
+        $template_data = $this->data;
+        $meta_data = $this->meta_tags;
+
+        if(empty($path)) {
+            $path = $called_controller.'/'.$view_to_render;
+        }
+
+        if(sizeof($this->data) > 0){
+            extract($this->data);
+        }
+
+        /* fetches all data from database
+        * @access public
+        * @param  [$query] array f parameters
+        */
+        ob_start();
+        require($_SERVER['DOCUMENT_ROOT'].'/Views/'.PREFIX.'/'.$path.'.php');
+        $content = ob_get_contents();
+        ob_end_clean();
+        return $content;
+
+    }
+
     /* fetches all data from database
     * @access public
     * @param  [$query] array f parameters
     */
-	public function set($name,$data) {
+    public function set($name,$data) {
         $this->data[$name]= $data;
-	}
+    }
 
     /* fetches all data from database
     * @access public
@@ -210,49 +248,49 @@ class AppView
         $this->ajax_view = $is_it;
     }
 
-	public function get_content($path) {
-		$content ='';
-		ob_start();
-		require($path);
-		$content = ob_get_contents();
-		ob_end_clean();
+    public function get_content($path) {
+        $content ='';
+        ob_start();
+        require($path);
+        $content = ob_get_contents();
+        ob_end_clean();
 
-		return $content;
-	}
+        return $content;
+    }
 
-	public function run_render($action) {
-		$trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
-		$view_to_render =  $action;
-		$called_controller =  $trace[count($trace) - 1]['class'];
+    public function run_render($action) {
+        $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
+        $view_to_render =  $action;
+        $called_controller =  $trace[count($trace) - 1]['class'];
 
-		$called_controller = str_replace('Controller','',$called_controller);
-		$called_controller = str_replace('controller','',$called_controller);
-		$called_controller = str_replace('\\','',$called_controller);
-		$called_controller = trim($called_controller);
+        $called_controller = str_replace('Controller','',$called_controller);
+        $called_controller = str_replace('controller','',$called_controller);
+        $called_controller = str_replace('\\','',$called_controller);
+        $called_controller = trim($called_controller);
 
-		$title = $called_controller;
-		$template_data = $this->data;
+        $title = $called_controller;
+        $template_data = $this->data;
 
         self::user_header_template(PREFIX);
 
-		ob_start();
-		require($_SERVER['DOCUMENT_ROOT'].'/Views/'.PREFIX.'/'.$called_controller.'/'.$view_to_render.'.php');
-		$content = ob_get_contents();
-		ob_end_clean();
+        ob_start();
+        require($_SERVER['DOCUMENT_ROOT'].'/Views/'.PREFIX.'/'.$called_controller.'/'.$view_to_render.'.php');
+        $content = ob_get_contents();
+        ob_end_clean();
 
-		$template = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/Views/'.PREFIX.'/Layout/body.php');
+        $template = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/Views/'.PREFIX.'/Layout/body.php');
 
-		$file = preg_match('/{.*[a-z0-9A-Z]}/', $template, $match) ;
+        $file = preg_match('/{.*[a-z0-9A-Z]}/', $template, $match) ;
 
-		if ($file) {
-		    $match = $match[0];
-		    $new_template = str_replace(['{','}'], ['<?php echo $','?>'], $template);
-		    eval("?> $new_template <?php ");
-		    echo $new_template;
-		}
+        if ($file) {
+            $match = $match[0];
+            $new_template = str_replace(['{','}'], ['<?php echo $','?>'], $template);
+            eval("?> $new_template <?php ");
+            echo $new_template;
+        }
 
         require($_SERVER['DOCUMENT_ROOT'].'/Views/'.PREFIX.'/Layout/footer.php');
-	}
+    }
 
     /* fetches all data from database
     * @access public
