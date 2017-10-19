@@ -34,7 +34,6 @@ class QueryBuilder {
 
         $query = self::_build_select($table_name, $params);
         $query = self::_run_join($table_name, $query, $contains, $keys, $joinable);
-
 		return self::_insert_params($query, $params);
 
 	}
@@ -261,8 +260,13 @@ class QueryBuilder {
 
                     foreach ($keys as $table => $key) {
                         if ($foreign_table_name == $table) {
-                            $query.= ' '.$type.' '.$foreign_table_name.' ON '
-                                .$table_name.'.'.$key.'='.$foreign_table_name.'.'.$foreign_key;
+                            if($foreign_table_name[0] == '@'){
+                                $query .= ' ' . $type . ' ' . str_replace('@','',$foreign_table_name) . ' ON '
+                                     . $key . '=' . $foreign_key;
+                            }else {
+                                $query .= ' ' . $type . ' ' . $foreign_table_name . ' ON '
+                                    . $table_name . '.' . $key . '=' . $foreign_table_name . '.' . $foreign_key;
+                            }
                         }
                     }
 

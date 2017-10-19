@@ -14,7 +14,12 @@ class Routing
 		if($object != null) {
 
 			$controller = !empty($object['controller']) ? $object['controller'] : HOME;
-			$controller_calss = "\\controller\\".ucfirst($controller)."Controller";
+
+			if(strtolower($object['prefix']) != 'default') {
+                $controller_calss = "\\controller\\".strtolower($object['prefix']).'\\'.ucfirst($controller)."Controller";
+            } else {
+                $controller_calss = "\\controller\\".ucfirst($controller)."Controller";
+            }
 
 			if(isset($object['action']) || !empty($object['action'])) {
 				$action =$object['action'];
@@ -23,7 +28,6 @@ class Routing
 			}
 
 			$controller_path = 'Controllers/'.$object['prefix'].'/'.ucfirst($controller).'Controller.php';
-           // die($controller_path);
 			if (file_exists($controller_path)) {
 
 				if(strtolower($controller) == 'generators') {
@@ -33,7 +37,6 @@ class Routing
 				}
 
 				if (method_exists($controller_to_call, $action)) {
-
 					if(isset($object['params'])) {
 						$controller_to_call->$action($object);
 					} else {

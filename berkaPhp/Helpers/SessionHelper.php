@@ -16,9 +16,13 @@ class SessionHelper
 	* @author berkaPhp Ayowa
 	*/
 	public static function add($key, $value) {
-        self::startSession();
-		$_SESSION[$key] = $value;
-		return ($_SESSION[$key] == $value) ? true : false;
+		self::startSession();
+		
+		if(is_array($_SESSION[$key])) {
+            array_push($_SESSION[$key], $value);
+        } else {
+            $_SESSION[$key] = $value;
+        }
 	}
 
     /*
@@ -73,6 +77,7 @@ class SessionHelper
 	* @author berkaPhp Ayowa
 	*/
 	public static function kill() {
+		self::startSession();
 		session_destroy();
 	}
 

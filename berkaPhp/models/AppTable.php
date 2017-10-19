@@ -38,7 +38,6 @@
 
 			$this->query = QueryBuilder::select($this->table_name, $this->primary_key, $this->contains, $params, $this->keys, $join);
 			$this->result = $this->db->fetchWithPrepare($this->query);
-
 			return $this->result;
 		}
 

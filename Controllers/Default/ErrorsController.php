@@ -40,7 +40,6 @@
         function actionnotfound($params) {
 
             $details = $params['options'];
-           // $this->console($details);
             $this->appView->set("details", $details);
             $this->appView->render();
         }
