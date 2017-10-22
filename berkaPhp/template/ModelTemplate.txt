@@ -1,7 +1,7 @@
 <?php
 namespace models;
 
-/* Using the base AppTable to extend it and  inherit table functionality
+/* Using the base BerkaPhpModel to extend it and  inherit table functionality
 *  Default action in this controller
 *  @author berkaPhp
 */
