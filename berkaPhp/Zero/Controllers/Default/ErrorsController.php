@@ -1,8 +1,8 @@
 <?php
 	namespace controller;
-	use berkaPhp\Controller\AppController;
+	use berkaPhp\Controller\BerkaPhpController;
 
-	class ErrorsController extends AppController
+	class ErrorsController extends BerkaPhpController
 	{
 
 		function __construct() {

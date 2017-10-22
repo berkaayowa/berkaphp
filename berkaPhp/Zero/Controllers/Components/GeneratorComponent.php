@@ -1,8 +1,8 @@
 <?php
 namespace controller\component;
-use berkaPhp\controller\component\AppComponent;
+use berkaPhp\controller\component\BerkaPhpComponent;
 
-class GeneratorComponent extends AppComponent
+class GeneratorComponent extends BerkaPhpComponent
 {
 	private $class_name;
 	private $controller_path;

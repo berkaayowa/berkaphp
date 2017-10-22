@@ -1,7 +1,7 @@
 <?php
-namespace berkaPhp\config\router;
+namespace berkaPhp\router\dispacher;
 
-class AppRouter
+class BerkaPhpDispacher
 {
 	protected $method;
 	protected $params;

@@ -3,10 +3,10 @@ namespace berkaPhp\database;
 use \berkaPhp\helpers\Str;
 
 class QueryBuilder {
+
 	private $table_name;
 	public static $select;
 	public static $from;
-
 
 	function __construct($table_name)
 	{

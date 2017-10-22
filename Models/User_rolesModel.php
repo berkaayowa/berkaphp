@@ -8,7 +8,7 @@ namespace models;
 
 use berkaPhp\model\BerkaPhpModel;
 
-class {model_name}Model extends BerkaPhpModel
+class User_rolesModel extends BerkaPhpModel
 {
 	function __construct() {
 
@@ -17,13 +17,26 @@ class {model_name}Model extends BerkaPhpModel
         *  @author berkaPhp
         */
 
-		parent::__construct('{table_name}');
+		parent::__construct('user_roles');
 
 		/* Initializing the primary key for this  table
         *  @author berkaPhp
         */
 
-		$this->primary_key = '{primary_key}';
-	}
+		$this->primary_key = 'role_id';
+    }
+    
+    function afterFetch($data) {
+        var_dump($data);
+        return $data;
+    }
+
+    function beforeUpdate($data) {
+        var_dump($data);
+        return $data;
+    }
+
+    
+
 }
 ?>

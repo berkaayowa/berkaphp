@@ -1,8 +1,8 @@
 <?php
 	namespace controller;
-	use berkaPhp\Controller\AppController;
+	use berkaPhp\Controller\BerkaPhpController;
 
-	class InstallerController extends AppController
+	class InstallerController extends BerkaPhpController
 	{
         private $installer;
 

@@ -1,9 +1,9 @@
 <?php
 	namespace controller;
-	use berkaPhp\Controller\AppController;
+	use berkaPhp\Controller\BerkaPhpController;
 	use berkaPhp\template\AppView;
 
-	class GeneratorsController extends AppController
+	class GeneratorsController extends BerkaPhpController
 	{
 
 		private $genarator;

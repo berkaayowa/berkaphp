@@ -1,15 +1,13 @@
 <?php
-	namespace berkaPhp\config;
-	use berkaPhp\config\router\Routing;
+	namespace berkaPhp\router;
+	use berkaPhp\router\dispacher\Route;
+	use berkaPhp\router\dispacher\BerkaPhpDispacher;
 
-	$app = new \berkaPhp\config\router\AppRouter($_SERVER);
+	$app = new BerkaPhpDispacher($_SERVER);
 
 	$app->route('/', function($route){
-
         define('PREFIX', $route['prefix'] , true);
-
-		Routing::to($route);
-
+		Route::to($route);
 	});
 
 

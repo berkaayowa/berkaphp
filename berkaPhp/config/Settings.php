@@ -4,10 +4,10 @@
     define('DEBUG', true, true);
 
     //Database settings
-    define('SERVER', '', true);
-    define('DB', '', true);
+    define('SERVER', 'localhost', true);
+    define('DB', 'softclicktech', true);
     define('DB_USERNAME', 'root', true);
-    define('DB_PW', $_SERVER['SERVER_NAME']=='www.yourlivesite.com' ? '' : '', true);
+    define('DB_PW', $_SERVER['SERVER_NAME']=='www.yourlivesite.com' ? '' : '1234', true);
 
     //default controller
     define('HOME', 'pages' , true);

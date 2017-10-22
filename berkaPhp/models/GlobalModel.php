@@ -6,10 +6,9 @@
  * Time: 1:00 AM
  */
 
-namespace berkaPhp\database\table;
+namespace berkaPhp\model;
 use \berkaPhp\database\MySqlDatabase;
 use \berkaPhp\config;
-
 
 class GlobalModel {
 

@@ -1,7 +1,7 @@
 <?php
-namespace berkaPhp\config\router;
+namespace berkaPhp\router\dispacher;
 
-class Routing
+class Route
 {
 
 	function __construct()

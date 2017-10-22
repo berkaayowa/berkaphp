@@ -1,14 +1,14 @@
 <?php
-	namespace berkaPhp\database\table;
+	namespace berkaPhp\model;
 	use berkaPhp\database\QueryBuilder;
 
-	interface Table {
+	interface Model {
 		public function fetchAll();
 		public function fetchBy($tags);
 		public function update($data);
 	}
 
-	class AppTable implements Table
+	class BerkaPhpModel implements Model
 	{
 		protected $table_name;
 		protected $primary_key;
@@ -24,8 +24,6 @@
 			$this->db = new \berkaPhp\database\MySqlDatabase(\berkaPhp\config\settings());
 			$this->contains = null;
 			$this->table_name = $value;
-
-
 		}
 
 		/* fetches all data from database
@@ -35,10 +33,11 @@
 		* @author berkaPhp
 		*/
 		public function fetchAll($params = [], $join = array()) {
-
+			// $this->beforeFetch($params, $join);
 			$this->query = QueryBuilder::select($this->table_name, $this->primary_key, $this->contains, $params, $this->keys, $join);
 			$this->result = $this->db->fetchWithPrepare($this->query);
-			return $this->result;
+			
+			return $this->afterFetch($this->result);
 		}
 
 		public function fetchWhere($params = [], $join = array()) {
@@ -46,7 +45,7 @@
 			$this->query = QueryBuilder::select_where($this->table_name, $this->primary_key, $this->contains, $params, $this->keys, $join);
 			$this->result = $this->db->fetchWithPrepare($this->query);
 
-			return $this->result;
+			return $this->afterFetch($this->result);
 		}
 
 		/* fetches all data from database
@@ -59,8 +58,8 @@
 		public function fetchBy($params, $join = array()) {
 
 			$this->query = QueryBuilder::select_by($this->table_name, $this->primary_key, $this->contains, $params, $this->keys, $join);
-
-			return $this->db->fetchWithPrepare($this->query);
+			$this->result = $this->db->fetchWithPrepare($this->query);
+			return $this->afterFetch($this->result);
 		}
 
 		/* fetches all data from database
@@ -73,8 +72,8 @@
 		public function fetchLike($params, $join = array()) {
 
 			$this->query = QueryBuilder::select_like($this->table_name, $this->primary_key, $this->contains, $params, $this->keys, $join);
-
-			return $this->db->fetchWithPrepare($this->query);
+			$this->result = $this->db->fetchWithPrepare($this->query);
+			return $this->afterFetch($this->result);
 		}
 
 		/* Add data into database
@@ -85,10 +84,11 @@
 		*/
 		public function add($data) {
 
-			$data_table = $this->filterData($data);
+			$data_table = $this->beforeSave($this->filterData($data));
 			$this->query = QueryBuilder::add($this->table_name, $data_table);
+			$result = $this->afterSave($this->db->updateWithPrepare($this->query));
 
-			return $this->db->updateWithPrepare($this->query);
+			return $result;
 		}
 
 		/* Update data in database
@@ -100,10 +100,11 @@
 		*/
 		public function update($data, $params = array()) {
 
-			$data_table = $this->filterData($data);
+			$data_table = $this->beforeUpdate($this->filterData($data));
 			$this->query = QueryBuilder::update($this->table_name, $data_table, $this->primary_key, $params);
+			$result = $this->afterUpdate($this->db->updateWithPrepare($this->query));
 
-			return $this->db->updateWithPrepare($this->query);
+			return $result;
 		}
 
 		/* delete data from database
@@ -114,9 +115,10 @@
 		*/
 		public function delete($value) {
 
+			$value = $this->beforeDelete($value);
 			$this->query = QueryBuilder::delete($this->table_name, $value, $this->primary_key);
 
-			return $this->db->update($this->query);
+			return $this->afterDelete($this->db->update($this->query));
 		}
 
 		/* fetches all table fields
@@ -166,13 +168,45 @@
 		}
 
         public function _fetchBy($params, $join = array()) {
-            $this->query = QueryBuilder::select_by($this->table_name, $this->primary_key, $this->contains, $params, $this->keys, $join);
+			$this->query = QueryBuilder::select_by($this->table_name, $this->primary_key, $this->contains, $params, $this->keys, $join);
             return $this->db->fetchWithPrepare($this->query);
         }
 
         public function countRows() {
             $this->result->num_rows;
-        }
+		}
+		
+		protected function beforeSave($data) {
+			return $data;
+		}
+
+		protected function afterSave($result) {
+			return $result;
+		}
+
+		protected function beforeFetch($data, $joinOptions) {
+			return $data;
+		}
+
+		protected function afterFetch($data) {
+			return $data;
+		}
+
+		protected function beforeUpdate($data) {
+			return $data;
+		}
+
+		protected function afterUpdate($data) {
+			return $data;
+		}
+
+		protected function beforeDelete($data) {
+			return $data;
+		}
+
+		protected function afterDelete($data) {
+			return $data;
+		}
 
 	}
 ?>

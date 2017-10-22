@@ -2,14 +2,14 @@
 	namespace controller;
 	use berkaPhp\Controller\BerkaPhpController;
 
-	class {controller_name}Controller extends BerkaPhpController
+	class User_rolesController extends BerkaPhpController
 	{
 
 		function __construct() {
 			parent::__construct();
 		}
 
-        /* Display all {names} from database
+        /* Display all user_roles from database
         *  Default action in this controller
         *  @author berkaPhp
         */
@@ -17,12 +17,12 @@
 		function index() {
 
 			$result = $this->model->fetchAll();
-			$this->appView->set('{names}', $result);
+			$this->appView->set('user_roles', $result);
 			$this->appView->render();
 
 		}
 
-        /* Add {name} into database
+        /* Add user_role into database
         *  Getting data from Post
         *  @author berkaPhp
         */
@@ -31,16 +31,16 @@
 
 			if($this->is_set($this->getPost())) {
 				if ($this->model->add($this->getPost())) {
-					$this->appView->set('message', ['success'=>'Saved {name}']);
+					$this->appView->set('message', ['success'=>'Saved user_role']);
 				} else {
-					$this->appView->set('message', ['error'=>' Could not Saved {name} !']);
+					$this->appView->set('message', ['error'=>' Could not Saved user_role !']);
 				}
 			}
 
 			$this->appView->render();
 		}
 
-        /* Edit {name} and update the table
+        /* Edit user_role and update the table
         *  Getting data from Post
         *  Id from params array
         *  @author berkaPhp
@@ -52,19 +52,19 @@
 
 			if($this->is_set($this->getPost())) {
 				if ($this->model->update($this->getPost())) {
-					$this->appView->set('message', ['success'=>'Edited {name}']);
+					$this->appView->set('message', ['success'=>'Edited user_role']);
 				} else {
-					$this->appView->set('message', ['error'=>' Could not Edit {name} !']);
+					$this->appView->set('message', ['error'=>' Could not Edit user_role !']);
 				}
 			}
 
-			$result = $this->model->fetchBy(['fields'=>['{primary_key}'=>$id]]);
-			$this->appView->set('{name}',$result);
+			$result = $this->model->fetchBy(['fields'=>['role_id'=>$id]]);
+			$this->appView->set('user_role',$result);
 			$this->appView->render();
 		}
 
-        /* Delete {name} from the table
-        *  Getting {name} Id from params array
+        /* Delete user_role from the table
+        *  Getting user_role Id from params array
         *  @author berkaPhp
         */
 
@@ -73,17 +73,17 @@
 			$id = $params['params'];
 
 			if($this->model->delete($id)) {
-				$this->appView->set('message', ['success'=>'Deleted {name}']);
+				$this->appView->set('message', ['success'=>'Deleted user_role']);
 			} else {
-				$this->appView->set('message', ['error'=>' Could not Delete {name} !']);
+				$this->appView->set('message', ['error'=>' Could not Delete user_role !']);
 			}
 
 			$this->index();
 
 		}
 
-        /* Viewing {name} from the table
-        *  Getting {name} Id from params array
+        /* Viewing user_role from the table
+        *  Getting user_role Id from params array
         *  @author berkaPhp
         */
 
@@ -91,8 +91,8 @@
 
 			$id = $params['params'];
 
-			$result = $this->model->fetchBy(['fields'=>['{primary_key}'=>$id]]);
-			$this->appView->set('{name}',$result);
+			$result = $this->model->fetchBy(['fields'=>['role_id'=>$id]]);
+			$this->appView->set('user_role',$result);
 			$this->appView->render();
 		}
 
