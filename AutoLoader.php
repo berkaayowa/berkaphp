@@ -13,8 +13,7 @@ $paths = array(
 
     "controllers"=> [
         "berkaPhp/Controllers/",
-        "Controllers/Default/",
-        "berkaPhp/Zero/Controllers/"
+        "Controllers/Default/"
     ],
 
     "components"=> [
