@@ -6,7 +6,10 @@
 	$app = new BerkaPhpDispacher($_SERVER);
 
 	$app->route('/', function($route){
-        define('PREFIX', $route['prefix'] , true);
+		Route::to($route);
+	});
+
+	$app->route('/test', function($route){
 		Route::to($route);
 	});
 

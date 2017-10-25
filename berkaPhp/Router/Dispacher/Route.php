@@ -13,6 +13,8 @@ class Route
 
 		if($object != null) {
 
+			define('PREFIX', $object['prefix'] , true);
+			
 			$controller = !empty($object['controller']) ? $object['controller'] : HOME;
 
 			if(strtolower($object['prefix']) != 'default') {
@@ -56,6 +58,8 @@ class Route
                     '/errors/controllernotfound/?path='.$controller_path.'&name='.$controller
                 );
 			}
+
+			exit();
 
 		} else {
 			die('Error:: Null Route object passed for Routing');

@@ -15,48 +15,29 @@ class BerkaPhpDispacher
 
 	public function route($path, $call_back) {
 
-		$route_object = $this->filter_url('customer');
+		$route_object = $this->filterUrl();
 
-		if ($this->get_method() == 'GET') {
-			if (isset($_GET)) {
-				$route_object["options"] = $_GET;
-				if (isset($route_object["params"])) {
-					$params_ = explode("?", $route_object["params"][0]);
-					$route_object["params"] = array_shift($params_);
-				}
-			}
-
-			if($route_object["controller"] == trim(str_replace("/","",$path))) {
-				if (is_callable($call_back)) {
-					call_user_func($call_back, $route_object);
-				} 
-			} else {
-				if (is_callable($call_back)) {
-					call_user_func($call_back, $route_object);
-				}
-			}
-		} elseif ($this->get_method() == 'POST') {
-			if($route_object["controller"] == trim(str_replace("/","",$path))) {
-				if (is_callable($call_back)) {
-					call_user_func($call_back, $route_object);
-				} 
-			} else {
-				if (is_callable($call_back)) {
-					call_user_func($call_back, $route_object);
-				}
+		if (isset($_GET)) {
+			$route_object["options"] = $_GET;
+			if (isset($route_object["params"])) {
+				$params_ = explode("?", $route_object["params"][0]);
+				$route_object["params"] = array_shift($params_);
 			}
 		}
 
-		else {
-			die('Error::method is not defined yet');
+		if($route_object["controller"] == trim(str_replace("/","",$path))) {
+			if (is_callable($call_back)) {
+				call_user_func($call_back, $route_object);
+			} 
 		}
+
 	}
 
-	private function get_method() {
+	private function getMethod() {
 		return $this->server_object['REQUEST_METHOD'];
 	}
 
-	public function filter_url() {
+	public function filterUrl() {
 
         $quested = "";
 
