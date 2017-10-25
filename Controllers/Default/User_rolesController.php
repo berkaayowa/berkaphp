@@ -17,8 +17,8 @@
 		function index() {
 
 			$result = $this->model->fetchAll();
-			$this->appView->set('user_roles', $result);
-			$this->appView->render();
+			$this->view->set('user_roles', $result);
+			$this->view->render();
 
 		}
 
@@ -31,13 +31,13 @@
 
 			if($this->is_set($this->getPost())) {
 				if ($this->model->add($this->getPost())) {
-					$this->appView->set('message', ['success'=>'Saved user_role']);
+					$this->view->set('message', ['success'=>'Saved user_role']);
 				} else {
-					$this->appView->set('message', ['error'=>' Could not Saved user_role !']);
+					$this->view->set('message', ['error'=>' Could not Saved user_role !']);
 				}
 			}
 
-			$this->appView->render();
+			$this->view->render();
 		}
 
         /* Edit user_role and update the table
@@ -52,15 +52,15 @@
 
 			if($this->is_set($this->getPost())) {
 				if ($this->model->update($this->getPost())) {
-					$this->appView->set('message', ['success'=>'Edited user_role']);
+					$this->view->set('message', ['success'=>'Edited user_role']);
 				} else {
-					$this->appView->set('message', ['error'=>' Could not Edit user_role !']);
+					$this->view->set('message', ['error'=>' Could not Edit user_role !']);
 				}
 			}
 
 			$result = $this->model->fetchBy(['fields'=>['role_id'=>$id]]);
-			$this->appView->set('user_role',$result);
-			$this->appView->render();
+			$this->view->set('user_role',$result);
+			$this->view->render();
 		}
 
         /* Delete user_role from the table
@@ -73,9 +73,9 @@
 			$id = $params['params'];
 
 			if($this->model->delete($id)) {
-				$this->appView->set('message', ['success'=>'Deleted user_role']);
+				$this->view->set('message', ['success'=>'Deleted user_role']);
 			} else {
-				$this->appView->set('message', ['error'=>' Could not Delete user_role !']);
+				$this->view->set('message', ['error'=>' Could not Delete user_role !']);
 			}
 
 			$this->index();
@@ -92,8 +92,8 @@
 			$id = $params['params'];
 
 			$result = $this->model->fetchBy(['fields'=>['role_id'=>$id]]);
-			$this->appView->set('user_role',$result);
-			$this->appView->render();
+			$this->view->set('user_role',$result);
+			$this->view->render();
 		}
 
 	}

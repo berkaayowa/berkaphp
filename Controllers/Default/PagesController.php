@@ -10,7 +10,7 @@
 		}
 
 		function index() {
-			$this->appView->render();
+			$this->view->render();
 		}
 	}
 

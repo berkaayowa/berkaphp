@@ -4,7 +4,7 @@
 	class BerkaPhpController
 	{
 		protected $model;
-		protected $appView;
+		protected $view;
 		protected $variable;
 		protected $session;
 		protected $cookie;
@@ -30,11 +30,11 @@
 			}
 
 			$this->variable = array();
-			$this->appView = new \berkaPhp\template\AppView();
+			$this->view = new \berkaPhp\template\AppView();
 		}
 
         protected function console($value) {
-            $this->appView->set('flash',$value);
+            $this->view->set('flash',$value);
         }
 		/* fetches all data from database
 		* @access public

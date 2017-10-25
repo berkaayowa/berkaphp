@@ -17,8 +17,8 @@
 		function index() {
 
 			$result = $this->model->fetchAll();
-			$this->appView->set('{names}', $result);
-			$this->appView->render();
+			$this->view->set('{names}', $result);
+			$this->view->render();
 
 		}
 
@@ -31,13 +31,13 @@
 
 			if($this->is_set($this->getPost())) {
 				if ($this->model->add($this->getPost())) {
-					$this->appView->set('message', ['success'=>'Saved {name}']);
+					$this->view->set('message', ['success'=>'Saved {name}']);
 				} else {
-					$this->appView->set('message', ['error'=>' Could not Saved {name} !']);
+					$this->view->set('message', ['error'=>' Could not Saved {name} !']);
 				}
 			}
 
-			$this->appView->render();
+			$this->view->render();
 		}
 
         /* Edit {name} and update the table
@@ -52,15 +52,15 @@
 
 			if($this->is_set($this->getPost())) {
 				if ($this->model->update($this->getPost())) {
-					$this->appView->set('message', ['success'=>'Edited {name}']);
+					$this->view->set('message', ['success'=>'Edited {name}']);
 				} else {
-					$this->appView->set('message', ['error'=>' Could not Edit {name} !']);
+					$this->view->set('message', ['error'=>' Could not Edit {name} !']);
 				}
 			}
 
 			$result = $this->model->fetchBy(['fields'=>['{primary_key}'=>$id]]);
-			$this->appView->set('{name}',$result);
-			$this->appView->render();
+			$this->view->set('{name}',$result);
+			$this->view->render();
 		}
 
         /* Delete {name} from the table
@@ -73,9 +73,9 @@
 			$id = $params['params'];
 
 			if($this->model->delete($id)) {
-				$this->appView->set('message', ['success'=>'Deleted {name}']);
+				$this->view->set('message', ['success'=>'Deleted {name}']);
 			} else {
-				$this->appView->set('message', ['error'=>' Could not Delete {name} !']);
+				$this->view->set('message', ['error'=>' Could not Delete {name} !']);
 			}
 
 			$this->index();
@@ -92,8 +92,8 @@
 			$id = $params['params'];
 
 			$result = $this->model->fetchBy(['fields'=>['{primary_key}'=>$id]]);
-			$this->appView->set('{name}',$result);
-			$this->appView->render();
+			$this->view->set('{name}',$result);
+			$this->view->render();
 		}
 
 	}

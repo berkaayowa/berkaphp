@@ -1,7 +1,7 @@
 <?php
 	namespace controller;
 	use berkaPhp\Controller\BerkaPhpController;
-	use berkaPhp\template\AppView;
+	use berkaPhp\template\view;
 
 	class GeneratorsController extends BerkaPhpController
 	{
@@ -15,7 +15,7 @@
 		}
 
 		function index() {
-			//$this->appView->render();
+			//$this->view->render();
 		}
 
 		function file() {
@@ -41,26 +41,26 @@
 
                         }
 
-                        $this->appView->set("message",['success'=>"Elements Created "]);
+                        $this->view->set("message",['success'=>"Elements Created "]);
 
 					} else {
 
 						if (isset($this->getPost()['model'])) {
 
 							if ($this->genarator->generateModel()) {
-                                $this->appView->set("message",['success'=>"Model Created "]);
+                                $this->view->set("message",['success'=>"Model Created "]);
 							}
 
 						} elseif (isset($this->getPost()['views'])) {
 
                             if ($this->genarator->generateViews()) {
-                                $this->appView->set("message",['success'=>"Views Created "]);
+                                $this->view->set("message",['success'=>"Views Created "]);
                             }
 
 						} elseif (isset($this->getPost()['controller'])) {
 
 							if ($this->genarator->generateController()) {
-                                $this->appView->set("message",['success'=>"Controller Created "]);
+                                $this->view->set("message",['success'=>"Controller Created "]);
 							}
 
 						}
@@ -68,11 +68,11 @@
 
 				} else {
 
-                    $this->appView->set("message",['error'=>" Select a table "]);
+                    $this->view->set("message",['error'=>" Select a table "]);
 				}
 			}
-			$this->appView->set('tables',$this->genarator->getTables());
-			$this->appView->render();
+			$this->view->set('tables',$this->genarator->getTables());
+			$this->view->render();
 		}
 
 		function get() {
