@@ -3,85 +3,27 @@
 	use berkaPhp\router\dispacher\Route;
 	use berkaPhp\router\dispacher\BerkaPhpDispacher;
 
-	$app = new BerkaPhpDispacher($_SERVER);
+	$router = new BerkaPhpDispacher($_SERVER);
 
-	$app->route('/', function($route){
+	$router->route('/test', function($route){
+		$route['controller'] = 'pages';
+		$route['action'] = 'index';
 		Route::to($route);
 	});
 
-	$app->route('/test', function($route){
+	$router->route('/berka', function($route){
+		$route['controller'] = 'installer';
+		$route['action'] = 'database';
+		Route::to($route);
+
+	});
+
+	$router->route('/', function($route){
 		Route::to($route);
 	});
+
+	$router->start();
 
 
 ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php
-// $app->get('/user', function($route){
-
-	// 	Routing::to([
-	// 		'controller'=>'Users',
-	// 		'action'=>'view',
-	// 		'params'=>[
-	// 			'id'=>$route['params'][0]
-	// 		]
-	// 	]);
-	// });
-
-	// $app->get('/users', function($route) {
-
-	// });
-
-	// $app->get('/products', function($route){
-
-	// });
-	// $app->get('/attractions', function($route){
-	// 	//var_dump($route);
-	// 	//echo "string";
-	// 	Routing::to(['controller'=>'Attractions', 'action'=>'index']);
-	// 	//var_dump($route);
-	// });
-// $app->get('/attractions', function($route){
-	// 	//var_dump($route);
-	// 	//echo "string";
-	// 	Routing::to(['controller'=>'Attractions', 'action'=>'index']);
-	// 	//var_dump($route);
-	// });
-
-	// $app->get('/cities', function($route){
-	// 	Routing::to(['controller'=>'Cities', 'action'=>'index']);
-	// });
-
-
-
-
-?>

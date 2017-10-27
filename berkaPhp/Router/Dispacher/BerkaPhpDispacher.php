@@ -7,30 +7,51 @@ class BerkaPhpDispacher
 	protected $params;
 	protected $controller;
 	private $server_object;
+	private $routes;
 
 	function __construct($server)
 	{
 		$this->server_object = $server;
+		$this->routes = array();
 	}
 
 	public function route($path, $call_back) {
-
+		$route = ['path'=> $path, 'callBack'=> $call_back];
+		array_push($this->routes, $route);
 		$route_object = $this->filterUrl();
+	}
 
+	public function start() {
+
+		$routeObject = $this->filterUrl();
+		$foundRequestPath = false;
+		$defaulRoute = null;
+		
 		if (isset($_GET)) {
-			$route_object["options"] = $_GET;
-			if (isset($route_object["params"])) {
-				$params_ = explode("?", $route_object["params"][0]);
-				$route_object["params"] = array_shift($params_);
+			$routeObject["options"] = $_GET;
+			if (isset($routeObject["params"])) {
+				$params_ = explode("?", $routeObject["params"][0]);
+				$routeObject["params"] = array_shift($params_);
 			}
 		}
 
-		if($route_object["controller"] == trim(str_replace("/","",$path))) {
-			if (is_callable($call_back)) {
-				call_user_func($call_back, $route_object);
-			} 
-		}
+		if (sizeof($this->routes) > 0) {
+			foreach($this->routes as $route) {
+				if($routeObject["controller"] == trim(str_replace("/","",$route['path']))) {
+					if (is_callable($route['callBack'])) {
+						$foundRequestPath = true;
+						call_user_func($route['callBack'], $routeObject);
+						break;
+					}
+				} else if($route['path'] == '/') {
+					$defaulRoute = $route;
+				}
+			}
 
+			if (!$foundRequestPath && $defaulRoute != null) {
+				call_user_func($defaulRoute['callBack'], $routeObject);
+			}
+		}
 	}
 
 	private function getMethod() {
