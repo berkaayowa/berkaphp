@@ -1,9 +1,11 @@
 <?php
 	namespace berkaPhp\database;
+	use berkaPhp\errors\Error;
 
 	class MySqlDatabase
 	{
 		private $db_connection;
+
 		function __construct($db_details) {
 
             if(!IS_DB_CONNECTED){
@@ -34,56 +36,67 @@
 	 */
 		public function fetch($query) {
 
-			$data = array();
-			$result = $this->db_connection->query($query);
-			if ($result->num_rows > 0) {
-				while($row= $result->fetch_assoc()) {
-						$data[] = $row;
-				}
-			}
+			try {
 
-			return $data;
+				$data = array();
+				$result = $this->db_connection->query($query);
+				if ($result->num_rows > 0) {
+					while($row= $result->fetch_assoc()) {
+							$data[] = $row;
+					}
+				}
+				return $data;
+
+			} catch (\Exception $eror) {
+				Error::log($eror);
+				return [];
+			}
+			
 		}
 
         public function fetchWithPrepare($option) {
 
             $data = null;
 
-            $query = isset($option['query']) ? $option['query'] : $option;
+			$query = isset($option['query']) ? $option['query'] : $option;
+			
+			try {
 
-            if ($stmt = $this->db_connection->prepare($query)) {
+				if ($stmt = $this->db_connection->prepare($query)) {
 
-                $fields = isset($option['fields']) ? $option['fields'] : array();
-                $num_of_fields = sizeof($fields);
-                $types = str_repeat("s", $num_of_fields);
+					$fields = isset($option['fields']) ? $option['fields'] : array();
+					$num_of_fields = sizeof($fields);
+					$types = str_repeat("s", $num_of_fields);
+					$bind = array();
 
-                $bind = array();
+					if($num_of_fields > 0) {
 
-                if($num_of_fields > 0) {
+						foreach($fields as $key => $value ) {
+							$bind[$key] = &$fields[$key];
+						}
 
-                    foreach($fields as $key => $value ) {
-                        $bind[$key] = &$fields[$key];
-                    }
+						array_unshift($bind, $types);
+						call_user_func_array(array($stmt, 'bind_param'), $bind);
 
-                    array_unshift($bind, $types);
-                    call_user_func_array(array($stmt, 'bind_param'), $bind);
+					}
 
-                }
+					/* execute query */
+					if($stmt->execute()) {
+						$result = $stmt->get_result();
+						if ($result->num_rows > 0) {
+							while($row= $result->fetch_assoc()) {
+								$data[] = $row;
+							}
+						}
+					}
 
-                /* execute query */
-                if($stmt->execute()) {
-                    $result = $stmt->get_result();
-                    if ($result->num_rows > 0) {
-                        while($row= $result->fetch_assoc()) {
-                            $data[] = $row;
-                        }
-                    }
-                }
-
-                $stmt->close();
-
-                return $data;
-            }
+					$stmt->close();
+					return $data;
+				}
+			} catch (\Exception $eror) {
+				Error::log($eror);
+				return [];
+			}
 
         }
 
@@ -97,43 +110,53 @@
 	 * @author berkaPhp
 	 */
 		public function update($query) {
-			if (!$this->db_connection->query($query)) {
+			try {
+				if (!$this->db_connection->query($query)) {
+					return false;
+				}
+				return true;
+			} catch (\Exception $eror) {
+				Error::log($eror);
 				return false;
 			}
-			return true;
 		}
 
         public function updateWithPrepare($option) {
 
-            if ($stmt = $this->db_connection->prepare($option['query'])) {
+			try {
 
-                $fields = isset($option['fields']) ? $option['fields'] : array();
-                $num_of_fields = sizeof($fields);
-                $types = str_repeat("s", $num_of_fields);
+				if ($stmt = $this->db_connection->prepare($option['query'])) {
 
-                $bind = array();
+					$fields = isset($option['fields']) ? $option['fields'] : array();
+					$num_of_fields = sizeof($fields);
+					$types = str_repeat("s", $num_of_fields);
+					$bind = array();
 
-                if($num_of_fields > 0) {
+					if($num_of_fields > 0) {
 
-                    foreach($fields as $key => $value ) {
-                        $bind[$key] = &$fields[$key];
-                    }
+						foreach($fields as $key => $value ) {
+							$bind[$key] = &$fields[$key];
+						}
 
-                    array_unshift($bind, $types);
-                    call_user_func_array(array($stmt, 'bind_param'), $bind);
+						array_unshift($bind, $types);
+						call_user_func_array(array($stmt, 'bind_param'), $bind);
 
-                }
+					}
 
-                /* execute query */
-                $stmt->execute();
-                $feedback = ($stmt->affected_rows > 0) ? true : false;
-                $stmt->close();
+					/* execute query */
+					$stmt->execute();
+					$feedback = ($stmt->affected_rows > 0) ? true : false;
+					$stmt->close();
+					return $feedback;
 
-                return $feedback;
+				}
 
-            }
+				return false;
 
-            return null;
+			} catch (\Exception $eror) {
+				Error::log($eror);
+				return false;
+			}
 
         }
 	/**
@@ -153,36 +176,59 @@
 		}
 
 		function getPrimaryKey($table) {
-			$result = $this->db_connection->query("SHOW INDEX FROM {$table} WHERE Key_name = 'PRIMARY'");
-			if ($result->num_rows > 0) {
-				$row= $result->fetch_assoc();
+			try {
+				
+				$result = $this->db_connection->query("SHOW INDEX FROM {$table} WHERE Key_name = 'PRIMARY'");
+				if ($result->num_rows > 0) {
+					$row= $result->fetch_assoc();
 
+				}
+				return $row['Column_name'];
+
+			} catch (\Exception $eror) {
+				Error::log($eror);
+				return null;
 			}
-			return $row['Column_name'];
 		}
 
 		function getTableFields($table_name) {
-			$fileds = $this->db_connection->query('DESCRIBE '.$table_name);
-			$table_fields='';
+			try {
 
-			foreach ($fileds as $field => $value) {
-				$table_fields[$value['Field']] = $value['Type'];
+				$fileds = $this->db_connection->query('DESCRIBE '.$table_name);
+				$table_fields='';
+
+				foreach ($fileds as $field => $value) {
+					$table_fields[$value['Field']] = $value['Type'];
+				}
+
+				return $table_fields;
+
+			} catch (\Exception $eror) {
+				Error::log($eror);
+				return [];
 			}
-
-			return $table_fields;
 		}
 
 		function getTables() {
-			 $result = $this->db_connection->query("SHOW TABLES");
-			 $tableList = '';
-			 if ($result->num_rows > 0) {
-			 	while($ccurrent_row = mysqli_fetch_array($result))
-				{
-					$tableList[] = $ccurrent_row[0];
+			try {
+
+				$result = $this->db_connection->query("SHOW TABLES");
+				$tableList = '';
+
+				if ($result->num_rows > 0) {
+					while($ccurrent_row = mysqli_fetch_array($result))
+					{
+						$tableList[] = $ccurrent_row[0];
+					}
+					return $tableList;
 				}
-			 	return $tableList;
-			 }
-			 return null;
+				return null;
+
+			} catch (\Exception $eror) {
+				Error::log($eror);
+				return null;
+			}
+
 		}
 
         public function runQuery($query) {

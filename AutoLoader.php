@@ -7,6 +7,10 @@ $paths = array(
         "BerkaPhp/Router/Dispacher/"
     ],
 
+    "errors"=> [
+        "BerkaPhp/Errors/"
+    ],
+
     "database"=> [
         "BerkaPhp/Database/"
     ],
