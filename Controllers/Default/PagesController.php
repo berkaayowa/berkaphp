@@ -1,8 +1,8 @@
 <?php
 	namespace controller;
-	use berkaPhp\Controller\AppController;
+	use berkaPhp\Controller\BerkaPhpController;
 
-	class PagesController extends AppController
+	class PagesController extends BerkaPhpController
 	{
 
 		function __construct() {
@@ -10,7 +10,7 @@
 		}
 
 		function index() {
-			$this->appView->render();
+			$this->view->render();
 		}
 	}
 

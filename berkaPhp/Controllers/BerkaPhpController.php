@@ -1,10 +1,10 @@
 <?php
 	namespace berkaPhp\Controller;
 
-	class AppController
+	class BerkaPhpController
 	{
 		protected $model;
-		protected $appView;
+		protected $view;
 		protected $variable;
 		protected $session;
 		protected $cookie;
@@ -18,11 +18,11 @@
 
 			if ($has_model) {
 
-                $path = 'Models/'.$current_model.'Table.php';
+                $path = 'Models/'.$current_model.'Model.php';
 
                 if($this->checkModelExist($path, $current_model)) {
 
-                    $model = "\\models\\".$current_model."Table";
+                    $model = "\\models\\".$current_model."Model";
                     $this->model = new $model();
 
                 }
@@ -30,11 +30,11 @@
 			}
 
 			$this->variable = array();
-			$this->appView = new \berkaPhp\template\AppView();
+			$this->view = new \berkaPhp\template\AppView();
 		}
 
         protected function console($value) {
-            $this->appView->set('flash',$value);
+            $this->view->set('flash',$value);
         }
 		/* fetches all data from database
 		* @access public
@@ -43,8 +43,7 @@
 		* @author berkaPhp
 		*/
 		protected function loadModel($model_name) {
-			//AppClassLoader::loadModelRequired($model_name);
-			$model = "models\\".$model_name."Table";
+			$model = "models\\".$model_name."Model";
 			return  new $model();
 		}
 		/* fetches all data from database
@@ -70,7 +69,6 @@
             $path = 'Controllers/Components/'.$component_name.'Component.php';
 
             if(\berkaPhp\helpers\FileStream::fileExist($path)) {
-                //require_once($path);
                 $component = "\\controller\\component\\".$component_name."Component";
                 return  new $component();
             } else {

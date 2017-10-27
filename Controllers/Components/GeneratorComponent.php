@@ -1,8 +1,8 @@
 <?php
 namespace controller\component;
-use berkaPhp\controller\component\AppComponent;
+use berkaPhp\controller\component\BerkaPhpComponent;
 
-class GeneratorComponent extends AppComponent
+class GeneratorComponent extends BerkaPhpComponent
 {
 	private $class_name;
 	private $controller_path;
@@ -17,7 +17,7 @@ class GeneratorComponent extends AppComponent
 		$this->setDescription('');
 
 		$this->controller_path = "Controllers/".\berkaPhp\helpers\Html::getCurrentPrefix(false)."/{name}Controller.php";
-		$this->model_path = "Models/{name}Table.php";
+		$this->model_path = "Models/{name}Model.php";
 		$this->view_path = "Views/".\berkaPhp\helpers\Html::getCurrentPrefix(false)."/{controller}/{view}.php";
 
 	}
@@ -36,7 +36,7 @@ class GeneratorComponent extends AppComponent
 	function generateModel() {
 
 		$model_with_path = str_replace('{name}', $this->class_name, $this->model_path);
-		return $this->writingFile($model_with_path,$this->getModelClass());
+		return $this->writingFile($model_with_path, $this->getModelClass());
 
 	}
 

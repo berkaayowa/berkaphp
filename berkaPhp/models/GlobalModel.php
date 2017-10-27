@@ -6,16 +6,19 @@
  * Time: 1:00 AM
  */
 
-namespace berkaPhp\database\table;
+namespace berkaPhp\model;
 use \berkaPhp\database\MySqlDatabase;
 use \berkaPhp\config;
-
 
 class GlobalModel {
 
     public static function runQuery($query) {
-        $db = new MySqlDatabase(config\settings());
-        return $db->runQuery($query);
+        $results = self::initDatabase()->runQuery(query);
+        return $results;
+    }
+
+    private static function initDatabase() {
+        return new MySqlDatabase(config\settings());
     }
 
 }

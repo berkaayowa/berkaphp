@@ -1,14 +1,14 @@
 <?php
 namespace models;
 
-/* Using the base AppTable to extend it and  inherit table functionality
+/* Using the base BerkaPhpModel to extend it and  inherit table functionality
 *  Default action in this controller
 *  @author berkaPhp
 */
 
-use berkaPhp\database\table\AppTable;
+use berkaPhp\model\BerkaPhpModel;
 
-class {model_name}Table extends AppTable
+class {model_name}Model extends BerkaPhpModel
 {
 	function __construct() {
 

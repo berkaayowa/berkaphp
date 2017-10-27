@@ -1,8 +1,8 @@
 <?php
 	namespace controller;
-	use berkaPhp\Controller\AppController;
+	use berkaPhp\Controller\BerkaPhpController;
 
-	class InstallerController extends AppController
+	class InstallerController extends BerkaPhpController
 	{
         private $installer;
 
@@ -12,7 +12,7 @@
 		}
 
 		function index() {
-			$this->appView->render();
+			$this->view->render();
 		}
 
         function database() {
@@ -20,18 +20,18 @@
             if($this->is_set($this->getPost())) {
 
                 if($this->installer->dbSettings($this->getPost())) {
-                    $this->appView->set("message",['success'=>"Database settings has been updated "]);
+                    $this->view->set("message",['success'=>"Database settings has been updated "]);
                 } else {
-                    $this->appView->set("message",['error'=>"Could not save settings , try again"]);
+                    $this->view->set("message",['error'=>"Could not save settings , try again"]);
                 }
 
             }
 
-            $this->appView->render();
+            $this->view->render();
         }
 
         function requirement() {
-            $this->appView->render();
+            $this->view->render();
         }
 
 	}

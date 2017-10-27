@@ -1,8 +1,8 @@
 <?php
 	namespace controller;
-	use berkaPhp\Controller\AppController;
+	use berkaPhp\Controller\BerkaPhpController;
 
-	class ErrorsController extends AppController
+	class ErrorsController extends BerkaPhpController
 	{
 
 		function __construct() {
@@ -10,54 +10,53 @@
 		}
 
 		function index($params) {
-			$this->appView->render();
+			$this->view->render();
 		}
 
         function unauthorized() {
-            $this->appView->render();
+            $this->view->render();
         }
 
         function no_found() {
-            $this->appView->render();
+            $this->view->render();
         }
 
         function templatenotfound($params) {
 
             $details = $params['options'];
-            $this->appView->set("details", $details);
-            $this->appView->render();
+            $this->view->set("details", $details);
+            $this->view->render();
 
         }
 
         function controllernotfound($params) {
 
             $details = $params['options'];
-            $this->appView->set("details", $details);
-            $this->appView->render();
+            $this->view->set("details", $details);
+            $this->view->render();
 
         }
 
         function actionnotfound($params) {
 
             $details = $params['options'];
-           // $this->console($details);
-            $this->appView->set("details", $details);
-            $this->appView->render();
+            $this->view->set("details", $details);
+            $this->view->render();
         }
 
         function modelnotfound($params) {
 
             $details = $params['options'];
-            $this->appView->set("details", $details);
-            $this->appView->render();
+            $this->view->set("details", $details);
+            $this->view->render();
         }
 
         function dbnotconnected() {
-            $this->appView->render();
+            $this->view->render();
         }
 
         function componentnotfound($params) {
-            $this->appView->render();
+            $this->view->render();
         }
 
 	}

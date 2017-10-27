@@ -4,34 +4,38 @@
 $paths = array(
 
     "route"=>[
-        "berkaPhp/config/Router/"
+        "BerkaPhp/Router/Dispacher/"
+    ],
+
+    "errors"=> [
+        "BerkaPhp/Errors/"
     ],
 
     "database"=> [
-        "berkaPhp/database/"
+        "BerkaPhp/Database/"
     ],
 
     "controllers"=> [
-        "berkaPhp/Controllers/",
+        "BerkaPhp/Controllers/",
         "Controllers/Default/"
     ],
 
     "components"=> [
-        "berkaPhp/Controllers/Components/",
+        "BerkaPhp/Controllers/Components/",
         "Controllers/Components/"
     ],
 
     "model"=> [
-        "berkaPhp/models/",
+        "BerkaPhp/Models/",
         "Models/"
     ],
 
     "views"=> [
-        "berkaPhp/template/"
+        "BerkaPhp/Template/"
     ],
 
     "helpers"=> [
-        "berkaPhp/Helpers/"
+        "BerkaPhp/Helpers/"
     ]
 );
 

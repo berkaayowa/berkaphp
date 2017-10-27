@@ -1,7 +1,7 @@
 <?php
-namespace berkaPhp\config\router;
+namespace berkaPhp\router\dispacher;
 
-class Routing
+class Route
 {
 
 	function __construct()
@@ -13,8 +13,15 @@ class Routing
 
 		if($object != null) {
 
+			define('PREFIX', $object['prefix'] , true);
+			
 			$controller = !empty($object['controller']) ? $object['controller'] : HOME;
-			$controller_calss = "\\controller\\".ucfirst($controller)."Controller";
+
+			if(strtolower($object['prefix']) != 'default') {
+                $controller_calss = "\\controller\\".strtolower($object['prefix']).'\\'.ucfirst($controller)."Controller";
+            } else {
+                $controller_calss = "\\controller\\".ucfirst($controller)."Controller";
+            }
 
 			if(isset($object['action']) || !empty($object['action'])) {
 				$action =$object['action'];
@@ -23,7 +30,6 @@ class Routing
 			}
 
 			$controller_path = 'Controllers/'.$object['prefix'].'/'.ucfirst($controller).'Controller.php';
-           // die($controller_path);
 			if (file_exists($controller_path)) {
 
 				if(strtolower($controller) == 'generators') {
@@ -33,7 +39,6 @@ class Routing
 				}
 
 				if (method_exists($controller_to_call, $action)) {
-
 					if(isset($object['params'])) {
 						$controller_to_call->$action($object);
 					} else {
@@ -53,6 +58,8 @@ class Routing
                     '/errors/controllernotfound/?path='.$controller_path.'&name='.$controller
                 );
 			}
+
+			exit();
 
 		} else {
 			die('Error:: Null Route object passed for Routing');

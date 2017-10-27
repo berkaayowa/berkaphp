@@ -7,7 +7,7 @@
 		function setDescription($value);
 	}
 
-	class AppComponent implements Component
+	class BerkaPhpComponent implements Component
 	{
 		protected $db;
 		private $name, $author, $description;
