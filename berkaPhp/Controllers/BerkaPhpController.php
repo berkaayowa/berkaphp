@@ -17,16 +17,11 @@
 			$current_model = $this->getCurrentModel(get_class($this));
 
 			if ($has_model) {
-
                 $path = 'Models/'.$current_model.'Model.php';
-
                 if($this->checkModelExist($path, $current_model)) {
-
                     $model = "\\models\\".$current_model."Model";
                     $this->model = new $model();
-
                 }
-
 			}
 
 			$this->variable = array();
@@ -127,7 +122,7 @@
         }
 
         protected function dbInstance($query) {
-            return \berkaPhp\database\table\GlobalModel::runQuery($query);
+            return \berkaPhp\model\GlobalModel::runQuery($query);
         }
 	}
 
