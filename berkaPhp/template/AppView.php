@@ -38,6 +38,7 @@ class AppView
         $called_controller = str_replace('Controller','',$called_controller);
         $called_controller = str_replace('controller','',$called_controller);
         $called_controller = str_replace('\\','',$called_controller);
+        $called_controller = str_replace(strtolower(PREFIX) ,'',$called_controller);
         $called_controller = trim($called_controller);
 
         $template_data = $this->data;

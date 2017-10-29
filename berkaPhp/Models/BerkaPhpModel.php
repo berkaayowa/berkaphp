@@ -101,6 +101,7 @@
 		public function update($data, $params = array()) {
 
 			$data_table = $this->beforeUpdate($this->filterData($data));
+            $data_table = $this->beforeSave($data_table);
 			$this->query = QueryBuilder::update($this->table_name, $data_table, $this->primary_key, $params);
 			$result = $this->afterUpdate($this->db->updateWithPrepare($this->query));
 
