@@ -18,7 +18,7 @@ class Route
 			$controller = !empty($object['controller']) ? $object['controller'] : HOME;
 
 			if(strtolower($object['prefix']) != 'default') {
-                $controller_calss = "\\controller\\".strtolower($object['prefix']).'\\'.ucfirst($controller)."Controller";
+                $controller_calss = "\\controller\\".strtolower($object['prefix'])."\\".ucfirst($controller)."Controller";
             } else {
                 $controller_calss = "\\controller\\".ucfirst($controller)."Controller";
             }
