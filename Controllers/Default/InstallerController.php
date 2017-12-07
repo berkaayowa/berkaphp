@@ -12,7 +12,7 @@
 		}
 
 		function index() {
-			$this->view->render();
+
 		}
 
         function database() {
@@ -27,11 +27,10 @@
 
             }
 
-            $this->view->render();
         }
 
         function requirement() {
-            $this->view->render();
+
         }
 
 	}

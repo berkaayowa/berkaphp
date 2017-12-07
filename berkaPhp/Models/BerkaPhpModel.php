@@ -33,16 +33,16 @@
 		* @author berkaPhp
 		*/
 		public function fetchAll($params = [], $join = array()) {
-			// $this->beforeFetch($params, $join);
-			$this->query = QueryBuilder::select($this->table_name, $this->primary_key, $this->contains, $params, $this->keys, $join);
+			$data = $this->beforeFetch(array('params'=>$params, 'join'=>$join));
+			$this->query = QueryBuilder::select($this->table_name, $this->primary_key, $this->contains, $data['params'], $this->keys, $data['join']);
 			$this->result = $this->db->fetchWithPrepare($this->query);
 			
 			return $this->afterFetch($this->result);
 		}
 
 		public function fetchWhere($params = [], $join = array()) {
-
-			$this->query = QueryBuilder::select_where($this->table_name, $this->primary_key, $this->contains, $params, $this->keys, $join);
+            $data = $this->beforeFetch(array('params'=>$params, 'join'=>$join));
+			$this->query = QueryBuilder::select_where($this->table_name, $this->primary_key, $this->contains, $data['params'], $this->keys, $data['join']);
 			$this->result = $this->db->fetchWithPrepare($this->query);
 
 			return $this->afterFetch($this->result);
@@ -56,8 +56,8 @@
 		* @author berkaPhp
 		*/
 		public function fetchBy($params, $join = array()) {
-
-			$this->query = QueryBuilder::select_by($this->table_name, $this->primary_key, $this->contains, $params, $this->keys, $join);
+            $data = $this->beforeFetch(array('params'=>$params, 'join'=>$join));
+			$this->query = QueryBuilder::select_by($this->table_name, $this->primary_key, $this->contains, $data['params'], $this->keys, $data['join']);
 			$this->result = $this->db->fetchWithPrepare($this->query);
 			return $this->afterFetch($this->result);
 		}
@@ -70,8 +70,8 @@
 		* @author berkaPhp
 		*/
 		public function fetchLike($params, $join = array()) {
-
-			$this->query = QueryBuilder::select_like($this->table_name, $this->primary_key, $this->contains, $params, $this->keys, $join);
+            $data = $this->beforeFetch(array('params'=>$params, 'join'=>$join));
+			$this->query = QueryBuilder::select_like($this->table_name, $this->primary_key, $this->contains, $data['params'], $this->keys, $data['join']);
 			$this->result = $this->db->fetchWithPrepare($this->query);
 			return $this->afterFetch($this->result);
 		}
@@ -185,7 +185,7 @@
 			return $result;
 		}
 
-		protected function beforeFetch($data, $joinOptions) {
+		protected function beforeFetch($data) {
 			return $data;
 		}
 

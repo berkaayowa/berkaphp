@@ -4,7 +4,7 @@
 	class BerkaPhpController
 	{
 		protected $model;
-		protected $view;
+		public $view;
 		protected $variable;
 		protected $session;
 		protected $cookie;
@@ -108,7 +108,8 @@
 		* @author berkaPhp
 		*/
 		protected function jsonFormat($values) {
-			return json_encode($values);
+            $this->view->autoRender = false;
+			return print(json_encode($values));
 		}
 
         private function checkModelExist($path, $name='') {

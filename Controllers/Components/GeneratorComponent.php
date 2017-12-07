@@ -9,6 +9,7 @@ class GeneratorComponent extends BerkaPhpComponent
 	private $model_path;
 	private $view_path;
 	private $primary_key;
+
 	function __construct()
 	{
 		parent::__construct();

@@ -9,6 +9,7 @@
             <p>
                 Click <a href="/installer/database">here </a>to the database configuration
             </p>
+
 		</div>		
 
         <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-lg-6 col-lg-offset-3 ">
@@ -16,4 +17,20 @@
             </div>
         </div
     </div>
+
+    <a class="btn btn-success btn-sm pull-left" href="#" <?= \berkaPhp\helpers\Model::openButton('test') ?>>Add New Tasks</a>
+
+<?php
+$modelData = \berkaPhp\helpers\Form::Create(array(
+    ['type'=>"text", 'id'=>"TaskName", 'placeholder'=>"Enter task name", 'caption'=>'Task'],
+    ['type'=>"text", 'id'=>"category", 'placeholder'=>"Select category", 'caption'=>'category'],
+    ['type'=>"textarea", 'id'=>"description", 'placeholder'=>"Enter description", 'caption'=>'Description']
+), array('text'=>'Save task'))
+?>
+
+<?= \berkaPhp\helpers\Model::Create(['id' => 'test', 'title'=>'New Task', 'content'=>$modelData], false) ?>
+
+
+
+
 </div>

@@ -72,7 +72,6 @@
 				}
 			}
 			$this->view->set('tables',$this->genarator->getTables());
-			$this->view->render();
 		}
 
 		function get() {

@@ -45,6 +45,10 @@ class Route
 						$controller_to_call->$action();
 					}
 
+                    if($controller_to_call->view->autoRender) {
+                        $controller_to_call->view->autoViewRender($controller_calss, $action);
+                    }
+
 				} else {
 
                     \berkaPhp\helpers\RedirectHelper::redirect(

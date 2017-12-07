@@ -10,22 +10,22 @@
 		}
 
 		function index($params) {
-			$this->view->render();
+
 		}
 
         function unauthorized() {
-            $this->view->render();
+
         }
 
         function no_found() {
-            $this->view->render();
+
         }
 
         function templatenotfound($params) {
 
             $details = $params['options'];
             $this->view->set("details", $details);
-            $this->view->render();
+
 
         }
 
@@ -33,7 +33,7 @@
 
             $details = $params['options'];
             $this->view->set("details", $details);
-            $this->view->render();
+
 
         }
 
@@ -41,22 +41,22 @@
 
             $details = $params['options'];
             $this->view->set("details", $details);
-            $this->view->render();
+
         }
 
         function modelnotfound($params) {
 
             $details = $params['options'];
             $this->view->set("details", $details);
-            $this->view->render();
+
         }
 
         function dbnotconnected() {
-            $this->view->render();
+
         }
 
         function componentnotfound($params) {
-            $this->view->render();
+
         }
 
 	}

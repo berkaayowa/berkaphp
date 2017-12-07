@@ -15,6 +15,10 @@ $paths = array(
         "BerkaPhp/Database/"
     ],
 
+    "baseViews"=> [
+        "BerkaPhp/Views/"
+    ],
+
     "controllers"=> [
         "BerkaPhp/Controllers/",
         "Controllers/Default/"
