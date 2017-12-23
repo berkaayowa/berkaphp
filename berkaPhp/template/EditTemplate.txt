@@ -1,8 +1,19 @@
-<?php $data = $template_data['{name}'][0]; ?>
+<br/>
+<br/>
+<br/>
 
-<h2 style="margin-top: 0;text-transform: capitalize;">Editing {name}</h2>
-<form method="POST" action="/{controller_name}/edit/<?=$data['{primary_key}']?>" enctype="multipart/form-data">
-	{elements}
-	<input type="hidden" name="{primary_key}" value="<?=$data['{primary_key}']?>">
-	<button type="submit" class="btn btn-primary">Save</button>
-</form>
+<?php $data = $template_data['{name}'][0]; ?>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h2>Editing {name}</h2></div>
+        <form method="POST" action="<?= berkaPhp\helpers\Html::action('/{controller_name}/edit/'.$data['{primary_key}'])?>" enctype="multipart/form-data">
+        <div class="panel-body">
+            	{elements}
+        </div>
+        <div class="panel-footer">
+            <input type="hidden" name="{primary_key}" value="<?=$data['{primary_key}']?>">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+        </form>
+    </div>
+</div

@@ -143,7 +143,7 @@ class Form {
     private static function getInpuWarpper($type) {
         $wrapper = '
     <div class="form-group row">
-        <label class="control-label col-sm-2" for="{id}">{caption}</label>
+        <label class="control-label brk-php-label col-sm-2" for="{id}">{caption}</label>
         <div class="col-sm-10">
             {input}
         </div>
@@ -153,7 +153,7 @@ class Form {
 
         $datetimer = '
     <div class="form-group row">
-        <label class="control-label col-sm-2" for="{id}">{caption}</label>
+        <label class="control-label brk-php-label col-sm-2" for="{id}">{caption}</label>
         <div class="col-sm-10">
             <div class="input-group date" data-date>
                 {input}

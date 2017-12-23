@@ -1,5 +1,16 @@
-<h2 style="margin-top: 0;text-transform: capitalize;">New {name}</h2>
-<form method="POST" action="/{controller_name}/add" enctype="multipart/form-data">
-{elements}
-    <button type="submit" class="btn btn-primary">Save</button>
-</form>
+<br/>
+<br/>
+<br/>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3>New {name}</h3></div>
+        <form method="POST" action="<?= berkaPhp\helpers\Html::action('/{controller_name}/add')?>" enctype="multipart/form-data">
+        <div class="panel-body">
+               {elements}
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+        </form>
+    </div>
+</div>
