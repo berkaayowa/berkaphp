@@ -1,6 +1,7 @@
 <?php
 namespace controller\component;
 use berkaPhp\controller\component\BerkaPhpComponent;
+use \berkaPhp\helpers;
 
 class GeneratorComponent extends BerkaPhpComponent
 {
@@ -67,20 +68,79 @@ class GeneratorComponent extends BerkaPhpComponent
 		$add_template = file_get_contents('berkaPhp/template/AddTemplate.txt');
 
 		$fields = $this->db->getTableFields(strtolower($this->class_name));
-		$inputs = '';
-
-		foreach ($fields as $field => $type) {
-			$inputs.="<label style='text-transform: capitalize;'>{$this->removeUnderscore($field)}</label><br>\n	";
-			$inputs.="<input type='text' class='form-control' name='".$field."' placeholder='".$this->removeUnderscore($field)."'><br>\n	";
-		}
 
 		$add_template = str_replace('{name}', $this->_($this->class_name), $add_template);
-		$add_template = str_replace('{elements}', $inputs, $add_template);
+		$add_template = str_replace('{elements}', $this->getCreateBestInput($fields), $add_template);
 		$add_template = str_replace('{controller_name}', strtolower($this->class_name), $add_template);
 
 		return $this->writingFile($add_view_path,$add_template);
 
 	}
+
+    private function getCreateBestInput($fields, $withValue = false) {
+        $inputs = '';
+
+        foreach ($fields as $field => $type) {
+            $input = '';
+            $info = self::getColumnInfo($type);
+            if($withValue) {
+                $input = helpers\Form::inputs([['type'=>$info['type'], 'id'=> $field,'value'=>'<?=$data["'.$field.'"]?>', 'placeholder'=>$this->removeUnderscore($field), 'caption'=>$this->removeUnderscore($field)]]);
+            } else {
+                $input = helpers\Form::inputs([['type'=>$info['type'], 'id'=> $field, 'placeholder'=>$this->removeUnderscore($field), 'caption'=>$this->removeUnderscore($field)]]);
+            }
+
+            $inputs.=$input;
+        }
+
+        return $inputs;
+    }
+
+    private static function  getColumnInfo($type){
+
+        $type = strtolower($type);
+        $info = array();
+
+        $start = strpos($type, "(");
+        $end = strpos($type, ")");
+
+        $length = 0;
+
+        if($start !== false && $end !== false) {
+
+            $length = substr($type, $start, $end);
+            $length = str_replace("(", "", $length);
+            $length = str_replace(")", "", $length);
+
+            $length = (int) $length;
+
+        }
+
+        $info['length'] = $length;
+
+        if(substr($type, 0, 3) == "int") {
+            $info['type'] = 'numeric';
+        } elseif (substr($type, 0, 7) == "varchar"){
+
+            if($length > 300) {
+                $info['type'] = 'textarea';
+            } else {
+                $info['type'] = 'text';
+            }
+
+        } elseif (strpos("blob", $type ) !== false ){
+            $info['type'] = 'file';
+        } elseif (substr($type, 0, 8) == 'datetime'){
+            $info['type'] = 'datetime';
+        } elseif (substr($type, 0, 4) == "time") {
+            $info['type'] = 'time';
+        } elseif (substr($type, 0, 4) == 'date' ){
+            $info['type'] = 'date';
+        }elseif (substr($type, 0, 3) == "bit" || substr($type, 0, 7) == "tinyint"){
+            $info['type'] = 'checkbox';
+        }
+
+        return $info;
+    }
 
 	private function edit() {
 		$this->primary_key = $this->db->getPrimaryKey(strtolower($this->class_name));
@@ -88,19 +148,10 @@ class GeneratorComponent extends BerkaPhpComponent
 		$edit_view_path = str_replace('{view}', 'edit', $edit_view_path);
 
 		$edit_template = file_get_contents('berkaPhp/template/EditTemplate.txt');
-
 		$fields = $this->db->getTableFields(strtolower($this->class_name));
-		$inputs = '';
-
-		foreach ($fields as $field => $type) {
-			if($field != $this->primary_key){
-				$inputs.="<label style='text-transform: capitalize;'>{$this->removeUnderscore($field)}</label><br>\n	";
-				$inputs.='<input type="text" class="form-control" name="'.$field.'" value="<?=$data["'.$field.'"]?>"><br>'."\n	";
-			}
-		}
 
 		$edit_template = str_replace('{name}', $this->_(strtolower($this->class_name)), $edit_template);
-		$edit_template = str_replace('{elements}', $inputs, $edit_template);
+		$edit_template = str_replace('{elements}', $this->getCreateBestInput($fields, true), $edit_template);
 		$edit_template = str_replace('{controller_name}', strtolower($this->class_name), $edit_template);
 		$edit_template = str_replace('{primary_key}',$this->primary_key, $edit_template);
 
@@ -115,17 +166,9 @@ class GeneratorComponent extends BerkaPhpComponent
 		$edit_template = file_get_contents('berkaPhp/template/ViewTemplate.txt');
 
 		$fields = $this->db->getTableFields(strtolower($this->class_name));
-		$inputs = '';
-
-		foreach ($fields as $field => $type) {
-			if($field != $this->primary_key){
-				$inputs.="<label style='text-transform: capitalize;'>{$this->removeUnderscore($field)}</label><br>\n	";
-				$inputs.='<input type="text" readonly class="form-control" name="'.$field.'" value="<?=$data["'.$field.'"]?>"><br>'."\n	";
-			}
-		}
 
 		$edit_template = str_replace('{name}', $this->_(strtolower($this->class_name)), $edit_template);
-		$edit_template = str_replace('{elements}', $inputs, $edit_template);
+		$edit_template = str_replace('{elements}', $this->getCreateBestInput($fields, true), $edit_template);
 		$edit_template = str_replace('{controller_name}', strtolower($this->class_name), $edit_template);
 		$edit_template = str_replace('{primary_key}',$this->primary_key, $edit_template);
 
@@ -206,10 +249,14 @@ class GeneratorComponent extends BerkaPhpComponent
 	}
 
 	private function removeUnderscore($value) {
-		if ($wrord = str_replace('_', ' ', $value)) {
-			return $wrord;
-		}
-		return $value;
+
+        $wrord = str_replace('_', ' ', $value);
+
+        $result = preg_replace("([A-Z])", " $0", $wrord);
+        $result = strtolower($result);
+        $result = ucfirst($result);
+//        $wrord = explode(' ', $result);
+		return $result;
 	}
 
 	function getTables() {

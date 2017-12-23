@@ -9,6 +9,7 @@
 			</tr>
 		</thead>
 		<tbody>
+		    <?php if(sizeof(${controller_name}) > 0): ?>
 			<?php foreach (${controller_name} as $data  ): ?>
 				<tr>
 					{body}
@@ -25,6 +26,7 @@
 					</td>
 				</tr>
 			<?php endforeach ?>
+			<?php endif ?>
 		</tbody>
 	</table>
 </div>

@@ -281,7 +281,17 @@ class AppView
                     <strong><?= $message ?></strong>
                 </div>
             <?php endif ?>
+            <div class="loading">
+                <div class="content-holder">
+                    <img src="/Views/Default/Assets/loader.gif" alt=""/>
+                    <div class="text-area">
+                        <span class="processing_msg"> </span><
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-success info-message hide">
 
+            </div>
             <?php
 
             /* fetches all data from database

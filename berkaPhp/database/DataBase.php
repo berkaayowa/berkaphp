@@ -143,9 +143,14 @@
 
 					}
 
+                   // var_dump($bind);
+
 					/* execute query */
 					$stmt->execute();
+                    //var_dump($stmt->execute());
 					$feedback = ($stmt->affected_rows > 0) ? true : false;
+
+                    //var_dump($feedback);
 					$stmt->close();
 					return $feedback;
 

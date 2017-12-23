@@ -13,7 +13,7 @@ use \berkaPhp\config;
 class GlobalModel {
 
     public static function runQuery($query) {
-        $results = self::initDatabase()->runQuery(query);
+        $results = self::initDatabase()->runQuery($query);
         return $results;
     }
 

@@ -5,7 +5,7 @@
 
     //Database settings
     define('SERVER', 'localhost', true);
-    define('DB', 'softclicktech', true);
+    define('DB', 'php', true);
     define('DB_USERNAME', 'root', true);
     define('DB_PW', $_SERVER['SERVER_NAME']=='www.yourlivesite.com' ? '' : '1234', true);
 

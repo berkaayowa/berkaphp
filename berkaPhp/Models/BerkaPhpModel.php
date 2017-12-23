@@ -143,15 +143,53 @@
 
 			$table = $this->fields();
 			$validated_data = null;
+
 			foreach ($table as $field => $type) {
-				if(array_key_exists($field,$data)) {
-					if(substr($type,0,3) == 'int') {
-						$validated_data[$field] = (int)$data[$field];
-					} else {
-						$validated_data[$field] = $data[$field];
-					}
-				}
+
+                $type = strtolower($type);
+
+                if(substr($type,0,4) == "blob" || strpos("blob", $type ) !== false) {
+
+                    if(array_key_exists($field, $_FILES)) {
+
+                        $file = \berkaPhp\helpers\FileStream::fetchFileBase64($field);
+
+                        if($file !== null) {
+                            $validated_data[$field] = $file['data'];
+                        }
+
+                    } elseif(array_key_exists($field,$data)) {
+                        $validated_data[$field] = trim($data[$field]) == "" ? null : $data[$field];
+                    }
+
+                } elseif(substr($type,0,7) == "tinyint" || strpos("tinyint", $type ) !== false) {
+
+                    if (array_key_exists($field, $data)) {
+
+                        if (strtolower($data[$field]) == 'on' || strtolower($data[$field]) == 'true') {
+                            $validated_data[$field] = 1;
+                        } else {
+                            $validated_data[$field] = 0;
+                        }
+
+                    } else {
+                        $validated_data[$field] = 0;
+                    }
+
+                } else {
+
+                    if(array_key_exists($field,$data)) {
+                        if(substr($type,0,3) == 'int') {
+                            $validated_data[$field] = (int)$data[$field];
+                        } else {
+                            $validated_data[$field] = trim($data[$field]) == "" ? null : $data[$field];
+                        }
+                    }
+
+                }
+
 			}
+
 			if ($validated_data == null) {
 				die('Error empty filter data does not match table fields');
 			}
@@ -159,6 +197,10 @@
 			return $validated_data;
 
 		}
+
+        private function filterDataFromDB() {
+
+        }
 
 		/* get number of rows from the table
 		* @return integer number of rows

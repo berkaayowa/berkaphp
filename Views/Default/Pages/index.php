@@ -25,7 +25,10 @@ $modelData = \berkaPhp\helpers\Form::Create(array(
     ['type'=>"text", 'id'=>"TaskName", 'placeholder'=>"Enter task name", 'caption'=>'Task'],
     ['type'=>"text", 'id'=>"category", 'placeholder'=>"Select category", 'caption'=>'category'],
     ['type'=>"textarea", 'id'=>"description", 'placeholder'=>"Enter description", 'caption'=>'Description']
-), array('text'=>'Save task'))
+), array('text'=>'Save task'));
+
+$input = \berkaPhp\helpers\Form::inputs([['type'=>"date", 'id'=>"TaskName", 'placeholder'=>"Enter task name", 'caption'=>'Task']]);
+echo $input;
 ?>
 
 <?= \berkaPhp\helpers\Model::Create(['id' => 'test', 'title'=>'New Task', 'content'=>$modelData], false) ?>
