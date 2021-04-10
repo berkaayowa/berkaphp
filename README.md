@@ -30,7 +30,7 @@ You can simply clone from this github or download it in zip format and unzip aft
 * [Copy of BerkaPhp](https://github.com/berkaayowa/berkaphp) - framework
 
 #### Documentation
-* [Click here](brkphp.softclicktech.co.za)
+* [Click here](http://brkphp.softclicktech.co.za)
 
 
 
