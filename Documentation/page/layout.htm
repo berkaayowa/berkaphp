@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://localhost:8090/framework/page/action -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <!-- Meta -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta name="robots" content="all">
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title></title>
+</head>
+<body style="">
+<div class="container">
+    <br>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid nav-bg">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">BerkaPhp Framework</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand active" href="../index.htm">
+                    BerkaPhp
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="setup.htm">How To Setup</a></li>
+                    <li><a href="controller.htm">Controller</a></li>
+                    <li><a href="action.htm">Action</a></li>
+                    <li><a href="view.htm">View</a></li>
+                    <li><a href="layout.htm">Layout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <h3 class="title label label-default">Layout</h3>
+
+<p class="box">
+    An application may contain common parts in the UI which remains the same throughout the application such as
+    the logo, header, left navigation bar, right bar or footer section. in other words it's  contains
+    these common UI parts, so that we don't have to write the same code in every page.
+    The layout view is same as the master page. <br>
+    layout  is stored in the <strong>Views/{{}}/Layout/layout.php</strong> directory.
+</p>
+<p class="box">
+    Below is an example of a basic controller class.
+    Note that the <strong>UsersController</strong> extends the base BerkaPhpController to inherit its functionality.
+</p>
+<br>
+<h3 class="sub_title">Example of a simple layout </h3>
+<div class="well code comment">
+    &lt;!DOCTYPE html&gt;<br>
+    &lt;html lang="en"&gt;<br>
+    &lt;head&gt;<br>
+    &lt;/head&gt;<br>
+    &lt;body&gt;<br>
+         {content}<br>
+    &lt;/body&gt;<br>
+    &lt;/html&gt;<br>
+</div>
+<p class="box">
+    <span class="red">{content}</span> this where the framework will display all view in runtime
+</p>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+                        <div class="loading hidden">
+            </div>
+            <div class="alert alert-success info-message hide">
+            </div>
+            <input type="hidden" id="ajaxLoader">
+            <input type="hidden" id="notification">
+            </body></html>

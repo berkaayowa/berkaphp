@@ -1,0 +1,539 @@
+.item-text {
+    color: gray;
+    /*line-height: 26px;*/
+}
+
+.hot-red {
+    position: absolute;
+    padding: 2px 8px;
+    width: auto;
+    color: white;
+    top: 14px;
+    opacity: 0.7;
+    /* box-shadow: 1px 0px 6px #545252; */
+}
+
+#header {
+    position: fixed;
+    width: 100%;
+    z-index: 99999999999999999;
+}
+
+.blue-bg {
+    background: #0093ff!important;
+}
+
+.yellow-bg {
+    background: #0cb349 !important
+}
+
+.sign-in {
+    background: white;
+    padding: 20px;
+    border: 2px solid #e3e3e3;
+}
+
+.link-btn:hover, [data-toggle]:hover ,[data-open-deal]:hover{
+    cursor: pointer;
+}
+
+#myModal, #contactUS{
+    background: rgba(0,0,0,0.8);
+}
+
+.form-control {
+    padding-left: 2px;
+    padding-right: 2px;
+    resize: none;
+    border: 1px solid #cdcbcb!important;
+}
+
+.no-padding-top {
+    padding-top: 0!important;
+}
+
+.no-padding-left {
+    padding-left: 0!important;
+}
+.no-padding-right {
+    padding-right: 0!important;
+}
+
+.no-padding-bottom {
+    padding-bottom: 0!important;
+}
+
+.notification-container {
+    text-align: center;
+    color: white;
+}
+
+.item-text, .details {
+    overflow-wrap: break-word;
+}
+
+.item-text{
+    font-size: 16px;
+    /* text-transform: lowercase; */
+}
+
+.modal-body .listings-grid .listings-grid__item .listings-grid__body .item-text {
+    text-transform: inherit;
+}
+
+label.error {
+    color: #ff0000!important;
+}
+
+.header__top {
+    background-color: #2196f3;
+    padding-top: 3px;
+    padding-bottom: 0px;
+    text-align: center;
+}
+
+.listings-grid .listings-grid__price {
+    padding: 6px 30px 2px 15px;
+}
+
+.detail-price {
+    color: #2c2c2c;
+    font-weight: bolder;
+    margin-top: 0;
+    padding: 14px;
+    border: 1px solid #ece9e9;
+    background: #f8f8f8;
+    font-size: 34px;
+}
+
+.detail-header {
+    font-weight: bold;
+    letter-spacing: -1px;
+    font-size: 27px;
+    text-transform: capitalize;
+    border-bottom: 1px solid #c8c8c8;
+    padding-bottom: 13px;
+}
+
+.contact-wrapper {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 20px;
+    border: 1px solid;
+    background: #317ed1;
+    color: white;
+    font-weight: bold;
+    border-radius: 31px 0px 0 0;
+}
+
+.details-icon {
+    /*border: 1px solid #f8f5f5;*/
+    padding: 10px;
+    /*background: #f7f7f7;*/
+}
+
+.icon-wrapper > i {
+    font-size: 19px;
+    padding-right: 7px;
+    margin-right: -3px;
+    /*border-right: 1px solid #dfd6d6;*/
+}
+
+.section__title {
+    margin-bottom: 11px;
+    text-align: justify;
+    margin-top: 15px;
+}
+
+.section__title p {
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.heart-hover:hover, .heart-liked {
+    color: #eeae2c;
+}
+
+.pointer-hover:hover {
+    cursor: pointer;
+}
+
+
+.section__title > h1{
+    font-size: 27px;
+}
+
+
+.icon-deal {
+    font-size: 19px;
+}
+
+.listings-grid__attrs > li:last-of-type {
+    float: right;
+}
+
+.popup-share {
+    /*color: #ff0000;*/
+    z-index: 9999999999999999999999999;
+}
+
+.popup-share > a {
+    display: inline-block;
+    padding: 7px;
+}
+.popup-share > a > span{
+    display: none;
+}
+
+.fa-facebook {
+    color: #4267b2;
+}
+
+.fa-googleplus {
+    color: #dc473a;
+}
+
+.fa-googleplus:hover {
+    color: #dc0300;
+}
+
+.fa-email {
+    color: gray;
+}
+
+.fa-email:hover {
+    color: #000000;
+}
+
+@media (max-width: 500px){
+    .popup-share {
+        right: 15px;
+    }
+}
+
+* {
+    -webkit-transition: wall 0.1s, height 0.12s; /* Safari */
+    transition: width 0.1s, height 0.1s;
+}
+
+/*.item-text {*/
+/*display: block;*/
+/*overflow: hidden;*/
+/*display: -webkit-box;*/
+/*-webkit-line-clamp: 4;*/
+/*-webkit-box-orient: vertical;*/
+/*}*/
+
+.item-text {
+    /* hide text if it more than N lines  */
+    overflow: hidden;
+    /* for set '...' in absolute position */
+    position: relative;
+    /* use this value to count block height */
+    line-height: 1.5em;
+    /* max-height = line-height (1.5) * lines max number (4) */
+    max-height: 6.0em;
+    /* fix problem when last visible word doesn't adjoin right side  */
+    text-align: left;
+    /* place for '...' */
+    margin-right: -0.5em;
+    padding-right: 1em;
+}
+/* create the ... */
+.item-text:before {
+    /* points in the end */
+    content: '...';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of block */
+    right: 0;
+    bottom: 0;
+}
+/* hide ... if we have text, which is less than or equal to max lines */
+.item-text:after {
+    /* points in the end */
+    content: '';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of text */
+    right: 0;
+    /* set width and height */
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    /* bg color = bg color under block */
+    background: white;
+}
+
+.no-margin-bottom {
+    margin-bottom: 0;
+}
+
+.deal-modal-header {
+    padding: 10px 17px;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.modal {
+    z-index: 9999999999;
+}
+
+.border {
+    border: 1px solid!important;
+}
+
+section.section {
+    padding-bottom: 15px;
+}
+
+.section__title > p {
+    /*line-height: 1.5!important;*/
+}
+
+.no-margin {
+    margin: 0!important;
+}
+
+@media (max-width: 989px) {
+    .section__title {
+        margin-top: 32px !important;
+        margin-bottom: 6px;
+    }
+    .affiliates {
+        margin-top: 25px;
+    }
+
+}
+
+@media (max-width: 355px){
+    .listings-grid__attrs > li {
+        margin-right: 4px!important;
+    }
+
+    .listings-grid__attrs > li > a > span  {
+        font-size:9px!important;
+    }
+
+    .section__title {
+        margin-top: 52px !important;
+    }
+
+    .deal-btn {
+        font-size:8px!important;
+    }
+}
+
+@media (min-width: 500px) {
+    .mobile-only {
+        display: none!important;
+    }
+}
+
+.slogan {
+    color: #d8e8f5;
+    font-size: 14px!important;
+    border-top: 1px solid #44a7f7;
+    margin-top: 10px;
+    padding-top: 8px;
+}
+
+.loaderContentHoder {
+    margin-top: 102px!important;
+}
+
+.pag-btn {
+    padding: 4px 11px;
+    font-size: 13px;
+}
+
+.footer__copyright {
+    color: white;
+}
+
+.main-container {
+    max-width: 1400px!important;
+}
+
+.normalPrice {
+    display: inline-block;
+    position: absolute;
+    margin-left: 10px;
+    text-decoration: line-through;
+    color: #807b7b;
+    font-weight: normal;
+    font-size: 19px;
+    top: 12px;
+}
+
+.listings-grid__item
+{
+    border: 0 solid #e6e6e6!important;
+}
+
+.new-deal {
+    /*border: 1px solid #e8e8e8!important;*/
+    box-shadow: 2px 7px 25px 5px #a2caea!important;
+}
+
+.view-share-btn {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    padding-right: 23px;
+}
+
+.cart-title {
+    font-weight: bold!important;
+    border-bottom: 1px solid #e4e3e3;
+    padding-bottom: 28px;
+}
+.no-padding-right {
+    padding-right: 0;
+}
+
+.logo > img {
+    /* width: 50px; */
+    /* display: inline-block; */
+     float: none;
+    margin-right: 12px;
+}
+
+.logo {
+    float: left;
+    text-align: center;
+}
+
+.categoryContainer {
+    padding-top: 12px;
+    /*padding-bottom: 9px;*/
+    background: #ffffff;
+}
+
+.cat-menu-item {
+    padding: 10px;
+    border-right: 1px solid #f2f2f2;
+}
+
+.cat-menu-item:last-of-type {
+    border-right: none;
+}
+
+.cat-menu-item a {
+    color: gray!important;
+    letter-spacing: 1.9px;
+}
+
+.cat-menu {
+    padding: 0;
+}
+
+.header--minimal {
+    background: #ffffff!important;
+}
+
+.section__title {
+    margin-top: 79px;
+}
+
+
+.new {
+    position: absolute;
+    right: 0;
+    background: red;
+    padding: 5px;
+    width: 45px;
+    text-align: center;
+    bottom: 10px;
+}
+
+.new > span {
+    position: relative;
+    display: block;
+    color: white;
+    font-size: 11px;
+}
+
+.search-menu {
+    background-color: rgb(210, 235, 255);
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 16px;
+    height: 40px;
+    padding-left: 40px;
+    padding-right: 46px;
+    vertical-align: middle;
+    /*width: 100%;*/
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    outline: 0px;
+    border-radius: 3px 0 0 3px;
+}
+
+.menu-form {
+    margin-top: 11px;
+    position: relative;
+    width: 350px;
+}
+
+.menu-form button {
+    height: 40px;  width: 51px;
+    box-shadow: none!important;
+    border-radius: 0 3px 3px 0;
+    background: #2196f3;
+    position: relative;
+    border: 1px solid white;
+
+}
+
+.menu-form button:hover {
+    background: #0762ad;
+}
+
+.menu-form button:active, .menu-form button:focus {
+    background: #0762ad;
+}
+
+
+.menu-icon {
+    color: rgb(190, 212, 230);
+    position: absolute;
+    transform: translateY(-50%);
+    left: 19px;
+    font-size: 18px !important;
+}
+
+.ul-menu {
+    list-style: none;
+    color: white;
+    top: 19px;
+    position: relative;
+    width: auto;
+    float: right;
+}
+
+.ul-menu li{
+    display: inline-block;
+}
+
+.ul-menu li a i{
+    color: white;
+}
+
+.ul-menu li a {
+    padding: 5px 10px;
+    border: 1px solid #d2ebff;
+    border-radius: 27%;
+}
+
+.cat-menu-item:hover {
+    border-bottom: 3px solid #2196f3;
+    cursor: pointer;
+    /*background: #f0f3f5;*/
+}
+
+
+

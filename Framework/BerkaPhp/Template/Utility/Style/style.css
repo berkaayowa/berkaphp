@@ -1,0 +1,54 @@
+
+.console {
+    padding: 15px;
+    border: 1px solid transparent;
+    color: #3c763d;
+    background-color: #515250;
+    border-color: #616161;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 800px;
+    z-index: 9999999999999999999;
+
+
+
+}
+
+pre {
+    background-color: #c5c1c1;
+    padding:10px 20px;
+    margin-right: 10px;
+    overflow-x: scroll;
+    max-height: 500px;
+}
+
+.flash {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding-right: 22px;
+}
+
+.data-required {
+    border: 1px solid red;
+}
+
+[data-error-message] {
+    color: red;
+    display: none;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #f2dede!important;
+}
+
+.error-title {
+    display: inline-block;
+    margin-top: 6px;
+}
+
+.brk-php-label {
+    /*text-align: right;*/
+    text-transform: capitalize;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://localhost:8090/framework/page/action -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <!-- Meta -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta name="robots" content="all">
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title></title>
+</head>
+<body style="">
+<div class="container">
+    <br>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid nav-bg">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">BerkaPhp Framework</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand active" href="../index.htm">
+                    BerkaPhp
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="setup.htm">How To Setup</a></li>
+                    <li><a href="controller.htm">Controller</a></li>
+                    <li><a href="action.htm">Action</a></li>
+                    <li><a href="view.htm">View</a></li>
+                    <li><a href="layout.htm">Layout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <h3 class="title label label-default">Action</h3>
+
+<p class="box">
+The template files for these actions should be in <strong>/Views/{{Prefix}}/{{ControllerName}}/{{ActionName}}.php</strong>
+
+The conventional view file name is the lowercased and underscored version of the action name.
+</p>
+<br>
+<h3>Role of actions</h3>
+<p class="box">
+Action Methods are methods defined in the controller class and are responsible
+to perform operations based on the user's inputs like entering a URL into the browser,clicking a link, and submitting a form.
+</p>
+<br>
+<h3>Example of actions</h3>
+<p class="box">Below is an example of an <strong>about</strong> view of ContactController.
+The template files for this action  would be in <br>
+<strong>Controllers/Client/</strong> directory <br><br>
+For the above  action template would be <strong>Views/Client/Contact/about.php</strong>
+</p>
+<br>
+
+<div class="well code">
+    <span class="namespace">&lt;php</span><br><br>
+    <span class="namespace">namespace</span>Controller\Client;<br>
+    <span class="namespace">use</span>BerkaPhp\Controller\BerkaPhpController;<br><br>
+    <span class="namespace">class</span>ContactController<span class="namespace space_left">extends</span>BerkaPhpController {
+    <div class="tab_one">
+        <span class="namespace">function </span>__construct() {
+        <br>
+        <div class="tab_one">
+            parent::__construct(<span class="red"></span>);
+        </div>
+        }
+        <br>
+        <br><span class="comment">//here is about action </span>
+        <br>
+        <span class="namespace">function </span>about() {
+        <br>
+        <div class="tab_one">
+            $this-&gt;view-&gt;render();
+        </div>
+        }
+    </div>
+    }
+    <br><br>
+    <span class="namespace">?&gt;</span>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+                        <div class="loading hidden">
+            </div>
+            <div class="alert alert-success info-message hide">
+            </div>
+            <input type="hidden" id="ajaxLoader">
+            <input type="hidden" id="notification">
+            </body></html>
