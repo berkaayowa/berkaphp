@@ -27,11 +27,10 @@ You can simply clone from this github or download it in zip format and unzip aft
 
 ### Installing and requirements
 * [Web Sever](https://www.apache.org/) - exemple : Apache
-* [Database MySQL](https://www.mysql.com/) - With Your tables created
-* [Copy of berkaPhp](https://github.com/berkaayowa/berkaphp) - framework
+* [Copy of BerkaPhp](https://github.com/berkaayowa/berkaphp) - framework
 
-#### Site using thisframework
-* [https://bookofmoremoney.com](https://bookofmoremoney.com)
-* [http://www.bluetechoak.co.za/](http://www.bluetechoak.co.za/) 
+#### Documentation
+* [Click here](Documentation/index.html)
+
 
 
